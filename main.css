@@ -1,0 +1,160 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: darkslategray;
+}
+
+/*Categories style*/
+#categories-header{
+    text-align: center;
+    font-size: 300%;
+    font-weight: bold;
+    font-family: "Comic Sans MS", "sans-serif";
+    margin: 0;
+}
+
+h3{
+    font-family: "Comic Sans MS","sans-serif";
+    font-size: 200%;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    text-decoration: underline;
+}
+
+p{
+    font-family: "Berlin Sans FB", "sans-serif";
+    color: black;
+    font-size: 140%;
+    line-height: 180%;
+    text-align: justify;
+    font-weight: 300;
+}
+
+img{
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.left-col{
+    width: 60%;
+    float: left;
+    margin: 4% 0 4% 4%;
+}
+
+.side-bar{
+    width: 26%;
+    float: left;
+    margin: 8% 4% 4%;
+}
+
+.spacing{
+    margin-top: 30%;
+    padding-top: 20px;
+}
+
+/*Menu and Wallpaper*/
+.intro{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
+}
+
+.intro .inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.content h1{
+    font-family: "Comic Sans MS","sans-serif";
+    font-size: 300%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+
+.inner{
+    max-width: 600px;
+    margin: auto;
+    font-size: 170%;
+    line-height: 160%;
+    padding: 10px;
+}
+
+/*Navigation Bar Below*/
+
+nav{
+    float: left;
+    padding: 5% 5% 0 0;
+    height: 50px;
+}
+
+nav ul{
+    list-style: none;
+    float: left;
+}
+
+nav ul li{
+    font-family: "Berlin Sans FB", "sans-serif";
+    font-size: 120%;
+    font-weight: bold;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+nav ul, nav:active ul{
+    display: none;
+    left: 45px;
+    top: 60px;
+    padding: 8px 0;
+    width: 20%;
+    z-index: 1000; /*will make it display on top of any other element*/
+}
+
+nav li{
+    width: 100%;
+    padding: 8px 0 10px 7px;
+    margin: 0;
+}
+
+nav:hover ul{
+    display: block;
+    position: absolute; /*it will make it display on the same spot*/
+}
+
+#menu-icon{
+    width: 30px;
+    height: 26px;
+    background: url("Images/nav-icon.png") center;
+    display: inline-block;
+    margin: 50px 0 0 50px;
+}
+
+.clear-fix{
+    clear:both;
+    height: 3%;
+}
