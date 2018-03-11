@@ -1,0 +1,87 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    background-size: cover;
+    background: url("Images/gold.jpg") no-repeat center;
+    font-family: "Comic Sans MS","sans-serif";
+    height: 100%;
+    width: 100%;
+}
+
+.register-box{
+    width: 320px;
+    height: 480px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.register-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.register-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.register-box input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: white;
+    font-size: 16px;
+}
+
+.register-box input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: saddlebrown;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.register-box input[type="submit"]:hover{
+    cursor: pointer;
+    background: darkgoldenrod;
+    color: black;
+}
+
+.register-box a{
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.register-box a:hover{
+    text-decoration: none;
+    color: saddlebrown;
+}
