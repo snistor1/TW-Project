@@ -44,17 +44,67 @@
                  font-size: 16px;
                  margin: 4px 2px;
                  cursor: pointer;
+        }
+.intro{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
 }
+
+.intro .inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.content h1{
+    font-family: "Comic Sans MS","sans-serif";
+    font-size: 300%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+
+.inner{
+    max-width: 600px;
+    margin: auto;
+    font-size: 170%;
+    line-height: 160%;
+    padding: 10px;
+}
+
     </style>
 </head>
 <body>
+  <section class="intro">
+    <div class="inner">
+      <a href="index.html">
+        <spam class="content">
+            <h1>Artifacts</h1>
+        </span>
+      </a>
+    </div>
+  </section>
+
 	<div class="box_1">
 	<head ><strong>Profil</strong></head>
 	<br>
 	<hr>
     <img src="user.png" alt="This is the users profile picture" width="100" height="100">
     <br>
-    <a href="file:///D:/facultate/Tehnologii%20web/editare_pg_utilizator.html" class="button">Editeaza Profil</a>
+    <a href="editare_pg_utilizator.html" class="button">Editeaza Profil</a>
     <hr>
     <table align="center">
     		<tr><td class="stanga"><strong>Nume:</strong></td><td class="dreapta">Popescu Dan</td></tr>
