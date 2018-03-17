@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistics</title>
+</head>
+
+<style type="text/css">
+* {
+    box-sizing: border-box;
+}
+
+.intro{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
+}
+
+.intro .inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.content h1{
+    font-family: "Comic Sans MS","sans-serif";
+    font-size: 300%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+
+.inner{
+    max-width: 600px;
+    margin: auto;
+    font-size: 170%;
+    line-height: 160%;
+    padding: 10px;
+}
+
+
+#piechart{
+	width: 700px;
+	height: 600px;
+	max-width: 50%;
+	border: 2px solid black;
+	opacity: 50%;
+}
+
+.general{
+	width: 50%;
+	float: left;
+	font-size: 125%
+}
+
+.categories{
+	width: 50%;
+	float: left;
+	font-size: 125%
+}
+
+</style>
+
+<body>
+	<section class="intro">
+	  <div class="inner">
+	    <a href="index.html">
+	      <spam class="content">
+	        <h1>Artifacts</h1>
+	      </span>
+	    </a>
+	  </div>
+	</section>
+
+<h1 style="margin-left: 20px; width: 40%;">Statistics</h1>
+<div>
+	<div class="general">
+		General statistics
+		<ul>
+			<li>Total number of items: 50</li>
+			<li>Number of users: 10</li>
+			<li>Number of sold items: 5</li>
+			<li>Most expensive item: Ancient Katana</li>
+		</ul>
+	</div>
+	<div class="categories">
+		Categories details
+		<ul>
+			<li>Number of categories: 6</li>
+			<li>Category with most items: Clocks</li>
+			<li>Most searched category: Jewels</li>
+		</ul>
+	</div>
+</div>
+<div style="clear: both; height: 3%"></div>
+<div id="piechart">
+	
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Category', 'Number of items'],
+          ['Weapons',     11],
+          ['Carpets',      2],
+          ['Cult Objects',  2],
+          ['Clocks', 12],
+          ['Jewels',    7]
+        ]);
+
+        var options = {
+          title: 'Percent of items by category'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+</body>
+</html>
