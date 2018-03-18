@@ -3,34 +3,121 @@ html, body{
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: darkslategray;
+    background-color: white ;
+}
+
+/* Site introduction*/
+
+.introduction{
+    width:50%;
+    padding-left:25%;
+}
+
+.introduction h1{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 250%;
+    font-weight: bold;
+    color: grey;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+.introduction p{
+    font-family: "Berlin Sans FB", "sans-serif";
+    color: black;
+    font-size: 150%;
+    padding-bottom: 3%;
+}
+
+/*Collection link style*/
+.bigcontainer{
+   width: 100%;
+   background-color: grey;
+}
+.container {
+    position: relative;
+    width: 50%;
+    margin-left:25%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-decoration: none;
 }
 
 /*Categories style*/
+.categoriesBigcontainer{
+   width: 100%;
+   background-color: #ebedeb;
+}
+
 #categories-header{
     text-align: center;
-    font-size: 300%;
+    font-size: 200%;
     font-weight: bold;
-    font-family: "Comic Sans MS", "sans-serif";
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
     margin: 0;
+    color: #303630;
+    margin-top: 10%;
+}
+
+#categories-header span{
+    background-color: #ebedeb;
+    padding: 1%;
+    border-radius: 20%;
 }
 
 h3{
-    font-family: "Comic Sans MS","sans-serif";
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
     font-size: 200%;
     font-weight: bold;
-    color: black;
+    color: #303630;
     text-align: center;
-    text-decoration: underline;
+    background-color:#ebedeb ;
 }
 
 p{
     font-family: "Berlin Sans FB", "sans-serif";
     color: black;
-    font-size: 140%;
+    font-size: 150%;
     line-height: 180%;
     text-align: justify;
     font-weight: 300;
+    color: #303630;
+
 }
 
 img{
@@ -40,10 +127,12 @@ img{
     width: auto;
 }
 
-.left-col{
-    width: 60%;
+ .left-col{
+    width: 55%;
     float: left;
     margin: 4% 0 4% 4%;
+    background-color: #ebedeb;
+    padding: 2%;
 }
 
 .side-bar{
@@ -57,7 +146,7 @@ img{
     height: 100%;
     width: 100%;
     margin: auto;
-    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    background: url("img_main.jpg") no-repeat 50% 50%;
     background-size: cover;
     display: table;
     top: 0;
@@ -76,8 +165,8 @@ img{
 }
 
 .content h1{
-    font-family: "Comic Sans MS","sans-serif";
-    font-size: 300%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
     font-weight: bold;
     color: white;
     text-align: center;
