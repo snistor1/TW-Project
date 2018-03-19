@@ -28,6 +28,7 @@ div.gallery img:hover {
 div.desc {
     padding: 15px;
     text-align: center;
+    font-size: 120%;
 }
 
 * {
@@ -66,7 +67,7 @@ div.desc {
 
 .pagination {
     display: inline-block;
-    padding-left: 40%;
+    padding-left: 30%;
 }
 
 .pagination a {
@@ -78,17 +79,25 @@ div.desc {
 }
 
 .pagination a.active {
-    background-color: #4CAF50;
+    background-color: grey;
     color: white;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
 
+/*Intro: link to Main*/
+html, body{
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    background-color: white ;
+}
+
 .intro{
     height: 100%;
     width: 100%;
-    margin: auto;
-    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    margin:auto;
+    background: url("img_main.jpg") no-repeat 50% 50%;
     background-size: cover;
     display: table;
     top: 0;
@@ -107,13 +116,18 @@ div.desc {
 }
 
 .content h1{
-    font-family: "Comic Sans MS","sans-serif";
-    font-size: 300%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
     font-weight: bold;
     color: white;
     text-align: center;
     padding: 2%;
     text-shadow: 0 0 250px black;
+}
+
+.content a{
+  text-decoration:none;
+  color: white;
 }
 
 .inner{
@@ -124,55 +138,76 @@ div.desc {
     padding: 10px;
 }
 
+.BoxForCollection{
+    margin:10%;
+    background-color:#bdb7a8;
+    border-radius: 20px;
+}
+
+/*Meniu lateral*/
+.navbar {
+  background-color: grey;
+  opacity: 0.7;
+  filter: Alpha(opacity=50);
+  position: fixed;
+  top: 0;
+  height: 300px;
+  width: 65px;
+  top:25%;
+  left: 0;
+  overflow: hidden;
+  padding-top: 20px;
+  border-radius:0 20px 20px 0;
+}
+
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.navbar img{
+   width: 70%;
+   height: auto;
+   display: inline-block;
+}
+
+.navbar a:hover {
+  background: black;
+  color: black;
+}
+
 </style>
 </head>
 <body>
 
 <section class="intro">
+
+  <div class="navbar">
+  <a href="pagina_utilizator.html"><img src="Images/png_profile.png" alt="ProfilePage" ></a>
+  <a href="login.html"><img src="Images/png_login.png" alt="LoginPage" ></a>
+  <a href="index.html"><img src="Images/png_home.png" alt="HomePage" ></a>
+  <a href="colectie_artefacte.html"><img src="Images/png_collection.png" alt="CollectionPage" ></a>
+  <a href="statistics.html"><img src="Images/png_statistics.png" alt="StatisticsPage" ></a>
+  </div>
+
   <div class="inner">
-    <a href="index.html">
-      <spam class="content">
-          <h1>Artifacts</h1>
-      </span>
-    </a>
+      <div class="content">
+        <h1><a href="index.html">ARTIFACTY</a></h1>
+      </div>
   </div>
 </section>
 
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
 
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
+<section class="BoxForCollection">
 <div class="clearfix"></div>
 
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -182,7 +217,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -192,7 +227,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -205,7 +240,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -215,7 +250,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -225,39 +260,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-<div class="clearfix"></div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
-      <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -270,7 +273,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -280,7 +283,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -290,7 +293,7 @@ div.desc {
 
 <div class="responsive">
   <div class="gallery">
-    <a target="_blank" href="img_artefact1.jpg">
+    <a href="pagina_artefact.html">
       <img src="img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -313,6 +316,7 @@ div.desc {
   <a href="#">6</a>
   <a href="#">&raquo;</a>
 </div>
+</section>
 
 </body>
 </html>

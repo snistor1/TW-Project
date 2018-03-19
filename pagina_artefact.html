@@ -2,15 +2,19 @@
 <html>
 <head>
 <style>
-* {
-    box-sizing: border-box;
+/*Intro: link to Main*/
+html, body{
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    background-color: white ;
 }
 
 .intro{
     height: 100%;
     width: 100%;
-    margin: auto;
-    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    margin:auto;
+    background: url("img_main.jpg") no-repeat 50% 50%;
     background-size: cover;
     display: table;
     top: 0;
@@ -23,19 +27,24 @@
     max-width: none;
 }
 
-.content_banner {
+.content {
     max-width: 600px;
     margin: auto;
 }
 
-.content_banner h1{
-    font-family: "Comic Sans MS","sans-serif";
-    font-size: 300%;
+.content h1{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
     font-weight: bold;
     color: white;
     text-align: center;
     padding: 2%;
     text-shadow: 0 0 250px black;
+}
+
+.content a{
+  text-decoration:none;
+  color: white;
 }
 
 .inner{
@@ -46,62 +55,83 @@
     padding: 10px;
 }
 
-body {
-    font-family: Arial;
-    padding: 10px;
-    background: #f1f1f1;
-}
-
-.box_1{   
-  width: 75%;
-  position: relative;
-  padding: 1em 1.5em;
-  margin: 2em auto;
+/*Meniu lateral*/
+.navbar {
+  background-color: grey;
+  opacity: 0.7;
+  filter: Alpha(opacity=50);
+  position: fixed;
+  top: 0;
+  height: 300px;
+  width: 65px;
+  top:25%;
+  left: 0;
   overflow: hidden;
-  border-radius:10px;
+  padding-top: 20px;
+  border-radius:0 20px 20px 0;
 }
 
-.box_2 {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
 }
 
-
-.content:after {
-    content: "";
-    display: table;
-    clear: both;
+.navbar img{
+   width: 70%;
+   height: auto;
+   display: inline-block;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media (max-width: 800px) {
-    .box_1 {   
-        width: 100%;
-        padding: 0;
-    }
+.navbar a:hover {
+  background: black;
+  color: black;
 }
 
+/*Box artefact*/
 
+.box{  
+  margin:10% 20% 10% 20%;
+  overflow: hidden;
+  background-color: lightgrey;
+  border: 1px solid #ebedeb;
+  padding: 2%;
+  text-align: center;
+  font-family: "Berlin Sans FB", "sans-serif";
+  color: #303630;
+  font-size: 150%;
+  padding-bottom: 3%;
+}
+
+.box h2{
+  background-color: #4d4e4b;
+  color: white;
+}
 
 </style>
 </head>
 <body>
 
 <section class="intro">
+
+  <div class="navbar">
+  <a href="pagina_utilizator.html"><img src="Images/png_profile.png" alt="ProfilePage" ></a>
+  <a href="login.html"><img src="Images/png_login.png" alt="LoginPage" ></a>
+  <a href="index.html"><img src="Images/png_home.png" alt="HomePage" ></a>
+  <a href="colectie_artefacte.html"><img src="Images/png_collection.png" alt="CollectionPage" ></a>
+  <a href="statistics.html"><img src="Images/png_statistics.png" alt="StatisticsPage" ></a>
+  </div>
+
   <div class="inner">
-    <a href="index.html">
-      <spam class="content_banner">
-          <h1>Artifacts</h1>
-      </span>
-    </a>
+      <div class="content">
+        <h1><a href="PaginaPrincipala.html">ARTIFACTY</a></h1>
+      </div>
   </div>
 </section>
 
-<div class="content">
-  <div class="box_1">
-  
-    <div class="box_2">
+<div class="box">
       <h2>Vase africane din argila</h2>
       
       <div>
@@ -111,24 +141,23 @@ body {
       </div>
   <!-- begin Informatii artefact-->
       <div>
-         <h4><strong>Adaugat de catre --link catre user--</strong></h4>
+         <h4>Adaugat de catre --link catre user--</h4>
     
         <hr>
-         <h4><strong>Autor artefact:</strong> </h4><p>--Nume_autor--</p>
+         <h4>Autor artefact:</h4> <p>--Nume_autor--</p>
         <hr>
-        <h4><strong>Proprietar artefact:</strong></h4> <p>--Nume_proprietar--</p>
+        <h4>Proprietar artefact:</h4> <p>--Nume_proprietar--</p>
         <hr>
-         <h4><strong>Datare:</strong> </h4><p>--Datare_artefact--</p>
+         <h4>Datare:</h4> <p>--Datare_artefact--</p>
         <hr>
-         <h4><strong>Valoare:</strong> </h4><p>--Valoare--</p>
+         <h4>Valoare:</h4> <p>--Valoare--</p>
         <hr>
-        <h4><strong>Licenta de utilizare:</strong> </h4><p>--Licenta_utilizare--</p>
+        <h4>Licenta de utilizare:</h4> <p>--Licenta_utilizare--</p>
         <hr>
-        <h4><strong>Stadiu cercetare:</strong> </h4>
-        <progress max="100" value="80"></progress>
+        <h4>Stadiu cercetare:</h4>
+        <progress max="100" value="80" ></progress>
         <hr>
-         <h4><strong>Descriere:</strong></h4>
-             <p>--Descriere_artefact--</p>
+         <h4>Descriere:</h4> <p>--Descriere_artefact--</p>
         <hr>
 
   <!--Api Google Maps-->
@@ -155,12 +184,8 @@ var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 <!--end Informatii artefact-->
  
-  </div> 
-<!--end card class-->
-  </div>
-<!--end leftcolumn class-->
 </div>
-<!--end row class-->
 
 </body>
 </html>
+
