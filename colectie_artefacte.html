@@ -139,7 +139,7 @@ html, body{
 }
 
 .BoxForCollection{
-    margin:10%;
+    margin:6%;
     background-color:#bdb7a8;
     border-radius: 20px;
 }
@@ -179,6 +179,73 @@ html, body{
   color: black;
 }
 
+    .search-filter{
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-bar{
+        position: absolute;
+        display: inline-flex;
+        font-size: 20px;
+        padding-top:1%;
+        margin: 0 auto;
+    }
+
+
+
+    .search-input{
+        font-size: inherit;
+        border: 5px solid #8b6a30;
+        border-radius: 5px 0 0 5px;
+        padding: 5px 10px;
+        width: 500px;
+        height: 50px;
+        outline: 0;
+    }
+    .search-input:hover, .search-input:focus{
+        border: 5px solid black;
+    }
+    .search-button{
+        font-size: inherit;
+        border: 5px solid #8b6a30;
+        border-radius: 0 5px 5px 0;
+        background-color: white;
+        border-left: 0;
+        padding: 0 10px;
+        cursor: pointer;
+        outline: 0;
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+    }
+
+    .search-button:hover{
+        border: 5px solid black;
+    }
+
+    .drop-down{
+        display: flex;
+        justify-content: center;
+        padding-top:1%;
+        margin-left: 652px;
+    }
+
+    .select-down{
+        height: 50px;
+        outline: 0;
+        border: 5px solid #8b6a30;
+        border-radius: 0 5px 5px 0;
+        font-size: 14px;
+        margin-left: 0;
+    }
+
+.select-down:hover{
+    border: 5px solid black;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -199,11 +266,28 @@ html, body{
       </div>
   </div>
 </section>
+<div class="clearfix"></div>
+
+<div class="search-filter">
+    <div class="search-bar">
+        <input type="text" placeholder="Search..." class="search-input">
+        <button class="search-button"><img src="Images/search-icon.png" alt="S" width="18" height="18"></button>
+    </div>
+    <div class="drop-down">
+        <select title="Filters" class="select-down">
+            <option value="All">All</option>
+            <option value="Weapons">Weapons</option>
+            <option value="Carpets">Carpets</option>
+            <option value="Cult Objects">Cult Objects</option>
+            <option value="Clocks">Clocks</option>
+            <option value="Jewels">Jewels</option>
+        </select>
+    </div>
+</div>
+
 
 
 <section class="BoxForCollection">
-<div class="clearfix"></div>
-
 
 <div class="responsive">
   <div class="gallery">
