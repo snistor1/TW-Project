@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Statistics</title>
+  <title>Statistics</title>
 </head>
 
 <style type="text/css">
@@ -12,12 +12,13 @@
 .intro{
     height: 100%;
     width: 100%;
-    margin: auto;
-    background: url("Images/ancient.jpg") no-repeat 50% 50%;
+    margin:auto;
+    background: url("img_main.jpg") no-repeat 50% 50%;
     background-size: cover;
     display: table;
     top: 0;
 }
+
 
 .intro .inner{
     display: table-cell;
@@ -32,13 +33,18 @@
 }
 
 .content h1{
-    font-family: "Comic Sans MS","sans-serif";
-    font-size: 300%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
     font-weight: bold;
     color: white;
     text-align: center;
     padding: 2%;
     text-shadow: 0 0 250px black;
+}
+
+.content a{
+  text-decoration:none;
+  color: white;
 }
 
 .inner{
@@ -49,65 +55,124 @@
     padding: 10px;
 }
 
+.BoxForStatictics{
+    margin:10%;
+    padding:5%;
+    background-color:#bdb7a8;
+    border-radius: 20px;
+}
+
 
 #piechart{
-	width: 700px;
-	height: 600px;
-	max-width: 50%;
-	border: 2px solid black;
-	opacity: 50%;
+  width: 700px;
+  height: 600px;
+  max-width: 70%;
+  border: 2px solid black;
+  opacity: 50%;
 }
 
 .general{
-	width: 50%;
-	float: left;
-	font-size: 125%
+  width: 50%;
+  float: left;
+  font-size: 125%
 }
 
 .categories{
-	width: 50%;
-	float: left;
-	font-size: 125%
+  width: 50%;
+  float: left;
+  font-size: 125%
+}
+
+html, body{
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    background-color: white ;
+}
+
+/*Meniu lateral*/
+.navbar {
+  background-color: grey;
+  opacity: 0.7;
+  filter: Alpha(opacity=50);
+  position: fixed;
+  top: 0;
+  height: 300px;
+  width: 65px;
+  top:25%;
+  left: 0;
+  overflow: hidden;
+  padding-top: 20px;
+  border-radius:0 20px 20px 0;
+}
+
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.navbar img{
+   width: 70%;
+   height: auto;
+   display: inline-block;
+}
+
+.navbar a:hover {
+  background: black;
+  color: black;
 }
 
 </style>
-
 <body>
-	<section class="intro">
-	  <div class="inner">
-	    <a href="index.html">
-	      <spam class="content">
-	        <h1>Artifacts</h1>
-	      </span>
-	    </a>
-	  </div>
-	</section>
+<section class="intro">
 
-<h1 style="margin-left: 20px; width: 40%;">Statistics</h1>
+  <div class="navbar">
+  <a href="pagina_utilizator.html"><img src="Images/png_profile.png" alt="ProfilePage" ></a>
+  <a href="login.html"><img src="Images/png_login.png" alt="LoginPage" ></a>
+  <a href="index.html"><img src="Images/png_home.png" alt="HomePage" ></a>
+  <a href="colectie_artefacte.html"><img src="Images/png_collection.png" alt="CollectionPage" ></a>
+  <a href="statistics.html"><img src="Images/png_statistics.png" alt="StatisticsPage" ></a>
+  </div>
+
+  <div class="inner">
+      <div class="content">
+        <h1><a href="index.html">ARTIFACTY</a></h1>
+      </div>
+  </div>
+</section>
+
+<section class="BoxForStatictics">
+<h2 style="padding-left: 40%;padding-bottom: 5%;">Statistics</h2>
 <div>
-	<div class="general">
-		General statistics
-		<ul>
-			<li>Total number of items: 50</li>
-			<li>Number of users: 10</li>
-			<li>Number of sold items: 5</li>
-			<li>Most expensive item: Ancient Katana</li>
-		</ul>
-	</div>
-	<div class="categories">
-		Categories details
-		<ul>
-			<li>Number of categories: 6</li>
-			<li>Category with most items: Clocks</li>
-			<li>Most searched category: Jewels</li>
-		</ul>
-	</div>
+  <div class="general">
+    General statistics
+    <ul>
+      <li>Total number of items: 50</li>
+      <li>Number of users: 10</li>
+      <li>Number of sold items: 5</li>
+      <li>Most expensive item: Ancient Katana</li>
+    </ul>
+  </div>
+  <div class="categories">
+    Categories details
+    <ul>
+      <li>Number of categories: 6</li>
+      <li>Category with most items: Clocks</li>
+      <li>Most searched category: Jewels</li>
+    </ul>
+  </div>
 </div>
-<div style="clear: both; height: 3%"></div>
-<div id="piechart">
-	
-</div>
+<div style="clear: both; height: 3%;"></div>
 
+<section style="padding-left:17%; padding-top: 10%;">
+<div id="piechart">
+</div>
+</section>
+
+</section>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -132,7 +197,7 @@
 
         chart.draw(data, options);
       }
-    </script>
+</script>
 
 </body>
 </html>
