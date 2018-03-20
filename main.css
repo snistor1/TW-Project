@@ -84,6 +84,11 @@ html, body{
    background-color: #ebedeb;
 }
 
+.categoriesBigcontainer a{
+   text-decoration: none;
+   color: #303630;
+}
+
 #categories-header{
     text-align: center;
     font-size: 200%;
