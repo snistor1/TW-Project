@@ -182,14 +182,12 @@ html, body{
   color: black;
 }
 
-    .search-filter{
-        display: flex;
-        justify-content: center;
-    }
-
     .search-bar{
-        position: absolute;
-        display: inline-flex;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
         font-size: 20px;
         padding-top:1%;
         margin: 0 auto;
@@ -212,26 +210,21 @@ html, body{
     .search-button{
         font-size: inherit;
         border: 5px solid #8b6a30;
-        border-radius: 0 5px 5px 0;
+
         background-color: white;
-        border-left: 0;
+        /*border-left: 0;*/
         padding: 0 10px;
         cursor: pointer;
         outline: 0;
         width: 50px;
         height: 50px;
         margin-left: 0;
+        /*border-right: 0;*/
+
     }
 
     .search-button:hover{
         border: 5px solid black;
-    }
-
-    .drop-down{
-        display: flex;
-        justify-content: center;
-        padding-top:1%;
-        margin-left: 652px;
     }
 
     .select-down{
@@ -241,6 +234,7 @@ html, body{
         border-radius: 0 5px 5px 0;
         font-size: 14px;
         margin-left: 0;
+
     }
 
 .select-down:hover{
@@ -273,22 +267,18 @@ section h6{
 </section>
 <div class="clearfix"></div>
 
-<div class="search-filter">
     <div class="search-bar">
         <input type="text" placeholder="Search..." class="search-input">
         <button class="search-button"><img src="Images/search-icon.png" alt="S" width="18" height="18"></button>
-    </div>
-    <div class="drop-down">
         <select title="Filters" class="select-down">
-            <option value="All">All</option>
-            <option value="Weapons">Weapons</option>
-            <option value="Carpets">Carpets</option>
-            <option value="Cult Objects">Cult Objects</option>
-            <option value="Clocks">Clocks</option>
-            <option value="Jewels">Jewels</option>
+          <option value="All">All</option>
+          <option value="Weapons">Weapons</option>
+          <option value="Carpets">Carpets</option>
+          <option value="Cult Objects">Cult Objects</option>
+          <option value="Clocks">Clocks</option>
+          <option value="Jewels">Jewels</option>
         </select>
     </div>
-</div>
 
 
 
