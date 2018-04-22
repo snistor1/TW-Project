@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white ;
+}
+
+.box_user{
+    background-color: #bdb7a8;
+    width: 75%;
+    position: relative;
+    padding: 1em 1.5em;
+    margin: 2em auto;
+    overflow: hidden;
+    border-radius:10px;
+    text-align: center;
+}
+.stanga {
+    font-weight: bold;
+    color: black;
+    background: white;
+    border:1px solid black;
+    padding:5px;
+}
+.dreapta{
+    text-align:left;
+}
+.button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 7px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.intro{
+    height: 100%;
+    width: 100%;
+    margin:auto;
+    background: url("../Images/img_main.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
+}
+
+.intro .inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.content h1{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+
+.content a{
+    text-decoration:none;
+    color: white;
+}
+
+.inner{
+    max-width: 600px;
+    margin: auto;
+    font-size: 170%;
+    line-height: 160%;
+    padding: 10px;
+}
+
+/*Meniu lateral*/
+.navbar {
+    background-color: grey;
+    opacity: 0.7;
+    filter: Alpha(opacity=50);
+    position: fixed;
+    top: 0;
+    height: 300px;
+    width: 65px;
+    top:25%;
+    left: 0;
+    overflow: hidden;
+    padding-top: 20px;
+    border-radius:0 20px 20px 0;
+}
+
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.navbar img{
+    width: 70%;
+    height: auto;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background: black;
+    color: black;
+}
+

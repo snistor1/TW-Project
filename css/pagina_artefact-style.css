@@ -1,0 +1,107 @@
+/*Intro: link to Main*/
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white ;
+}
+
+.intro{
+    height: 100%;
+    width: 100%;
+    margin:auto;
+    background: url("../Images/img_main.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    display: table;
+    top: 0;
+}
+
+.intro .inner{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.content h1{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 2%;
+    text-shadow: 0 0 250px black;
+}
+
+.content a{
+    text-decoration:none;
+    color: white;
+}
+
+.inner{
+    max-width: 600px;
+    margin: auto;
+    font-size: 170%;
+    line-height: 160%;
+    padding: 10px;
+}
+
+/*Meniu lateral*/
+.navbar {
+    background-color: grey;
+    opacity: 0.7;
+    filter: Alpha(opacity=50);
+    position: fixed;
+    top: 0;
+    height: 300px;
+    width: 65px;
+    top:25%;
+    left: 0;
+    overflow: hidden;
+    padding-top: 20px;
+    border-radius:0 20px 20px 0;
+}
+
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.navbar img{
+    width: 70%;
+    height: auto;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background: black;
+    color: black;
+}
+
+/*Box artefact*/
+
+.box{
+    margin:10% 20% 10% 20%;
+    overflow: hidden;
+    background-color: lightgrey;
+    border: 1px solid #ebedeb;
+    padding: 2%;
+    text-align: center;
+    font-family: "Berlin Sans FB", "sans-serif";
+    color: #303630;
+    font-size: 150%;
+    padding-bottom: 3%;
+}
+
+.box h2{
+    background-color: #4d4e4b;
+    color: white;
+}

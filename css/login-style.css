@@ -2,15 +2,15 @@ html, body{
     padding: 0;
     margin: 0;
     background-size: cover;
-    background: url("Images/img_main.jpg") no-repeat center;
+    background: url("../Images/img_main.jpg") no-repeat center;
     font-family: "Comic Sans MS","sans-serif";
     height: 100%;
     width: 100%;
 }
 
-.register-box{
+.login-box{
     width: 320px;
-    height: 510px;
+    height: 480px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     top: 50%;
@@ -37,18 +37,18 @@ h1{
     font-size: 28px;
 }
 
-.register-box p{
+.login-box p{
     margin: 0;
     padding: 0;
     font-weight: bold;
 }
 
-.register-box input{
+.login-box input{
     width: 100%;
     margin-bottom: 20px;
 }
 
-.register-box input[type="text"], input[type="password"]{
+.login-box input[type="text"], input[type="password"]{
     border: none;
     border-bottom: 1px solid white;
     background: transparent;
@@ -58,7 +58,7 @@ h1{
     font-size: 16px;
 }
 
-.register-box input[type="submit"]{
+.login-box input[type="submit"]{
     border: none;
     outline: none;
     height: 40px;
@@ -68,20 +68,20 @@ h1{
     border-radius: 20px;
 }
 
-.register-box input[type="submit"]:hover{
+.login-box input[type="submit"]:hover{
     cursor: pointer;
     background: darkgoldenrod;
     color: black;
 }
 
-.register-box a{
+.login-box a{
     text-decoration: none;
     color: white;
     font-size: 12px;
     line-height: 20px;
 }
 
-.register-box a:hover{
+.login-box a:hover{
     text-decoration: none;
     color: saddlebrown;
 }

@@ -3,265 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Artifacty</title>
-<style>
-div.gallery {
-    border: 1px ; /*solid #ccc;*/
-    margin: 20px;
-}
-
-div.gallery:hover {
-    border: 1px solid #777;
-}
-
-div.gallery img {
-    width: 100%;
-    height: 300px;
-    opacity: 0.9;
-    filter: alpha(opacity=50);
-
-}
-
-div.gallery img:hover {
-    opacity: 1;
-    filter: alpha(opacity=50);
-}
-
-/*descriere*/
-div.desc {
-    padding: 15px;
-    text-align: center;
-    font-size: 120%;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.responsive {
-    padding: 0 6px;
-    float: left;
-    width: 33.33333%;
-}
-
-@media only screen and (max-width: 700px) {
-    .responsive {
-        width: 49.99999%;
-        margin: 6px 0;
-    }
-
-    div.gallery img {
-    height: 200px;
-    }
-
-}
-
-@media only screen and (max-width: 500px) {
-    .responsive {
-        width: 100%;
-    }
-}
-
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.pagination {
-    display: inline-block;
-    /*padding-left: 50%;*/
-}
-
-.pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-}
-
-.pagination a.active {
-    background-color: grey;
-    color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-/*Intro: link to Main*/
-html, body{
-    margin: 0;
-    padding: 0; 
-    width: 100%;
-    background-color: white ;
-}
-
-.intro{
-    height: 100%;
-    width: 100%;
-    margin:auto;
-    background: url("Images/img_main.jpg") no-repeat 50% 50%;
-    background-size: cover;
-    display: table;
-    top: 0;
-}
-
-.intro .inner{
-    display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-    max-width: none;
-}
-
-.content {
-    max-width: 600px;
-    margin: auto;
-}
-
-.content h1{
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
-    font-size: 150%;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    padding: 2%;
-    text-shadow: 0 0 250px black;
-}
-
-.content a{
-  text-decoration:none;
-  color: white;
-}
-
-.inner{
-    max-width: 600px;
-    margin: auto;
-    font-size: 170%;
-    line-height: 160%;
-    padding: 10px;
-}
-
-.BoxForCollection{
-    margin:6%;
-    background-color:#bdb7a8;
-    border-radius: 20px;
-    text-align: center;
-}
-
-/*Meniu lateral*/
-.navbar {
-  background-color: grey;
-  opacity: 0.7;
-  filter: Alpha(opacity=50);
-  position: fixed;
-  top: 0;
-  height: 300px;
-  width: 65px;
-  top:25%;
-  left: 0;
-  overflow: hidden;
-  padding-top: 20px;
-  border-radius:0 20px 20px 0;
-}
-
-.navbar a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.navbar img{
-   width: 70%;
-   height: auto;
-   display: inline-block;
-}
-
-.navbar a:hover {
-  background: black;
-  color: black;
-}
-
-    .search-bar{
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        font-size: 20px;
-        padding-top:1%;
-        margin: 0 auto;
-    }
-
-
-
-    .search-input{
-        font-size: inherit;
-        border: 5px solid #8b6a30;
-        border-radius: 5px 0 0 5px;
-        padding: 5px 10px;
-        width: 500px;
-        height: 50px;
-        outline: 0;
-    }
-    .search-input:hover, .search-input:focus{
-        border: 5px solid black;
-    }
-    .search-button{
-        font-size: inherit;
-        border: 5px solid #8b6a30;
-
-        background-color: white;
-        /*border-left: 0;*/
-        padding: 0 10px;
-        cursor: pointer;
-        outline: 0;
-        width: 50px;
-        height: 50px;
-        margin-left: 0;
-        /*border-right: 0;*/
-
-    }
-
-    .search-button:hover{
-        border: 5px solid black;
-    }
-
-    .select-down{
-        height: 50px;
-        outline: 0;
-        border: 5px solid #8b6a30;
-        border-radius: 0 5px 5px 0;
-        font-size: 14px;
-        margin-left: 0;
-
-    }
-
-.select-down:hover{
-    border: 5px solid black;
-}
-
-section h6{
-  display: none;
-}
-
-</style>
+  <link rel="stylesheet" type="text/css" href="css/colectie_artefacte-style.css">
 </head>
 <body>
 
 <section class="intro">
 
   <div class="navbar">
-  <a href="pagina_utilizator.html"><img src="Images/png_profile.png" alt="ProfilePage" ></a>
-  <a href="login.html"><img src="Images/png_login.png" alt="LoginPage" ></a>
-  <a href="index.html"><img src="Images/png_home.png" alt="HomePage" ></a>
-  <a href="colectie_artefacte.html"><img src="Images/png_collection.png" alt="CollectionPage" ></a>
-  <a href="statistics.html"><img src="Images/png_statistics.png" alt="StatisticsPage" ></a>
+  <a href="pagina_utilizator"><img src="Images/png_profile.png" alt="ProfilePage" ></a>
+  <a href="login"><img src="Images/png_login.png" alt="LoginPage" ></a>
+  <a href="index"><img src="Images/png_home.png" alt="HomePage" ></a>
+  <a href="colectie_artefacte"><img src="Images/png_collection.png" alt="CollectionPage" ></a>
+  <a href="statistics"><img src="Images/png_statistics.png" alt="StatisticsPage" ></a>
   </div>
 
   <div class="inner">
       <div class="content">
-        <h1><a href="index.html">ARTIFACTY</a></h1>
+        <h1><a href="index">ARTIFACTY</a></h1>
       </div>
   </div>
 </section>
@@ -286,7 +44,7 @@ section h6{
 <h6>heading</h6>
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -296,7 +54,7 @@ section h6{
 
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -306,40 +64,7 @@ section h6{
 
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
-      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-<div class="clearfix"></div>
-
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a href="pagina_artefact.html">
-      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a href="pagina_artefact.html">
-      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-    </a>
-    <div class="desc">---Nume_artefact---</div>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -352,7 +77,7 @@ section h6{
 
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -362,7 +87,7 @@ section h6{
 
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
@@ -372,7 +97,40 @@ section h6{
 
 <div class="responsive">
   <div class="gallery">
-    <a href="pagina_artefact.html">
+    <a href="pagina_artefact">
+      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
+    </a>
+    <div class="desc">---Nume_artefact---</div>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a href="pagina_artefact">
+      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
+    </a>
+    <div class="desc">---Nume_artefact---</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a href="pagina_artefact">
+      <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
+    </a>
+    <div class="desc">---Nume_artefact---</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a href="pagina_artefact">
       <img src="Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
     </a>
     <div class="desc">---Nume_artefact---</div>
