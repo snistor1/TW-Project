@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bf9ebba0-2567-45da-acd3-9d9bdc45644d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classes/Route.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AdaugareArtefact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ColectieArtefacte.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/EditarePaginaUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/PaginaAltUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/PaginaArtefact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/PaginaUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Statistics.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/ancient.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/ancient.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/avatar.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/avatar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/carpet.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/carpet.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/clock.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/clock.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/gold.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/gold.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/idol.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/idol.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/img_artefact1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/img_artefact1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/img_artefact2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/img_artefact2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/img_collection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/img_collection.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/img_main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/img_main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/jewels.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/jewels.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/nav-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/nav-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/png_collection.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/png_collection.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/png_home.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/png_home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/png_login.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/png_login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/png_profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/png_profile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/png_statistics.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/png_statistics.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/search-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/search-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/sword.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/sword.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Routes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/AdaugareArtefact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/ColectieArtefacte.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/EditarePaginaUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/PaginaAltUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/PaginaArtefact.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/PaginaUtilizator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Statistics.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaugare_artefact.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/adaugare_artefact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colectie_artefacte.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/colectie_artefacte.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/adaugare_artefact-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/adaugare_artefact-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/colectie_artefacte-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/colectie_artefacte-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/editare_pg_utilizator-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/editare_pg_utilizator-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/login-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pagina_alt_utilizator-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/pagina_alt_utilizator-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pagina_artefact-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/pagina_artefact-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/pagina_utilizator-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/pagina_utilizator-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/register-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/register-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/statistics-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/statistics-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editare_pg_utilizator.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/editare_pg_utilizator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagina_alt_utilizator.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pagina_alt_utilizator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagina_artefact.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pagina_artefact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagina_utilizator.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pagina_utilizator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistics.html" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="TW: schema" type="ac44c5e0:OracleImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/home/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="110" column="34" lean-forward="true" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/init.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pagina_utilizator.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/pagina_utilizator/pagina_utilizator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/register/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colectie_artefacte.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/colectie_artefacte/colectie_artefacte.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adaugare_artefact.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/adaugare_artefact/adaugare_artefact.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/App.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="23" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/Home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>responsive</find>
+      <find>img</find>
+      <find>pagination</find>
+      <find>search-filter</find>
+      <find>hover</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pagina_alt_utilizator.html" />
+        <option value="$PROJECT_DIR$/login.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/editare_pg_utilizator.html" />
+        <option value="$PROJECT_DIR$/colectie_artefacte.html" />
+        <option value="$PROJECT_DIR$/Routes.php" />
+        <option value="$PROJECT_DIR$/Classes/Route.php" />
+        <option value="$PROJECT_DIR$/test.xml" />
+        <option value="$PROJECT_DIR$/bd2.php" />
+        <option value="$PROJECT_DIR$/xml-dtd/projects/projects-dtd.xml" />
+        <option value="$PROJECT_DIR$/xml-dtd/cuprins/cuprins.dtd" />
+        <option value="$PROJECT_DIR$/xml-dtd/cuprins/cuprins-dtd.xml" />
+        <option value="$PROJECT_DIR$/xml-dtd/oras/oferte-m.xml" />
+        <option value="$PROJECT_DIR$/xml-dtd/dom.php" />
+        <option value="$PROJECT_DIR$/xml-dtd/oras/oferte.dtd" />
+        <option value="$PROJECT_DIR$/xml-dtd/xml-validator.php" />
+        <option value="$PROJECT_DIR$/bd.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e7047224-59f5-4a92-a1f1-6b5a1869bee6/console.sql" />
+        <option value="$PROJECT_DIR$/pagina_utilizator.html" />
+        <option value="$PROJECT_DIR$/public/pagina_utilizator.html" />
+        <option value="$PROJECT_DIR$/register.html" />
+        <option value="$PROJECT_DIR$/public/register.html" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/app/init.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/app/.htaccess" />
+        <option value="$PROJECT_DIR$/public/.htaccess" />
+        <option value="$PROJECT_DIR$/app/core/App.php" />
+        <option value="$PROJECT_DIR$/app/models/User.php" />
+        <option value="$PROJECT_DIR$/app/core/Controller.php" />
+        <option value="$PROJECT_DIR$/app/controllers/Home.php" />
+        <option value="$PROJECT_DIR$/app/controllers/AdaugareArtefact.php" />
+        <option value="$PROJECT_DIR$/public/colectie_artefacte.html" />
+        <option value="$PROJECT_DIR$/app/controllers/ColectieArtefacte.php" />
+        <option value="$PROJECT_DIR$/app/controllers/EditarePgUtilizator.php" />
+        <option value="$PROJECT_DIR$/app/controllers/Login.php" />
+        <option value="$PROJECT_DIR$/app/views/login/login.php" />
+        <option value="$PROJECT_DIR$/app/controllers/PaginaAltUtilizator.php" />
+        <option value="$PROJECT_DIR$/app/controllers/PaginaArtefact.php" />
+        <option value="$PROJECT_DIR$/app/controllers/PaginaUtilizator.php" />
+        <option value="$PROJECT_DIR$/app/controllers/Register.php" />
+        <option value="$PROJECT_DIR$/app/controllers/Statistics.php" />
+        <option value="$PROJECT_DIR$/app/views/statistics/statistics.php" />
+        <option value="$PROJECT_DIR$/app/views/pagina_utilizator/pagina_utilizator.php" />
+        <option value="$PROJECT_DIR$/app/views/pagina_artefact/pagina_artefact.php" />
+        <option value="$PROJECT_DIR$/app/views/pagina_alt_utilizator/pagina_alt_utilizator.php" />
+        <option value="$PROJECT_DIR$/app/views/home/index.php" />
+        <option value="$PROJECT_DIR$/app/views/editare_pg_utilizator/editare_pg_utilizator.php" />
+        <option value="$PROJECT_DIR$/app/views/colectie_artefacte/colectie_artefacte.php" />
+        <option value="$PROJECT_DIR$/app/views/adaugare_artefact/adaugare_artefact.php" />
+        <option value="$PROJECT_DIR$/app/views/register/register.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="580" />
+    <option name="y" value="35" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="pagina_utilizator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="register" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TW-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TW-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Oracle" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\xml-dtd" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\xml-dtd\oras" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\public" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\css" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\app" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\app\views" />
+      <recent name="C:\Users\Serban\Desktop\Web-Proiect\TW-Project\Images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Artifacty" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf9ebba0-2567-45da-acd3-9d9bdc45644d" name="Default" comment="" />
+      <created>1520788212682</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1520788212682</updated>
+      <workItem from="1520788215171" duration="6057000" />
+      <workItem from="1520835268339" duration="70000" />
+      <workItem from="1520866075594" duration="1210000" />
+      <workItem from="1521102329159" duration="1272000" />
+      <workItem from="1521472278177" duration="12883000" />
+      <workItem from="1521614444727" duration="3315000" />
+      <workItem from="1521617845867" duration="616000" />
+      <workItem from="1521629195428" duration="1016000" />
+      <workItem from="1521673320250" duration="10143000" />
+      <workItem from="1521704987082" duration="2147000" />
+      <workItem from="1522311007335" duration="1740000" />
+      <workItem from="1522566534984" duration="4158000" />
+      <workItem from="1522581363912" duration="2004000" />
+      <workItem from="1522910914777" duration="5062000" />
+      <workItem from="1523167897635" duration="1508000" />
+      <workItem from="1523250644311" duration="3344000" />
+      <workItem from="1523961015830" duration="4268000" />
+      <workItem from="1523975246310" duration="170000" />
+      <workItem from="1524297422738" duration="233000" />
+      <workItem from="1524415687184" duration="8328000" />
+      <workItem from="1524727129145" duration="919000" />
+      <workItem from="1525077091186" duration="22000" />
+      <workItem from="1525077636947" duration="21000" />
+      <workItem from="1525288986131" duration="75000" />
+      <workItem from="1525291394263" duration="6374000" />
+      <workItem from="1525321773261" duration="1602000" />
+      <workItem from="1525331523730" duration="5642000" />
+      <workItem from="1525337604535" duration="1172000" />
+      <workItem from="1525345884380" duration="564000" />
+      <workItem from="1525606164182" duration="2532000" />
+      <workItem from="1525623663249" duration="983000" />
+      <workItem from="1525712756210" duration="10026000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="99476000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32928178" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Database Console" order="10" visible="true" weight="0.32551724" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1998698" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.11653646" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/xml-dom/procesari/php/dom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-203">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/xml-validator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/dom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="40" column="29" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/oras/oferte.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/oras/oferte-m.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/cuprins/cuprins-dtd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xml-dtd/cuprins/cuprins.dtd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bd2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e7047224-59f5-4a92-a1f1-6b5a1869bee6/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e23f67b9-b947-44ff-b4b0-faca0a8e4d4e/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/adaugare_artefact-style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/adaugare_artefact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="86" lean-forward="true" selection-start-line="1" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="148" column="7" selection-start-line="1" selection-end-line="148" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/colectie_artefacte.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="158" column="7" lean-forward="true" selection-start-line="1" selection-end-line="158" selection-end-column="7" />
+          <folding>
+            <element signature="e#3818#3825#1" expanded="true" />
+            <element signature="e#3979#3986#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/AdaugareArtefact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/editare_pg_utilizator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="26" column="17" selection-end-line="44" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ColectieArtefacte.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="61" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/EditarePgUtilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="23" column="7" lean-forward="true" selection-start-line="1" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/PaginaAltUtilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/pagina_alt_utilizator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3120">
+          <caret line="156" column="7" lean-forward="true" selection-start-line="1" selection-end-line="156" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/pagina_artefact.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="83" lean-forward="true" selection-start-line="1" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/PaginaArtefact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/PaginaUtilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="59" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/pagina_utilizator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="160" column="7" lean-forward="true" selection-start-line="1" selection-end-line="160" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="12" column="41" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="1" selection-end-line="24" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Statistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="84" column="7" selection-start-line="1" selection-end-line="84" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/statistics/statistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/pagina_artefact/pagina_artefact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-619">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/pagina_alt_utilizator/pagina_alt_utilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/login/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/editare_pg_utilizator/editare_pg_utilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/colectie_artefacte/colectie_artefacte.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/adaugare_artefact/adaugare_artefact.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/App.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="33" column="22" lean-forward="true" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/Home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="110" column="34" lean-forward="true" selection-start-line="110" selection-start-column="34" selection-end-line="110" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/pagina_utilizator/pagina_utilizator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="134" column="28" selection-start-line="134" selection-start-column="28" selection-end-line="134" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/register/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
