@@ -17,16 +17,17 @@ html, body{
     background-color:#bdb7a8;
     border-radius: 20px;
 }
-.stanga {
-    font-weight: bold;
-    color: black;
-    background: white;
-    border:1px solid black;
-    padding:5px;
+
+.BigBox{
+    overflow: hidden;
+    margin:5%;
+    background-color:#e6e6e6;
+    border-radius: 20px;
+    text-align:center;
+    margin-top: 9%;
+    padding-top: 2%;
 }
-.dreapta{
-    text-align:left;
-}
+
 .button {
     background-color: black;
     border: none;
@@ -154,7 +155,7 @@ div.desc {
 
 .content a{
     text-decoration:none;
-    color: white;
+    color: grey;
 }
 
 .inner{
@@ -196,7 +197,7 @@ div.desc {
 }
 
 .navbar a:hover {
-    background: black;
+    background: #e6b100;
     color: black;
 }
 

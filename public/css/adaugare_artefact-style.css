@@ -39,7 +39,7 @@ html, body{
 
 .content a{
     text-decoration:none;
-    color: white;
+    color: grey;
 }
 
 .inner{
@@ -81,16 +81,21 @@ html, body{
 }
 
 .navbar a:hover {
-    background: black;
+    background: #e6b100;
     color: black;
 }
 
 /*Box artefact*/
+.BigBox{
+    margin:5%;
+    background-color:#e6e6e6;
+    border-radius: 20px;
+}
 
 .box{
     margin:10% 20% 10% 20%;
     overflow: hidden;
-    background-color: lightgrey;
+    background-color:#e6e6e6 ;
     border: 1px solid #ebedeb;
     padding: 2%;
     text-align: center;
@@ -125,7 +130,7 @@ input:focus, textarea:focus{
 }
 
 #submit{
-    background-color: #4d4e4b;
+    background-color: #eabf15;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -133,4 +138,16 @@ input:focus, textarea:focus{
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+#imageUpload-button{
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline;
 }

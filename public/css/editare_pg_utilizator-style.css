@@ -19,6 +19,15 @@ html, body{
     border-radius:10px;
     text-align: center;
 }
+.BigBox{
+    overflow: hidden;
+    margin:5%;
+    background-color:#e6e6e6;
+    border-radius: 20px;
+    text-align:center;
+    margin-top: 9%;
+    padding-top: 2%;
+}
 .stanga {
     font-weight: bold;
     color: black;
@@ -76,7 +85,7 @@ html, body{
 
 .content a{
     text-decoration:none;
-    color: white;
+    color: grey;
 }
 
 .inner{
@@ -118,7 +127,7 @@ html, body{
 }
 
 .navbar a:hover {
-    background: black;
+    background: #e6b100;
     color: black;
 }
 

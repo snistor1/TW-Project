@@ -62,16 +62,16 @@ h1{
     border: none;
     outline: none;
     height: 40px;
-    background: saddlebrown;
-    color: white;
+    background: #eabf15;
+    color: black;
     font-size: 18px;
     border-radius: 20px;
 }
 
 .login-box input[type="submit"]:hover{
     cursor: pointer;
-    background: darkgoldenrod;
-    color: black;
+    background: black;
+    color: white;
 }
 
 .login-box a{
@@ -83,5 +83,41 @@ h1{
 
 .login-box a:hover{
     text-decoration: none;
-    color: saddlebrown;
+    color: #eabf15;
 }
+
+/*Meniu lateral*/
+.navbar {
+    background-color: grey;
+    opacity: 0.7;
+    filter: Alpha(opacity=50);
+    position: fixed;
+    top: 0;
+    height: 300px;
+    width: 65px;
+    top:25%;
+    left: 0;
+    overflow: hidden;
+    padding-top: 20px;
+    border-radius:0 20px 20px 0;
+}
+
+.navbar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.navbar img{
+    width: 70%;
+    height: auto;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background: #e6b100;
+    color: black;
+}
+/*End:meniu lateral;*/
