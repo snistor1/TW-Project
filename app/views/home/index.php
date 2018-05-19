@@ -1,22 +1,30 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Artifacty</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
 </head>
 <body>
 <section class="intro">
     <h6>heading</h6>
-    <nav>
-        <a style="position:fixed;" href="#" id="menu-icon"></a>
-        <ul>
-            <li><a href="paginaUtilizator">Profile</a></li>
-            <li><a href="login">Login/Register</a></li>
-            <li><a href="#collection">Collection</a></li>
-            <li><a href="#categories">Categories</a></li>
-            <li><a href="statistics">Statistics</a></li>
-        </ul>
-    </nav>
+    <!-- <nav>
+         <a style="position:fixed;" href="#" id="menu-icon"></a>
+         <ul>
+             <li><a href="pagina_utilizator">Profile</a></li>
+             <li><a href="login">Login/Register</a></li>
+             <li><a href="#collection">Collection</a></li>
+             <li><a href="#categories">Categories</a></li>
+             <li><a href="statistics">Statistics</a></li>
+         </ul>
+     </nav>-->
+    <div class="navbar">
+        <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage" ></a>
+        <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage" ></a>
+        <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage" ></a>
+        <a href="/public/colectieArtefacte"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
+        <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage" ></a>
+    </div>
 
     <div class="inner">
         <div class="content">
@@ -34,6 +42,11 @@
             our site is a great way to manage your collection and to find out interesting
             facts about other artefacts.
         </p>
+        <!--become a member section-->
+        <div class="clear-fix"></div>
+
+        <h2 id="join-button"><span>Become a member!</span></h2>
+        <h4 style="text-align: center; color: grey;"><span>If you are already a mamber:<a href="/public/login"> Sign in </a>!</span></h4>
         <a id="collection"></a>
         <p style="text-align: center;">
             Click the image below to visit our collection!
@@ -44,105 +57,81 @@
 <section class="bigcontainer">
     <h6>heading</h6>
     <div class="container">
-        <img src="Images/img_collection.jpg" alt="Collection" class="image" style="width:100%">
+        <img src="/public/Images/img_collection.jpg" alt="Collection" class="image" style="width:100%">
         <div class="middle">
-            <div ><a class="text" href="colectieArtefacte">Visit our Collection!</a></div>
+            <div ><a class="text" href="/public/colectieArtefacte">Visit our Collection!</a></div>
         </div>
     </div>
 </section>
 
+<!--categories section-->
 <a id="categories"></a>
 <div class="clear-fix"></div>
 <h2 id="categories-header"><span>Categories</span></h2>
+<div style="background-color:#eabf15; padding: 2%;"></div>
+<hr>
+<section class="categories_container">
 
-<section class="categoriesBigcontainer">
-    <h6>heading</h6>
-    <div>
-        <section class="left-col">
-            <h3><a href="colectieArtefacte">Weapons</a></h3>
-            <p style="text-indent: 6%;">
-                A weapon, arm, or armament is any device used with intent to inflict damage or harm to living creatures,
-                structures, or systems. Weapons are used to increase the efficacy and efficiency of activities such as
-                hunting, crime, law enforcement, self-defense, and warfare. In broader context, weapons may be construed to
-                include anything used to gain a strategic, material or mental advantage over an adversary or enemy target.
-            </p>
-        </section>
-        <section class="side-bar">
-            <h6>heading</h6>
-            <img  src="Images/sword.jpg" alt="Sword">
-        </section>
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Weapons" width="300" height="200">
+        </a>
+        <div class="desc">Weapons</div>
     </div>
 
-    <div>
-        <section class="left-col">
-            <h3><a href="colectieArtefacte">Carpets</a></h3>
-            <p style="text-indent: 6%;">
-                The knotted pile carpet probably originated in the Caspian Sea area (Northern Iran) or the Armenian Highland.
-                Although there is evidence of goats and sheep being sheared for wool and hair which was spun and woven as
-                far back at the 7th millennium, the earliest surviving pile carpet is the "Pazyryk carpet", which dates from
-                the 5th-4th century BC. It was excavated by Sergei Ivanovich Rudenko in 1949 from a Pazyryk burial mound in
-                the Altai Mountains in Siberia. This richly coloured carpet is 200 x 183 cm and framed by a border of griffins.
-            </p>
-        </section>
-        <section class="side-bar">
-            <h6>heading</h6>
-            <img src="Images/carpet.jpg" alt="Carpet">
-        </section>
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Textiles" width="300" height="200">
+        </a>
+        <div class="desc">Textiles</div>
     </div>
-    <div>
-        <section class="left-col">
-            <h3><a href="colectieArtefacte">Cult Objects</a></h3>
-            <p style="text-indent: 6%;">
-                In the practice of religion, a cult image is a human-made object that is venerated or worshipped for the
-                deity, spirit or daemon that it embodies or represents. Cultus, the outward religious formulas of "cult"
-                (meaning religious practice, as opposed to the pejorative term for a potentially dangerous "new religion"),
-                often centers upon the treatment of cult images, which may be dressed, fed or paraded, etc. Religious images
-                cover a wider range of all types of images made with a religious purpose, subject, or connection.
-                In many contexts "cult image" specifically means the most important image in a temple, kept in an inner space,
-                as opposed to what may be many other images decorating the temple.
-            </p>
-        </section>
-        <section class="side-bar">
-            <h6>heading</h6>
-            <img src="Images/idol.jpg" alt="Idol">
-        </section>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Cult Objects" width="300" height="200">
+        </a>
+        <div class="desc">Cult Objects</div>
     </div>
-    <div>
-        <section class="left-col">
-            <h3><a href="colectieArtefacte">Clocks</a></h3>
-            <p style="text-indent: 6%;">
-                The first mechanical clocks, employing the verge escapement mechanism with a foliot or balance wheel timekeeper,
-                were invented in Europe at around the start of the 14th century, and became the standard timekeeping device
-                until the pendulum clock was invented in 1656. The invention of the mainspring in the early 15th century
-                allowed portable clocks to be built, evolving into the first pocketwatches by the 17th century, but these
-                were not very accurate until the balance spring was added to the balance wheel in the mid 17th century.
-            </p>
-        </section>
-        <section class="side-bar">
-            <h6>heading</h6>
-            <img src="Images/clock.jpg" alt="Idol">
-        </section>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Jewels" width="300" height="200">
+        </a>
+        <div class="desc">Jewels</div>
     </div>
-    <div>
-        <section class="left-col">
-            <h3><a href="colectieArtefacte">Jewels</a></h3>
-            <p style="text-indent: 6%;">
-                Jewellery (British English) or jewelry (American English) consists of small decorative items worn for
-                personal adornment, such as brooches, rings, necklaces, earrings, pendants and bracelets.
-                Jewellery may be attached to the body or the clothes, and the term is restricted to durable ornaments,
-                excluding flowers for example. For many centuries metal, often combined with gemstones, has been the normal
-                material for jewellery, but other materials such as shells and other plant materials may be used. It is one
-                of the oldest type of archaeological artefact – with 100,000-year-old beads made from Nassarius shells
-                thought to be the oldest known jewellery.
-            </p>
-        </section>
-        <section class="side-bar">
-            <h6>heading</h6>
-            <img src="Images/jewels.jpg" alt="Idol">
-        </section>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Furniture" width="300" height="200">
+        </a>
+        <div class="desc">Furniture</div>
     </div>
-    <div class="clear-fix"></div>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Fine art" width="300" height="200">
+        </a>
+        <div class="desc">Fine art</div>
+    </div>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Coins" width="300" height="200">
+        </a>
+        <div class="desc">Coins</div>
+    </div>
+
+    <div class="gallery">
+        <a target="_blank" href="">
+            <img src="/public/Images/img_artefact2.jpg" alt="Pottery" width="300" height="200">
+        </a>
+        <div class="desc">Pottery</div>
+    </div>
+
 </section>
+<div class="clear-fix"></div>
+<hr>
 
+<div class="footer"></div>
 </body>
 </html>

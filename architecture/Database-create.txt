@@ -1,0 +1,225 @@
+-------CREAREA USERULUI--------
+conn / as sysdba
+CREATE USER TW IDENTIFIED BY TW DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
+ALTER USER TW QUOTA 100M ON USERS;
+grant all privileges to tw;
+
+-------CREAREA BAZEI DE DATE---
+create table users(
+id number(5) not null,
+user_name varchar2(100) not null,
+pass varchar2(100) not null,
+email varchar2(100) not null,
+name varchar2(100) not null,
+constraint users_pk primary key(id)
+);/
+
+create table classes(
+id number(5) not null,
+class_name varchar2(100) not null,
+constraint classes_pk primary key(id)
+);/
+
+create table artefacts(
+id number(5) not null,
+artefact_name varchar2(100) not null,
+id_user number(5) not null,
+author_name varchar2(100) not null,
+dating varchar2(100) not null,
+price number(5) not null,
+description varchar2(1000),
+origin varchar2(100),
+latitude number(5,2),
+longitude number(5,2),
+constraint artefacts_pk primary key(id),
+constraint artefacts_fk foreign key(id_user)
+    references users(id)
+);/
+
+create table tags(
+id number(5) not null,
+tag_name varchar2(100) not null,
+constraint tags_pk primary key(id)
+);/
+
+create table categories(
+id number(5) not null,
+category_name varchar2(100) not null,
+constraint categories_pk primary key(id)
+);/
+
+create table sub_categories(
+id number(5) not null,
+sub_category_name varchar2(100) not null,
+parent_id number(5) not null,
+constraint subcat_pk primary key(id),
+constraint subcat_fk foreign key(parent_id)
+    references categories(id)
+);/
+
+create table materials(
+id number(5),
+material_name varchar2(100),
+constraint materials_pk primary key(id)
+);/
+
+create table users_classes(
+id_user number(5),
+id_class number(5),
+constraint usr_cls_fk foreign key(id_user)
+    references users(id),
+constraint usr_cls2_fk foreign key(id_class)
+    references classes(id)
+);/
+
+create table artefacts_sub_categories(
+id_artefact number(5),
+id_sub_category number(5),
+constraint art_cat_fk foreign key(id_artefact)
+    references artefacts(id),
+constraint art_cat2_fk foreign key(id_sub_category)
+    references sub_categories(id)
+);/
+
+create table artefacts_materials(
+id_artefact number(5),
+id_material number(5),
+constraint art_mat_fk foreign key(id_artefact)
+    references artefacts(id),
+constraint art_mat2_fk foreign key(id_material)
+    references materials(id)
+);/
+
+create table artefacts_tags(
+id_artefact number(5),
+id_tag number(5),
+constraint art_tag_fk foreign key(id_artefact)
+    references artefacts(id),
+constraint art_tag2_fk foreign key(id_tag)
+    references tags(id)
+);/
+
+create table ROLES(
+  id number(5),
+  role_name varchar2(100),
+  constraint roles_pk primary key(id)
+);/
+
+create table artefacts_roles(
+  id_artefact number(5),
+  id_role number(5),
+  constraint art_rol1_fk foreign key(id_artefact)
+    references ARTEFACTS(id),
+  constraint art_rol2_fk foreign key(id_role)
+    references roles(id)
+);/
+
+create table artefacts_classes(
+  id_artefact number(5),
+  id_class number(5),
+  constraint art_cls1_fk foreign key(id_artefact)
+    references ARTEFACTS(id),
+  constraint art_cls2_fk foreign key(id_class)
+    references CLASSES(id)
+);
+
+alter table users add profile_image blob;
+alter table ARTEFACTS add artefact_image blob;
+alter table ARTEFACTS add utilization_license number(1);
+
+-------CREAREA DE TRIGGERE-----
+create or replace trigger artefact_inc
+  before insert on artefacts
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from artefacts;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger category_inc
+  before insert on categories
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from categories;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger class_inc
+  before insert on classes
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from classes;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger material_inc
+  before insert on materials
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from materials;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger sub_category_inc
+  before insert on sub_categories
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from sub_categories;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger tag_inc
+  before insert on tags
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from tags;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger user_inc
+  before insert on users
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from users;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+
+create or replace trigger role_inc
+  before insert on roles
+  for each row
+  BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from roles;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;

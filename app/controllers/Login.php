@@ -6,4 +6,9 @@ class Login extends Controller
     {
         $this->view('login/login');
     }
+
+    public function test()
+    {
+        $this->model('User')->show();
+    }
 }

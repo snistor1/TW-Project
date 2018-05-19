@@ -1,12 +1,21 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Artifacty</title>
-    <link rel="stylesheet" type="text/css" href="css/login-style.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/login-style.css">
 </head>
 <body>
+
+<div class="navbar">
+    <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage" ></a>
+    <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage" ></a>
+    <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage" ></a>
+    <a href="/public/colectieArtefacte"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
+    <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage" ></a>
+</div>
+
 <div class="login-box">
-    <img src="Images/avatar.png" alt="avatar" class="avatar">
     <h1>Login</h1>
     <form>
         <p>Username</p>
@@ -14,9 +23,7 @@
         <p>Password</p>
         <input type="password" name="password" placeholder="Enter Password">
         <input type="submit" name="submit" value="Login">
-        <a href="#">Forgot password?</a><br>
-        <a href="register">Don't have an account?</a><br>
-        <a href="index">Go back to homepage</a>
+        <a href="/public/register">Don't have an account?</a><br>
     </form>
 </div>
 </body>
