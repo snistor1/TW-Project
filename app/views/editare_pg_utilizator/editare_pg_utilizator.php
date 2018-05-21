@@ -32,7 +32,6 @@
     <form action="/public/paginaUtilizator">
         <table style="margin: 0 auto;">
             <tr><td class="stanga"><strong>Name:</strong></td><td class="dreapta"><input  class="stanga" type="text" name="nume" value="-"></td></tr>
-            <tr><td class="stanga"><strong>UserName:</strong></td><td class="dreapta"><input class="stanga" type="text" name="username" value="-"></td></tr>
             <tr><td class="stanga"><strong>Class:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>
             <tr><td class="stanga"><strong>Country:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>
             <tr><td class="stanga"><strong>Email:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>

@@ -16,13 +16,15 @@
 
 <div class="register-box">
     <h1>Register</h1>
-    <form>
+    <form action="/public/register/submit" method="post">
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter Name" required autocomplete="off">
         <p>Email</p>
-        <input type="text" name="email" placeholder="Enter Email">
-        <p>Username</p>
-        <input type="text" name="username" placeholder="Enter Username">
+        <input type="text" name="email" placeholder="Enter Email" required autocomplete="off">
         <p>Password</p>
-        <input type="password" name="password" placeholder="Enter Password">
+        <input type="password" name="password" placeholder="Enter Password" required autocomplete="off">
+        <p>Confirm Password</p>
+        <input type="password" name="confirm_password" placeholder="Repeat Password" required autocomplete="off">
         <input type="submit" name="submit" value="Register">
         <a href="/public/login">Already registered?</a><br>
     </form>

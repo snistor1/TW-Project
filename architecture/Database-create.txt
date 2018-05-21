@@ -126,6 +126,7 @@ create table artefacts_classes(
 alter table users add profile_image blob;
 alter table ARTEFACTS add artefact_image blob;
 alter table ARTEFACTS add utilization_license number(1);
+alter table USERS drop column user_name;
 
 -------CREAREA DE TRIGGERE-----
 create or replace trigger artefact_inc

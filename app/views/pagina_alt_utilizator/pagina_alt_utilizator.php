@@ -30,8 +30,6 @@
     <hr>
     <p style="display: inline;">Name:</p><h2>Popescu Dan</h2>
     <hr>
-    <p>UserName:</p><h2>dan_popescu</h2>
-    <hr>
     <p>Class:</p><h2>Magnati Industriali</h2>
     <hr>
     <p>Country:</p><h2>Romania</h2>

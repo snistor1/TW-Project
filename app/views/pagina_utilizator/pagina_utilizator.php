@@ -32,15 +32,14 @@
     <hr>
     <p style="display: inline;">Name:</p><h2>Popescu Dan</h2>
     <hr>
-    <p>UserName:</p><h2>dan_popescu</h2>
-    <hr>
     <p>Class:</p><h2>Magnati Industriali</h2>
     <hr>
     <p>Country:</p><h2>Romania</h2>
     <hr>
     <p>Email:</p><h2>dan.popescu@yahoo.com</h2>
     <hr>
-    <a href="/public/adaugareArtefact" class='button'>Add an artefact</a>
+    <button onclick="location.href='/public/adaugareArtefact'" class='button'>Add an artefact</button>
+    <button onclick="location.href='/public/paginaUtilizator/logout'" class="button">Logout</button>
 
     <div class="clearfix"></div>
 

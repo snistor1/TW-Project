@@ -17,11 +17,11 @@
 
 <div class="login-box">
     <h1>Login</h1>
-    <form>
-        <p>Username</p>
-        <input type="text" name="username" placeholder="Enter Username">
+    <form action="/public/login/submit" method="post">
+        <p>Email</p>
+        <input type="text" name="email" placeholder="Enter Email" autocomplete="off">
         <p>Password</p>
-        <input type="password" name="password" placeholder="Enter Password">
+        <input type="password" name="password" placeholder="Enter Password" autocomplete="off">
         <input type="submit" name="submit" value="Login">
         <a href="/public/register">Don't have an account?</a><br>
     </form>
