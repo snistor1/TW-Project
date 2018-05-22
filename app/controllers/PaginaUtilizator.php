@@ -20,4 +20,9 @@ class PaginaUtilizator extends Controller
         Session::destroy();
         header('Location: /public/login');
     }
+
+    public function show()
+    {
+        $this->model('UtilizatorModel');
+    }
 }
