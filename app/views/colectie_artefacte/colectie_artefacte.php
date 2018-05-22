@@ -26,8 +26,10 @@
 <div class="clearfix"></div>
 <hr>
 <div class="search-bar">
-    <input type="text" placeholder="Search..." class="search-input">
-    <button class="search-button"><img src="/public/Images/search-icon.png" alt="S" width="18" height="18"></button>
+    <form action="/public/colectieArtefacte/submit" method="post">
+        <input type="text" name ="key" placeholder="Search..." class="search-input">
+        <button type ="submit" name="submit" class="search-button"><img src="/public/Images/search-icon.png" alt="S" width="18" height="18"></button>
+    </form>
 </div>
 <hr>
 <div class="filters-container">
@@ -90,7 +92,8 @@
 
 <div class="clearfix"></div>
 <button class="button">Filter</button>
-<section class="BoxForCollection">
+<section class="BoxForCollection" id ="Collection">
+    <!--
     <h6>heading</h6>
     <div class="responsive">
         <div class="gallery">
@@ -181,6 +184,7 @@
         </div>
     </div>
 
+
     <div class="clearfix"></div>
 
 
@@ -197,6 +201,7 @@
         <a href="#">6</a>
         <a href="#">&raquo;</a>
     </div>
+    -->
 </section>
 
 </body>
