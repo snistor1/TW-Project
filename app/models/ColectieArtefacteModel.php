@@ -12,19 +12,19 @@ class ColectieArtefacteModel extends Model
     public function __construct()
     {
         parent::__construct();
-        if(isset($_GET['search']))
+        if(isset($_POST['key']))
         {
-            $key = $_GET['search'];
+            $key = $_POST['key'];
         }
         else
             $key = "";
-
-
-        $doc = new DomDocument();
-        $doc->loadHtml('/public/app/views/colectie_artefacte/colectie_artefacte.php');
+        $file = file_get_contents('http://localhost/public/colectieArtefacte');
+        $doc = new DOMDocument();
+        @$doc->loadHTML($file);
         $element = new DOMElement('p', 'Search: ' . $key);
-        $col = $doc->getElementById("Collection");
-
+        $here = $doc->getElementById('Collection');
+        $here->appendChild($element);
+        echo $doc->saveHTML();
 
 
         /*
