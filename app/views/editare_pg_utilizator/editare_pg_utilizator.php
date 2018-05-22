@@ -29,19 +29,15 @@
 <section class="BigBox">
     <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
     <hr>
-    <form action="/public/editarePgUtilizator/save" method="post">
-            <p><strong>Name:</strong></p>
-                    <input  class="stanga" type="text" name="name" placeholder="Enter Name">
-            <p><strong>Class:</strong></p>
-                    <input class="stanga" type="text" name="class" placeholder="Enter Class">
-            <p><strong>Email:</strong></p>
-                    <input class="stanga" type="text" name="email" placeholder="Enter Email">
-        <br><br>
-        <hr>
-        <input onclick="location.href='/public/paginaUtilizator'" class="button" type="submit" value="Save Profile">
+    <form action="/public/paginaUtilizator">
+        <table style="margin: 0 auto;">
+            <tr><td class="stanga"><strong>Name:</strong></td><td class="dreapta"><input  class="stanga" type="text" name="nume" value="-"></td></tr>
+            <tr><td class="stanga"><strong>Class:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>
+            <tr><td class="stanga"><strong>Country:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>
+            <tr><td class="stanga"><strong>Email:</strong></td><td class="dreapta"><input class="stanga" type="text" name="lastname" value="-"></td></tr>
+        </table>
+        <input class="button" type="submit" value="Save Profile">
     </form>
-    <input onclick="location.href='/public/'" class="button" type="submit" value="Delete Profile">
-    <br><br>
 </section>
 </body>
 </html>

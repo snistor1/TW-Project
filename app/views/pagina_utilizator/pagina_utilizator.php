@@ -26,21 +26,21 @@
 <br><br><br>
 <hr>
 <section class="BigBox">
-    <form action="/public/pagina_utilizator" method="get">
-      <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
-      <br>
-      <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
-      <hr>
-      <p style="display: inline;">Name:</p><h2>Popescu Dan</h2>
-      <hr>
-      <p>Class:</p><h2>Magnati Industriali</h2>
-      <hr>
-      <p>Email:</p><h2>dan.popescu@yahoo.com</h2>
-      <hr>
-
-    </form>
+    <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
+    <br>
+    <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
+    <hr>
+    <p style="display: inline;">Name:</p><h2>Popescu Dan</h2>
+    <hr>
+    <p>Class:</p><h2>Magnati Industriali</h2>
+    <hr>
+    <p>Country:</p><h2>Romania</h2>
+    <hr>
+    <p>Email:</p><h2>dan.popescu@yahoo.com</h2>
+    <hr>
     <button onclick="location.href='/public/adaugareArtefact'" class='button'>Add an artefact</button>
     <button onclick="location.href='/public/paginaUtilizator/logout'" class="button">Logout</button>
+
     <div class="clearfix"></div>
 
     <hr>

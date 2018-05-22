@@ -23,14 +23,6 @@ class LoginModel extends Model
             else
             {
                 Session::set('email',$email);
-
-                $statement=oci_parse($this->db,"select id from tw.USERS where EMAIL=:v_email");
-                oci_bind_by_name($statement, ":v_email", $email);
-                oci_execute($statement);
-                if(oci_fetch($statement)){
-                    $id=oci_result($statement,1);
-                }
-                Session::set('id_user',$id);
                 echo "<script type='text/javascript'>alert(\"Login Successful!\");window.location.href='/public/paginaUtilizator';</script>";
                 exit();
             }
