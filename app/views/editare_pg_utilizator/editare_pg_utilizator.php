@@ -32,8 +32,10 @@
     <form action="/public/editarePgUtilizator/save" method="post">
         <p><strong>Name:</strong></p>
         <input  class="stanga" type="text" name="name" placeholder="Enter Name">
-        <p><strong>Class:</strong></p>
-        <input class="stanga" type="text" name="class" placeholder="Enter Class">
+        <p><strong>Add Class:</strong></p>
+        <input class="stanga" type="text" name="add_class" placeholder="Enter Class">
+        <p><strong>Delete Class:</strong></p>
+        <input class="stanga" type="text" name="delete_class" placeholder="Enter Class">
         <p><strong>Email:</strong></p>
         <input class="stanga" type="text" name="email" placeholder="Enter Email">
         <br><br>
