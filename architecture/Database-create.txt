@@ -1,210 +1,48 @@
--------CREAREA USERULUI--------
-conn / as sysdba
-CREATE USER TW IDENTIFIED BY TW DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP;
-ALTER USER TW QUOTA 100M ON USERS;
-grant all privileges to tw;
+drop table artefacts cascade constraints
+/
+drop table ARTEFACTS_CLASSES cascade constraints
+/
+drop table ARTEFACTS_MATERIALS cascade constraints
+/
+drop table ARTEFACTS_ROLES cascade constraints
+/
+drop table ARTEFACTS_SUB_CATEGORIES cascade constraints
+/
+drop table ARTEFACTS_TAGS cascade constraints
+/
+drop table CATEGORIES cascade constraints
+/
+drop table CLASSES cascade constraints
+/
+drop table MATERIALS cascade constraints
+/
+drop table roles cascade constraints
+/
+drop table SUB_CATEGORIES cascade constraints
+/
+drop table tags cascade constraints
+/
+drop table users cascade constraints
+/
+drop table USERS_CLASSES cascade constraints
+/
+create table USERS
+(
+	ID NUMBER(5) not null
+		constraint USERS_PK
+			primary key,
+	PASS VARCHAR2(100) not null,
+	EMAIL VARCHAR2(100) not null,
+	NAME VARCHAR2(100) not null,
+	PROFILE_IMAGE BLOB
+)
+/
 
--------CREAREA BAZEI DE DATE---
-create table users(
-id number(5) not null,
-user_name varchar2(100) not null,
-pass varchar2(100) not null,
-email varchar2(100) not null,
-name varchar2(100) not null,
-constraint users_pk primary key(id)
-);/
-
-create table classes(
-id number(5) not null,
-class_name varchar2(100) not null,
-constraint classes_pk primary key(id)
-);/
-
-create table artefacts(
-id number(5) not null,
-artefact_name varchar2(100) not null,
-id_user number(5) not null,
-author_name varchar2(100) not null,
-dating varchar2(100) not null,
-price number(5) not null,
-description varchar2(1000),
-origin varchar2(100),
-latitude number(5,2),
-longitude number(5,2),
-constraint artefacts_pk primary key(id),
-constraint artefacts_fk foreign key(id_user)
-    references users(id)
-);/
-
-create table tags(
-id number(5) not null,
-tag_name varchar2(100) not null,
-constraint tags_pk primary key(id)
-);/
-
-create table categories(
-id number(5) not null,
-category_name varchar2(100) not null,
-constraint categories_pk primary key(id)
-);/
-
-create table sub_categories(
-id number(5) not null,
-sub_category_name varchar2(100) not null,
-parent_id number(5) not null,
-constraint subcat_pk primary key(id),
-constraint subcat_fk foreign key(parent_id)
-    references categories(id)
-);/
-
-create table materials(
-id number(5),
-material_name varchar2(100),
-constraint materials_pk primary key(id)
-);/
-
-create table users_classes(
-id_user number(5),
-id_class number(5),
-constraint usr_cls_fk foreign key(id_user)
-    references users(id),
-constraint usr_cls2_fk foreign key(id_class)
-    references classes(id)
-);/
-
-create table artefacts_sub_categories(
-id_artefact number(5),
-id_sub_category number(5),
-constraint art_cat_fk foreign key(id_artefact)
-    references artefacts(id),
-constraint art_cat2_fk foreign key(id_sub_category)
-    references sub_categories(id)
-);/
-
-create table artefacts_materials(
-id_artefact number(5),
-id_material number(5),
-constraint art_mat_fk foreign key(id_artefact)
-    references artefacts(id),
-constraint art_mat2_fk foreign key(id_material)
-    references materials(id)
-);/
-
-create table artefacts_tags(
-id_artefact number(5),
-id_tag number(5),
-constraint art_tag_fk foreign key(id_artefact)
-    references artefacts(id),
-constraint art_tag2_fk foreign key(id_tag)
-    references tags(id)
-);/
-
-create table ROLES(
-  id number(5),
-  role_name varchar2(100),
-  constraint roles_pk primary key(id)
-);/
-
-create table artefacts_roles(
-  id_artefact number(5),
-  id_role number(5),
-  constraint art_rol1_fk foreign key(id_artefact)
-    references ARTEFACTS(id),
-  constraint art_rol2_fk foreign key(id_role)
-    references roles(id)
-);/
-
-create table artefacts_classes(
-  id_artefact number(5),
-  id_class number(5),
-  constraint art_cls1_fk foreign key(id_artefact)
-    references ARTEFACTS(id),
-  constraint art_cls2_fk foreign key(id_class)
-    references CLASSES(id)
-);
-
-alter table users add profile_image blob;
-alter table ARTEFACTS add artefact_image blob;
-alter table ARTEFACTS add utilization_license number(1);
-alter table USERS drop column user_name;
-
--------CREAREA DE TRIGGERE-----
-create or replace trigger artefact_inc
-  before insert on artefacts
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from artefacts;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger category_inc
-  before insert on categories
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from categories;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger class_inc
-  before insert on classes
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from classes;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger material_inc
-  before insert on materials
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from materials;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger sub_category_inc
-  before insert on sub_categories
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from sub_categories;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger tag_inc
-  before insert on tags
-  for each row
-  BEGIN
-    <<COLUMN_SEQUENCES>>
-    BEGIN
-      IF INSERTING AND :NEW.ID IS NULL THEN
-        select nvl(max(id),0)+1 into :new.Id from tags;
-      END IF;
-    END COLUMN_SEQUENCES;
-  end;
-
-create or replace trigger user_inc
-  before insert on users
-  for each row
-  BEGIN
+create or replace trigger USER_INC
+	before insert
+	on 	USERS
+	for each row
+BEGIN
     <<COLUMN_SEQUENCES>>
     BEGIN
       IF INSERTING AND :NEW.ID IS NULL THEN
@@ -212,11 +50,229 @@ create or replace trigger user_inc
       END IF;
     END COLUMN_SEQUENCES;
   end;
+/
 
-create or replace trigger role_inc
-  before insert on roles
-  for each row
-  BEGIN
+create table CLASSES
+(
+	ID NUMBER(5) not null
+		constraint CLASSES_PK
+			primary key,
+	CLASS_NAME VARCHAR2(100) not null
+)
+/
+
+create or replace trigger CLASS_INC
+	before insert
+	on 	CLASSES
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from classes;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table ARTEFACTS
+(
+	ID NUMBER(5) not null
+		constraint ARTEFACTS_PK
+			primary key,
+	ARTEFACT_NAME VARCHAR2(100) not null,
+	ID_USER NUMBER(5) not null
+		constraint ARTEFACTS_FK
+			references USERS
+				on delete cascade,
+	AUTHOR_NAME VARCHAR2(100) not null,
+	DATING VARCHAR2(100) not null,
+	PRICE NUMBER(5) not null,
+	DESCRIPTION VARCHAR2(1000),
+	ORIGIN VARCHAR2(100),
+	LATITUDE NUMBER(5,2),
+	LONGITUDE NUMBER(5,2),
+	ARTEFACT_IMAGE BLOB,
+	UTILIZATION_LICENSE NUMBER(1)
+)
+/
+
+create or replace trigger ARTEFACT_INC
+	before insert
+	on 	ARTEFACTS
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from artefacts;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table TAGS
+(
+	ID NUMBER(5) not null
+		constraint TAGS_PK
+			primary key,
+	TAG_NAME VARCHAR2(100) not null
+)
+/
+
+create or replace trigger TAG_INC
+	before insert
+	on 	TAGS
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from tags;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table CATEGORIES
+(
+	ID NUMBER(5) not null
+		constraint CATEGORIES_PK
+			primary key,
+	CATEGORY_NAME VARCHAR2(100) not null
+)
+/
+
+create or replace trigger CATEGORY_INC
+	before insert
+	on 	CATEGORIES
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from categories;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table SUB_CATEGORIES
+(
+	ID NUMBER(5) not null
+		constraint SUBCAT_PK
+			primary key,
+	SUB_CATEGORY_NAME VARCHAR2(100) not null,
+	PARENT_ID NUMBER(5) not null
+		constraint SUBCAT_FK
+			references CATEGORIES
+				on delete cascade
+)
+/
+
+create or replace trigger SUB_CATEGORY_INC
+	before insert
+	on 	SUB_CATEGORIES
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from sub_categories;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table MATERIALS
+(
+	ID NUMBER(5) not null
+		constraint MATERIALS_PK
+			primary key,
+	MATERIAL_NAME VARCHAR2(100)
+)
+/
+
+create or replace trigger MATERIAL_INC
+	before insert
+	on 	MATERIALS
+	for each row
+BEGIN
+    <<COLUMN_SEQUENCES>>
+    BEGIN
+      IF INSERTING AND :NEW.ID IS NULL THEN
+        select nvl(max(id),0)+1 into :new.Id from materials;
+      END IF;
+    END COLUMN_SEQUENCES;
+  end;
+/
+
+create table USERS_CLASSES
+(
+	ID_USER NUMBER(5)
+		constraint USR_CLS_FK
+			references USERS
+				on delete cascade,
+	ID_CLASS NUMBER(5)
+		constraint USR_CLS2_FK
+			references CLASSES
+				on delete cascade
+)
+/
+
+create table ARTEFACTS_SUB_CATEGORIES
+(
+	ID_ARTEFACT NUMBER(5)
+		constraint ART_CAT_FK
+			references ARTEFACTS
+				on delete cascade,
+	ID_SUB_CATEGORY NUMBER(5)
+		constraint ART_CAT2_FK
+			references SUB_CATEGORIES
+				on delete cascade
+)
+/
+
+create table ARTEFACTS_MATERIALS
+(
+	ID_ARTEFACT NUMBER(5)
+		constraint ART_MAT_FK
+			references ARTEFACTS
+				on delete cascade,
+	ID_MATERIAL NUMBER(5)
+		constraint ART_MAT2_FK
+			references MATERIALS
+				on delete cascade
+)
+/
+
+create table ARTEFACTS_TAGS
+(
+	ID_ARTEFACT NUMBER(5)
+		constraint ART_TAG_FK
+			references ARTEFACTS
+				on delete cascade,
+	ID_TAG NUMBER(5)
+		constraint ART_TAG2_FK
+			references TAGS
+				on delete cascade
+)
+/
+
+create table ROLES
+(
+	ID NUMBER(5) not null
+		constraint ROLES_PK
+			primary key,
+	ROLE_NAME VARCHAR2(100)
+)
+/
+
+create or replace trigger ROLE_INC
+	before insert
+	on 	ROLES
+	for each row
+BEGIN
     <<COLUMN_SEQUENCES>>
     BEGIN
       IF INSERTING AND :NEW.ID IS NULL THEN
@@ -224,3 +280,31 @@ create or replace trigger role_inc
       END IF;
     END COLUMN_SEQUENCES;
   end;
+/
+
+create table ARTEFACTS_ROLES
+(
+	ID_ARTEFACT NUMBER(5)
+		constraint ART_ROL1_FK
+			references ARTEFACTS
+				on delete cascade,
+	ID_ROLE NUMBER(5)
+		constraint ART_ROL2_FK
+			references ROLES
+				on delete cascade
+)
+/
+
+create table ARTEFACTS_CLASSES
+(
+	ID_ARTEFACT NUMBER(5)
+		constraint ART_CLS1_FK
+			references ARTEFACTS
+				on delete cascade,
+	ID_CLASS NUMBER(5)
+		constraint ART_CLS2_FK
+			references CLASSES
+				on delete cascade
+)
+/
+

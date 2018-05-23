@@ -30,17 +30,21 @@
     <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
     <hr>
     <form action="/public/editarePgUtilizator/save" method="post">
-            <p><strong>Name:</strong></p>
-                    <input  class="stanga" type="text" name="name" placeholder="Enter Name">
-            <p><strong>Class:</strong></p>
-                    <input class="stanga" type="text" name="class" placeholder="Enter Class">
-            <p><strong>Email:</strong></p>
-                    <input class="stanga" type="text" name="email" placeholder="Enter Email">
+        <p><strong>Name:</strong></p>
+        <input  class="stanga" type="text" name="name" placeholder="Enter Name">
+        <p><strong>Add Class:</strong></p>
+        <input class="stanga" type="text" name="add_class" placeholder="Enter Class">
+        <p><strong>Delete Class:</strong></p>
+        <input class="stanga" type="text" name="delete_class" placeholder="Enter Class">
+        <p><strong>Email:</strong></p>
+        <input class="stanga" type="text" name="email" placeholder="Enter Email">
         <br><br>
         <hr>
         <input onclick="location.href='/public/paginaUtilizator'" class="button" type="submit" value="Save Profile">
     </form>
-    <input onclick="location.href='/public/'" class="button" type="submit" value="Delete Profile">
+    <form action="/public/editarePgUtilizator/delete" method="post">
+        <input onclick="location.href='/public/'" class="button" name="delete" type="submit" value="Delete Profile">
+    </form>
     <br><br>
 </section>
 </body>

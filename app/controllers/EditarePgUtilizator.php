@@ -11,4 +11,9 @@ class EditarePgUtilizator extends Controller
     {
         $this->model('EditareUtilizatorModel');
     }
+
+    public function delete()
+    {
+        $this->model('EditareUtilizatorModel');
+    }
 }
