@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Cosmin
- * Date: 21-May-18
- * Time: 7:42 PM
- */
-
 
 class ColectieArtefacteModel extends Model
 {

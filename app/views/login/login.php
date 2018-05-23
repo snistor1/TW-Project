@@ -19,9 +19,9 @@
     <h1>Login</h1>
     <form action="/public/login/submit" method="post">
         <p>Email</p>
-        <input type="text" name="email" placeholder="Enter Email" autocomplete="off">
+        <input type="text" name="email" placeholder="Enter Email" autocomplete="off" required>
         <p>Password</p>
-        <input type="password" name="password" placeholder="Enter Password" autocomplete="off">
+        <input type="password" name="password" placeholder="Enter Password" autocomplete="off" required>
         <input type="submit" name="submit" value="Login">
         <a href="/public/register">Don't have an account?</a><br>
     </form>
