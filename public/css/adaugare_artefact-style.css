@@ -119,6 +119,11 @@ html, body{
 }
 
 input{
+    font-size: 20px;
+    height: 20px;
+}
+
+.category input{
     font-size: 16px;
     width: 60%;
     height: 25px;
@@ -133,11 +138,12 @@ input:focus, textarea:focus{
     background-color: #eabf15;
     border: none;
     color: white;
-    padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+    height:auto;
+
 }
 
 #imageUpload-button{
@@ -150,4 +156,20 @@ input:focus, textarea:focus{
     font-size: 16px;
     cursor: pointer;
     display: inline;
+}
+.subcategorii{
+    background-color: darkgrey;
+    color: white;
+    position: relative;
+    margin-left:30%;
+}
+
+.category{
+    position: relative;
+    text-align: left;
+    margin-left: -30%;
+}
+
+.category label {
+    margin-left: -27%;
 }
