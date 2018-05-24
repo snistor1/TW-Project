@@ -26,119 +26,43 @@
 <br><br><br>
 <hr>
 <section class="BigBox">
-    <form action="/public/pagina_utilizator" method="get">
-      <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
-      <br>
-      <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
-      <hr>
-      <p style="display: inline;">Name:</p><h2>Popescu Dan</h2>
-      <hr>
-      <p>Class:</p><h2>Magnati Industriali</h2>
-      <hr>
-      <p>Email:</p><h2>dan.popescu@yahoo.com</h2>
-      <hr>
-
+    <form action="/public/PaginaUtilizator" method="post">
+        <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
+        <br>
+        <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
+        <hr>
+        <?php
+            include ("C:/xampp/htdocs/TW-Project/app/models/UtilizatorModel.php");
+            $u=new UtilizatorModel;
+            print '<p style="display": inline;">Name:</p><h2>'.$u->name."</h2>";
+            print "<hr>";
+            print "<p>Class:</p><h2>".$u->class_names."</h2>";
+            print "<hr>";
+            print "<p>Email:</p><h2>".$u->email."</h2>";
+            print "<hr>";
+        ?>
     </form>
     <button onclick="location.href='/public/adaugareArtefact'" class='button'>Add an artefact</button>
     <button onclick="location.href='/public/paginaUtilizator/logout'" class="button">Logout</button>
+
     <div class="clearfix"></div>
 
     <hr>
 
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
+    <?php
+    $length=count($u->id_artefacte);
+    for ($contor=0; $contor< $length; $contor++) {
+        print '<div class="responsive">';
+        print '<div class="gallery">';
+        print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
+        print '<img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">';
+        print '</a>';
+        print '<div class="desc">'.$u->name_artefacte[$contor].'</div>';
+        print '</div>';
+        print '</div>';
+    }
+    ?>
 
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
-
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
-
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Artefact_Name---</div>
-        </div>
-    </div>
 
     <div class="clearfix"></div>
 
