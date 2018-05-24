@@ -13,7 +13,7 @@
         <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage" ></a>
         <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage" ></a>
         <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage" ></a>
-        <a href="/public/colectieArtefacte"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
+        <a href="/public/colectieArtefacte/submit"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
         <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage" ></a>
     </div>
     <div class="inner">

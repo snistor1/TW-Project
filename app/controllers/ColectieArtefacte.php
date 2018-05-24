@@ -11,6 +11,4 @@ class ColectieArtefacte extends Controller
     {
         $this->model('ColectieArtefacteModel');
     }
-
-
 }

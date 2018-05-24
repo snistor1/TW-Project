@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Artifacty</title>
     <link rel="stylesheet" type="text/css" href="/public/css/colectie_artefacte-style.css">
@@ -10,11 +10,13 @@
 <section class="intro">
 
     <div class="navbar">
-        <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage" ></a>
-        <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage" ></a>
-        <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage" ></a>
-        <a href="/public/colectieArtefacte"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
-        <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage" ></a>
+        <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage"></a>
+        <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage"></a>
+        <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage"></a>
+
+        <a href="/public/colectieArtefacte/submit"><img src="/public/Images/png_collection.png" alt="CollectionPage"></a>
+
+        <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage"></a>
     </div>
 
     <div class="inner">
@@ -27,8 +29,8 @@
 <hr>
 <div class="search-bar">
     <form action="/public/colectieArtefacte/submit" method="post">
-        <input type="text" name ="key" placeholder="Search..." class="search-input">
-        <button type ="submit" name="submit" class="search-button"><img src="/public/Images/search-icon.png" alt="S" width="18" height="18"></button>
+        <input type="text" name="key" placeholder="Search..." class="search-input">
+        <button type="submit" name="submit" class="search-button"><img src="/public/Images/search-icon.png" alt="S" width="18" height="18"></button>
     </form>
 </div>
 <hr>
@@ -92,117 +94,5 @@
 
 <div class="clearfix"></div>
 <button class="button">Filter</button>
-<section class="BoxForCollection" id ="Collection">
-    <!--
-    <h6>heading</h6>
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="clearfix"></div>
-
-
-
-    <br>
-
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-    </div>
-    -->
-</section>
-
-</body>
+<section class="BoxForCollection" id="Collection"><h6>heading</h6><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=1"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Old Sword</div></div></div><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=2"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Heavy Artilery</div></div></div><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=3"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Ceramic Vase</div></div></div><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=4"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Silver Sword</div></div></div><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=5"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Old Silver Ring</div></div></div><div class="responsive"><div class="gallery"><a href="/public/paginaArtefact/id=6"><img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400"></a><div class="desc">Heavy Dirt Vase</div></div></div><div class="clearfix"></div><div class="pagination"><a>&laquo;</a><a>1</a><a>2</a><a>&raquo;</a></div></section></body>
 </html>
