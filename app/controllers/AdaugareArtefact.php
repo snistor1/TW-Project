@@ -6,4 +6,8 @@ class AdaugareArtefact extends Controller
     {
         $this->view('adaugare_artefact/adaugare_artefact');
     }
+    public function add()
+    {
+        $this->model('AdaugareArtefactModel');
+    }
 }
