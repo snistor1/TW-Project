@@ -6,7 +6,7 @@ class UtilizatorModel extends Model
     public $email='';
     public $class_names='';
     public $id_artefacte=array();
-    public $name_artefacte=array("ceva","initial");
+    public $name_artefacte=array();
     public function __construct()
     {
         parent::__construct();

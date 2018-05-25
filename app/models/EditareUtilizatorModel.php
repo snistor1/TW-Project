@@ -1,6 +1,8 @@
 <?php
 class EditareUtilizatorModel extends Model{
 
+    public $clase=array();
+    public $verificare=array();
     public function __construct(){
         parent::__construct();
         if(isset($_POST['name']) or isset($_POST['email']) or
@@ -55,7 +57,7 @@ class EditareUtilizatorModel extends Model{
                     oci_execute($statement1);
                     if (oci_fetch($statement1)) {
                         $id_clasa = oci_result($statement1, 1);
-                        //adauga in tabela users_classes un rand cu id-ul utilizatorului si id-ul clasei noi
+                        //sterge din tabela users_classes rand-ul cu id-ul utilizatorului si id-ul clasei noi
                         $statement2 = oci_parse($this->db, "DELETE FROM tw.USERS_CLASSES where ID_USER=:v_id_user and 
                                                                                    ID_CLASS=:v_id_class");
                         $values = array(':v_id_user' => Session::get('id_user'), ':v_id_class' => $id_clasa);
@@ -65,11 +67,13 @@ class EditareUtilizatorModel extends Model{
                         oci_execute($statement2);
                     }
                 }
+
                 header('Location: /public/paginaUtilizator');
                 exit();
             }
             exit();
         }
+        //sterge contul utilizatorului
         if(isset($_POST['delete'])){
             $statement=oci_parse($this->db,"delete from tw.USERS where ID=:v_id");
             $myid=Session::get('id_user');
@@ -78,7 +82,35 @@ class EditareUtilizatorModel extends Model{
             echo "<script type='text/javascript'>alert(\"Profile Deleted Successfully!\");window.location.href='/public/PaginaUtilizator/logout';</script>";
             exit();
         }
-    }
+        //afisarea claselor pentru butoanele radio
+        $statement=oci_parse($this->db,"select CLASS_NAME,ID from TW.CLASSES");
+        oci_execute($statement);
+        $contor=0;
+        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)){
+            $statement1=oci_parse($this->db,"select count(*) from tw.USERS_CLASSES where 
+                                                           ID_USER=:v_id_user and ID_CLASS=:v_id_class");
+            $values = array(':v_id_user' => Session::get('id_user'), ':v_id_class' => $row['ID']);
+            foreach ($values as $key => $val) {
+                oci_bind_by_name($statement1, $key, $values[$key]);
+            }
+            oci_execute($statement1);
+            //verifica daca utilizatorul nu este deja in clasa respectiva
+            $nr=0;
+            if (oci_fetch($statement1)) {
+                $nr = oci_result($statement1, 1);
+            }
+            if($nr==0) {
+                $this->clase[$contor] = $row['CLASS_NAME'];
+                $this->verificare[$contor]="0";
+            }
+            else{
+                $this->clase[$contor] = $row['CLASS_NAME'];
+                $this->verificare[$contor]=("1");
+            }
+            $contor=$contor+1;
+        }
+
+        }
     private function validate($name,$email,$add_class,$delete_class){
         if(preg_match('/[^A-Za-z ]/',$name))
         {

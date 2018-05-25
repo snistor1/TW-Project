@@ -86,9 +86,14 @@
             else {print '<a href="' . substr($url, 0, 24) . '/' . $page_s . '">&laquo;</a>';}
             for ($contor = 0; $contor < $length; $contor += 9) {
                 if (strcmp($url, '/public/paginaUtilizator/' .($contor / 9 + 1))==0) {
-                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                    print '<a href ="' . substr($url, 0, 24). '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
                 } else {
-                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                    if($contor==0){
+                        print '<a href ="' . substr($url, 0, 24). '">' . ($contor / 9 + 1) . '</a >';
+                    }
+                    else {
+                        print '<a href ="' . substr($url, 0, 24) . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                    }
                 }
 
             }
@@ -102,7 +107,7 @@
         else{//caz in care sunt pe prima pagina
             for ($contor = 0; $contor < $length; $contor += 9) {
                 if($contor==0) {
-                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                    print '<a href ="' . $url  . '"class="active">' . ($contor / 9 + 1) . '</a >';
                 }
                 else{
                     print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';

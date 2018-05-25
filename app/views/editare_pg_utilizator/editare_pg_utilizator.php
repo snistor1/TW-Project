@@ -39,7 +39,26 @@
             else
                 echo '<input  class="stanga" type="text" name="name" placeholder="Enter Name">';
 
+            include $_SERVER['DOCUMENT_ROOT']."/app/models/EditareUtilizatorModel.php";
+            $ed=new EditareUtilizatorModel();
+            $length=count($ed->clase);
+
             echo '<p><strong>Add Class:</strong></p>';
+            echo '<p>';
+            $flag=0;
+            for($contor=0;$contor<$length;$contor++) {
+                if($ed->verificare[$contor]=='0') {
+                    if($flag==0){
+                        echo $ed->clase[$contor];
+                    }
+                    else{
+                        echo ", ".$ed->clase[$contor];
+                    }
+                     $flag=$flag+1;
+                }
+            }
+            if($flag==0){echo "You are already in every class!";}
+            echo '</p>';
             if(isset($_GET['add_class'])){
                 $add_class = $_GET['add_class'];
                 echo '<input class="stanga" type="text" name="add_class" placeholder="Enter Class" value="'.$add_class.'">';
@@ -48,6 +67,21 @@
                 echo '<input class="stanga" type="text" name="add_class" placeholder="Enter Class">';
 
             echo '<p><strong>Delete Class:</strong></p>';
+            echo '<p>';
+            $flag=0;
+            for($contor=0;$contor<$length;$contor++) {
+               if($ed->verificare[$contor]=='1') {
+                   if($flag==0){
+                       echo $ed->clase[$contor];
+                   }
+                   else{
+                       echo ", ".$ed->clase[$contor];
+                   }
+                $flag=$flag+1;
+               }
+            }
+            if($flag==0){ echo "You aren't in any class";}
+            echo '</p>';
             if(isset($_GET['delete_class'])){
                 $delete_class = $_GET['delete_class'];
                 echo '<input class="stanga" type="text" name="delete_class" placeholder="Enter Class" value="'.$delete_class.'">';
