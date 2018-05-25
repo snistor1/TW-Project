@@ -12,12 +12,12 @@ class LoginModel extends Model
             $encrypted = md5($password);
             if($this->validate($email,$encrypted)==1)
             {
-                echo "<script type='text/javascript'>alert(\"Account doesn't exist!\");window.location.href='/public/login';</script>";
+                header('Location: /public/login?login=1');
                 exit();
             }
             else if($this->validate($email,$encrypted)==2)
             {
-                echo "<script type='text/javascript'>alert(\"Password is invalid!\");window.location.href='/public/login';</script>";
+                header('Location: /public/login?login=2&email='.$email);
                 exit();
             }
             else
@@ -31,7 +31,7 @@ class LoginModel extends Model
                     $id=oci_result($statement,1);
                 }
                 Session::set('id_user',$id);
-                echo "<script type='text/javascript'>alert(\"Login Successful!\");window.location.href='/public/paginaUtilizator';</script>";
+                header('Location: /public/paginaUtilizator');
                 exit();
             }
         }

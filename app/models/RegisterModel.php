@@ -20,7 +20,7 @@ class RegisterModel extends Model
                     oci_bind_by_name($statement, $key, $values[$key]);
                 }
                 oci_execute($statement);
-                echo "<script type='text/javascript'>alert(\"Registration Successful!\");window.location.href='/public/login';</script>";
+                header('Location: /public/register?signup=success');
                 exit();
             }
             exit();
@@ -30,12 +30,12 @@ class RegisterModel extends Model
     private function validate($name,$email,$password,$confirm_password){
         if(preg_match('/[^A-Za-z ]/',$name))
         {
-            echo "<script type='text/javascript'>alert(\"Name should contain only letters!\");window.location.href='/public/register';</script>";
+            header('Location: /public/register?signup=name&email='.$email);
             return false;
         }
         if(!filter_var($email,FILTER_VALIDATE_EMAIL))
         {
-            echo "<script type='text/javascript'>alert(\"Invalid Email!\");window.location.href='/public/register';</script>";
+            header('Location: /public/register?signup=email&name='.$name);
             return false;
         }
         $statement = oci_parse($this->db,"select count(*) from tw.USERS where EMAIL=:email");
@@ -46,13 +46,13 @@ class RegisterModel extends Model
             $number = oci_result($statement,1);
             if($number>0)
             {
-                echo "<script type='text/javascript'>alert(\"Email already exists!\");window.location.href='/public/register';</script>";
+                header('Location: /public/register?signup=emailDuplicate&name='.$name);
                 return false;
             }
         }
         if($password!=$confirm_password)
         {
-            echo "<script type='text/javascript'>alert(\"Passwords doesn't match!\");window.location.href='/public/register';</script>";
+            header('Location: /public/register?signup=password&name='.$name.'&email='.$email);
             return false;
         }
         return true;

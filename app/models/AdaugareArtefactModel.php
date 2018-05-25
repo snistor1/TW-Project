@@ -26,7 +26,7 @@ class AdaugareArtefactModel extends Model{
                 $licenta = 1;
             else
                 $licenta = 0;
-            if($this->validate($nume,$clasa,$autor,$pret,$origine)) {
+            if($this->validate($nume,$clasa,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere)) {
                 //adaugare informatii in tabela ARTEFACTS
                 $statement = oci_parse($this->db, "insert into tw.ARTEFACTS(ARTEFACT_NAME,ID_USER,AUTHOR_NAME,DATING,
                                                                                  PRICE,DESCRIPTION,ORIGIN,LATITUDE,
@@ -111,33 +111,45 @@ class AdaugareArtefactModel extends Model{
                     }
                 }
 
-
-                echo "<script type='text/javascript'>alert(\"Artefact added successfully!\");window.location.href='/public/PaginaArtefact';</script>";
+                header('Location: /public/PaginaArtefact');
                 exit();
             }
             exit();
         }
     }
 
-    private function validate($nume,$clasa,$autor,$pret,$origine){
+    private function validate($nume,$clasa,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere){
         if(preg_match('/[^A-Za-z ]/',$nume))
         {
-            echo "<script type='text/javascript'>alert(\"Name should contain only letters!\");window.location.href='/public/AdaugareArtefact';</script>";
+            //Name should contain only letters!
+            header('Location: /public/AdaugareArtefact?add=name&class='.$clasa.'&author='.$autor.
+                '&price='.$pret.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
+                '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
         if(preg_match('/[^A-Za-z ]/',$autor))
         {
-            echo "<script type='text/javascript'>alert(\"Author's name should contain only letters!\");window.location.href='/public/AdaugareArtefact';</script>";
+            //Author's name should contain only letters!
+            header('Location: /public/AdaugareArtefact?add=author&name='.$nume.'&class='.$clasa.
+                '&price='.$pret.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
+                '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
-        if(!preg_match('/^[1-9][0-9]*$/',$pret) or $pret>99999){
-            echo "<script type='text/javascript'>alert(\"The price is not valid!\");window.location.href='/public/AdaugareArtefact';</script>";
+        if(!preg_match('/^[1-9][0-9]*$/',$pret) or $pret>99999)
+        {
+            //The price is not valid!
+            header('Location: /public/AdaugareArtefact?add=price&name='.$nume.'&class='.$clasa.
+                '&author='.$autor.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
+                '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
 
         if(preg_match('/[^A-Za-z ]/',$origine))
         {
-            echo "<script type='text/javascript'>alert(\"the origin should contain only letters!\");window.location.href='/public/AdaugareArtefact';</script>";
+            //The origin should contain only letters!
+            header('Location: /public/AdaugareArtefact?add=origin&name='.$nume.'&class='.$clasa.
+                '&author='.$autor.'&price='.$pret.'&ev='.$secol.'&latitude='.$latitudine.
+                '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
 
@@ -149,7 +161,10 @@ class AdaugareArtefactModel extends Model{
             $number = oci_result($statement,1);
             if($number==0)
             {
-                echo "<script type='text/javascript'>alert(\"Class doesn't exist!\");window.location.href='/public/AdaugareArtefact';</script>";
+                //Class doesn't exist!
+                header('Location: /public/AdaugareArtefact?add=class&name='.$nume.'&class='.$clasa.
+                    '&author='.$autor.'&price='.$pret.'&origin='.$origine.'&ev='.$secol.
+                    '&latitude='.$latitudine.'&longitude='.$longitudine.'&description='.$descriere);
                 return false;
             }
         }

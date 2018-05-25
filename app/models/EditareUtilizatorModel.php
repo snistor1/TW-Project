@@ -65,7 +65,7 @@ class EditareUtilizatorModel extends Model{
                         oci_execute($statement2);
                     }
                 }
-                echo "<script type='text/javascript'>alert(\"Profile Edited Successfully!\");window.location.href='/public/paginaUtilizator';</script>";
+                header('Location: /public/paginaUtilizator');
                 exit();
             }
             exit();
@@ -83,14 +83,14 @@ class EditareUtilizatorModel extends Model{
         if(preg_match('/[^A-Za-z ]/',$name))
         {
             if($name!=NULL){
-                echo "<script type='text/javascript'>alert(\"Name should contain only letters!\");window.location.href='/public/editarePgUtilizator';</script>";
+                header('Location: /public/editarePgUtilizator?edit=name&email='.$email.'&add_class='.$add_class.'&delete_class='.$delete_class);
                 return false;
             }
         }
         if(!filter_var($email,FILTER_VALIDATE_EMAIL))
         {
             if($email!=NULL) {
-                echo "<script type='text/javascript'>alert(\"Invalid Email!\");window.location.href='/public/editarePgUtilizator';</script>";
+                header('Location: /public/editarePgUtilizator?edit=email&name='.$name.'&add_class='.$add_class.'&delete_class='.$delete_class);
                 return false;
             }
         }
@@ -102,7 +102,7 @@ class EditareUtilizatorModel extends Model{
                 $number = oci_result($statement, 1);
                 if ($number > 0) {
                     //verifica daca mai exista un email identic, daca exista inseamna ca nu e valid
-                    echo "<script type='text/javascript'>alert(\"Email already exists!\");window.location.href='/public/editarePgUtilizator';</script>";
+                    header('Location: /public/editarePgUtilizator?edit=emailDuplicate&name='.$name.'&add_class='.$add_class.'&delete_class='.$delete_class);
                     return false;
                 }
             }
@@ -114,7 +114,7 @@ class EditareUtilizatorModel extends Model{
             if (oci_fetch($statement1)) {
                 $number = oci_result($statement1, 1);
                 if ($number == 0) {
-                    echo "<script type='text/javascript'>alert(\"Class doesn't exist!\");window.location.href='/public/editarePgUtilizator';</script>";
+                    header('Location: /public/editarePgUtilizator?edit=addClass&name='.$name.'&email='.$email.'&delete_class='.$delete_class);
                     return false;
 
                 }
@@ -137,7 +137,7 @@ class EditareUtilizatorModel extends Model{
                     $number = oci_result($statement2, 1);
                     //daca rezultatul este >0 inseamna ca user-ul se afla deja in clasa respectiva
                     if ($number > 0) {
-                        echo "<script type='text/javascript'>alert(\"You are already in this class!\");window.location.href='/public/editarePgUtilizator';</script>";
+                        header('Location: /public/editarePgUtilizator?edit=addClassDuplicate&name='.$name.'&email='.$email.'&delete_class='.$delete_class);
                         return false;
 
                     }
@@ -152,7 +152,7 @@ class EditareUtilizatorModel extends Model{
                 $number = oci_result($statement1, 1);
                 if ($number == 0) {
                     //verifica daca exista clasa respectiva
-                    echo "<script type='text/javascript'>alert(\"Class doesn't exist!\");window.location.href='/public/editarePgUtilizator';</script>";
+                    header('Location: /public/editarePgUtilizator?edit=deleteClass&name='.$name.'&email='.$email.'&add_class='.$add_class);
                     return false;
 
                 }
@@ -175,7 +175,7 @@ class EditareUtilizatorModel extends Model{
                     $number = oci_result($statement2, 1);
                     //daca rezultatul este =0 inseamna ca user-ul nu se afla in clasa respectiva
                     if ($number == 0) {
-                        echo "<script type='text/javascript'>alert(\"You are not in this class!\");window.location.href='/public/editarePgUtilizator';</script>";
+                        header('Location: /public/editarePgUtilizator?edit=deleteClassMissing&name='.$name.'&email='.$email.'&add_class='.$add_class);
                         return false;
 
                     }
@@ -183,7 +183,7 @@ class EditareUtilizatorModel extends Model{
             }
         }
         if($name==NULL and $email==NULL and $add_class==NULL and $delete_class==NULL){
-            echo "<script type='text/javascript'>alert(\"Please fill out any field\");window.location.href='/public/editarePgUtilizator';</script>";
+            header('Location: /public/editarePgUtilizator?edit=empty');
             return false;
         }
 

@@ -32,7 +32,7 @@
         <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
         <hr>
         <?php
-            include ("C:/xampp/htdocs/TW-Project/app/models/UtilizatorModel.php");
+            include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
             $u=new UtilizatorModel;
             print '<p style="display": inline;">Name:</p><h2>'.$u->name."</h2>";
             print "<hr>";

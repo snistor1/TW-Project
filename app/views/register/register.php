@@ -17,10 +17,23 @@
 <div class="register-box">
     <h1>Register</h1>
     <form action="/public/register/submit" method="post">
-        <p>Name</p>
-        <input type="text" name="name" placeholder="Enter Name" required autocomplete="off">
-        <p>Email</p>
-        <input type="text" name="email" placeholder="Enter Email" required autocomplete="off">
+        <?php
+            echo '<p>Name</p>';
+            if(isset($_GET['name'])){
+                $name = $_GET['name'];
+                echo '<input type="text" name="name" placeholder="Enter Name" value="'.$name.'" required autocomplete="off">';
+            }
+            else
+                echo '<input type="text" name="name" placeholder="Enter Name" required autocomplete="off">';
+
+            echo '<p>Email</p>';
+            if(isset($_GET['email'])){
+                $email = $_GET['email'];
+                echo '<input type="text" name="email" placeholder="Enter Email" value="'.$email.'" required autocomplete="off">';
+            }
+            else
+                echo '<input type="text" name="email" placeholder="Enter Email" required autocomplete="off">';
+        ?>
         <p>Password</p>
         <input type="password" name="password" placeholder="Enter Password" required autocomplete="off">
         <p>Confirm Password</p>
@@ -28,6 +41,29 @@
         <input type="submit" name="submit" value="Register">
         <a href="/public/login">Already registered?</a><br>
     </form>
+    <?php
+        if(!isset($_GET['signup'])){
+            exit();
+        }
+        else{
+            $message = $_GET['signup'];
+            if($message == 'name'){
+                echo '<br><p style="text-align: center; color: red">Name is invalid!</p>';
+            }
+            else if($message == 'email'){
+                echo '<br><p style="text-align: center; color: red">Email is invalid!</p>';
+            }
+            else if($message == 'emailDuplicate'){
+                echo '<br><p style="text-align: center; color: red">Email already exists!</p>';
+            }
+            else if($message == 'password'){
+                echo '<br><p style="text-align: center; color: red">Passwords should match!</p>';
+            }
+            else if($message == 'success'){
+                echo '<br><p style="text-align: center; color: lime">Registration Successful!</p>';
+            }
+        }
+    ?>
 
 </div>
 </body>
