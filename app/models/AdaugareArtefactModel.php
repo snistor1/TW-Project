@@ -111,6 +111,44 @@ class AdaugareArtefactModel extends Model{
                     }
                 }
 
+                //adaugare informatii in tabela TAGS si ARTEFACTS_TAGS
+                if(!empty($_POST['tag'])) {
+                    foreach($_POST['tag'] as $tag) {
+                        $statement = oci_parse($this->db, "select count(*) from tw.TAGS where TAG_NAME=:tag_name ");
+                        oci_bind_by_name($statement, ":tag_name", $tag);
+                        oci_execute($statement, OCI_DEFAULT);
+                        if (oci_fetch($statement)) {
+                            $count_tag = oci_result($statement, 1);
+                            if($count_tag==0){
+                                //aflam id pentru tag-ul pe care trebuie sa il adaugam
+                                $statement = oci_parse($this->db, "select max(id) from tw.TAGS");
+                                oci_execute($statement, OCI_DEFAULT);
+                                if (oci_fetch($statement)) {
+                                    $id_tag = oci_result($statement, 1)+1;
+                                }
+                                $statement = oci_parse($this->db, "INSERT INTO TW.TAGS
+                                                   VALUES(:v_id_tag,:v_nume_tag)");
+                                oci_bind_by_name($statement, ":v_id_tag", $id_tag);
+                                oci_bind_by_name($statement, ":v_nume_tag", $tag);
+                                oci_execute($statement);
+                            }
+                            else {
+                                $statement = oci_parse($this->db, "select id from tw.TAGS where TAG_NAME=:tag_name ");
+                                oci_bind_by_name($statement, ":tag_name", $tag);
+                                oci_execute($statement, OCI_DEFAULT);
+                                if (oci_fetch($statement))
+                                {$id_tag = oci_result($statement, 1);}
+                            }
+
+                            $statement = oci_parse($this->db, "INSERT INTO TW.ARTEFACTS_TAGS
+                                                   VALUES(:v_id_artefact,:v_id_tag)");
+                            oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
+                            oci_bind_by_name($statement, ":v_id_tag", $id_tag);
+                            oci_execute($statement);
+                        }
+                    }
+                }
+
                 header('Location: /public/PaginaArtefact');
                 exit();
             }

@@ -173,3 +173,99 @@ input:focus, textarea:focus{
 .category label {
     margin-left: -27%;
 }
+
+/*partea de taguri*/
+#title{
+    font:bold 48pt "Trebuchet MS";
+    text-align: center;
+    color: #F95;
+    letter-spacing: -2px;
+}
+#title span{
+    font-weight: normal;
+    color: #BBB;
+}
+
+#tags{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px #CCC inset;
+    padding: 10px;
+    width: 50%;
+    background: #fafafa;
+    margin: auto;
+    position:relative;
+}
+
+#tag-typer{
+    outline: none;
+    border: none;
+    padding: 6px;
+    margin: 3px;
+    margin-right: -25px;
+    width: 100px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #333;
+}
+
+.tag{
+    display: inline-block;
+    background: #eabf15;
+    color: #FFF;
+    padding: 5px 10px;
+    margin:2px 2px 2px 20px;
+    font: normal 16px sans-serif;
+    position: relative;
+    cursor: default;
+    box-shadow:1px 1px 0 rgba(0,0,0,.2);
+    -webkit-transform-origin:0% 50%;
+    -webkit-animation: swing 1s;
+    -o-animation: swing 1s;
+    animation: swing 1s ;
+    float:left;
+
+}
+
+.tag:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    background: inherit;
+    height: 10px;
+    border: 10px solid #fafafa;
+    border-right-color: transparent;
+    -webkit-border-radius: 10px 0 0 10px;
+    -moz-border-radius:10px 0 0 10px;
+    border-radius:10px 0 0 10px;
+    left: -20px;
+    top: 0;
+}
+
+.tag:after{
+    content: "";
+    width: 6px;
+    height: 6px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #FFF;
+    position: absolute;
+    left: -3px;
+    top: 12px;
+    box-shadow:inset 1px 1px 0 #CCC;
+}
+
+.tag .close{
+    position: absolute;
+    background: inherit;
+    left: -4px;
+    z-index: 3;
+    visibility: hidden;
+}
+
+.tag:hover .close{
+    visibility: visible;
+
+}
