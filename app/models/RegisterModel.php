@@ -20,7 +20,7 @@ class RegisterModel extends Model
                     oci_bind_by_name($statement, $key, $values[$key]);
                 }
                 oci_execute($statement);
-                header('Location: /public/register?signup=success');
+                header('Location: /public/login');
                 exit();
             }
             exit();

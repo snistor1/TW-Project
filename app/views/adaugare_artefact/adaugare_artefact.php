@@ -28,10 +28,11 @@
 <hr>
 <section class="BigBox">
     <div class="box">
-        <form action="/public/AdaugareArtefact/add" method="post">
+        <form action="/public/AdaugareArtefact/add" method="post" enctype="multipart/form-data">
             <?php
                 echo '<h2>Add an artefact</h2>
-                <h6 id="imageUpload-button">Upload image</h6>
+                <h4>Upload image:</h4>
+                <input type="file" name="pic" id="imageUpload-button" accept="image/*">
                 <hr>';
                 if(isset($_GET['name'])){
                     $name = $_GET['name'];
@@ -246,6 +247,9 @@
                     }
                     else if($message == 'class'){
                         echo '<br><p style="text-align: center; color: red">Class doesn\'t exist!</p>';
+                    }
+                    else if($message == 'image'){
+                        echo '<br><p style="text-align: center; color: red">Invalid file!</p>';
                     }
                 }
             ?>

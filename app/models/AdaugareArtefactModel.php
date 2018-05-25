@@ -22,17 +22,37 @@ class AdaugareArtefactModel extends Model{
             $descriere = $_POST['descriere'];
             //$_POST['rol'] si $_POST['material']: vectori
 
+            $file = $_FILES['pic'];
+            $fileName = $_FILES['pic']['name'];
+            $fileError = $_FILES['pic']['error'];
+            $fileType = $_FILES['pic']['type'];
+
             if($_POST['licenta']=='YES')
                 $licenta = 1;
             else
                 $licenta = 0;
             if($this->validate($nume,$clasa,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere)) {
                 //adaugare informatii in tabela ARTEFACTS
+                //daca totul e ok, iau si imaginea
+                if(!empty($fileName)){
+                    if($fileType!='image/gif' && $fileType!='image/jpg' && $fileType!='image/jpeg' && $fileType!='image/png')
+                    {
+                        header('Location: /public/AdaugareArtefact?add=image&name='.$nume.'&class='.$clasa.
+                        '&author='.$autor.'&price='.$pret.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
+                        '&longitude='.$longitudine.'&description='.$descriere);
+                        exit();
+                    }
+                    $image = file_get_contents($_FILES['pic']['tmp_name']);
+                }
+                else {
+                    $image = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/public/Images/dummy-image.jpg');
+                }
                 $statement = oci_parse($this->db, "insert into tw.ARTEFACTS(ARTEFACT_NAME,ID_USER,AUTHOR_NAME,DATING,
                                                                                  PRICE,DESCRIPTION,ORIGIN,LATITUDE,
-                                                                                 LONGITUDE,UTILIZATION_LICENSE) values 
+                                                                                 LONGITUDE,ARTEFACT_IMAGE,UTILIZATION_LICENSE) values 
                                     (:v_name,:v_id_user,:v_author,:v_dating,:v_price,:v_description,:v_origin,
-                                      :v_latitude,:v_longitude,:v_license)");
+                                      :v_latitude,:v_longitude,empty_blob(),:v_license) returning ARTEFACT_IMAGE into :image");
+                $blob = oci_new_descriptor($this->db,OCI_D_LOB);
                 $values = array(':v_name' => $nume, ':v_id_user' => Session::get('id_user'), 'v_author' => $autor,
                     ':v_dating' => $secol, ':v_price' => $pret, ':v_description' => $descriere,
                     ':v_origin' => $origine, ':v_latitude' => $latitudine,
@@ -41,7 +61,13 @@ class AdaugareArtefactModel extends Model{
                 foreach ($values as $key => $val) {
                     oci_bind_by_name($statement, $key, $values[$key]);
                 }
-                oci_execute($statement);
+                oci_bind_by_name($statement,":image",$blob,-1,OCI_B_BLOB);
+                oci_execute($statement, OCI_NO_AUTO_COMMIT);
+                if($blob->save($image))
+                {
+                    oci_commit($this->db);
+                }
+                $blob->free();
                 //aflam id_artefact curent
                 $statement = oci_parse($this->db, "select max(id) from tw.ARTEFACTS");
                 oci_execute($statement, OCI_DEFAULT);
