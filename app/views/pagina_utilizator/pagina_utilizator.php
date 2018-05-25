@@ -50,36 +50,72 @@
     <hr>
 
     <?php
-    $length=count($u->id_artefacte);
-    for ($contor=0; $contor< $length; $contor++) {
-        print '<div class="responsive">';
-        print '<div class="gallery">';
-        print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
-        print '<img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">';
-        print '</a>';
-        print '<div class="desc">'.$u->name_artefacte[$contor].'</div>';
-        print '</div>';
+    $url= $_SERVER['REQUEST_URI'];
+    if(!empty($u->id_artefacte)) {
+        $length = count($u->id_artefacte);
+        $max_page= intval($length/9);
+        if($length%9>0){$max_page=$max_page+1;}
+        $pg=substr($url, -1);
+        if($pg=='r') {
+            $pg = 1;
+        }
+
+        for ($contor = ($pg-1)*9; $contor < ($pg-1)*9+9 and $contor<$length; $contor++) {
+                print '<div class="responsive">';
+                print '<div class="gallery">';
+                print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
+                print '<img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">';
+                print '</a>';
+                print '<div class="desc">' . $u->name_artefacte[$contor] . '</div>';
+                print '</div>';
+                print '</div>';
+
+        }
+
+        print '<div class="clearfix"></div>';
+        print '<br>';
+
+        print '<div class="pagination">';
+        if(substr($url, -1)!='r') {
+            //caz in care nu sunt pe prima pagina
+            $page_s = substr($url, -1) - 1;
+            $page_d = substr($url, -1) + 1;
+            if ($page_s ==1) {
+                print '<a href="' . substr($url, 0, 24). '">&laquo;</a>';
+            }
+            else {print '<a href="' . substr($url, 0, 24) . '/' . $page_s . '">&laquo;</a>';}
+            for ($contor = 0; $contor < $length; $contor += 9) {
+                if (strcmp($url, '/public/paginaUtilizator/' .($contor / 9 + 1))==0) {
+                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                } else {
+                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                }
+
+            }
+            if ($page_d > $max_page) {
+                $page_d = $max_page;
+            }
+            if($page_d!=$max_page) {
+                print '<a href="' . substr($url, 0, 24) . '/' . $page_d . '">&raquo;</a>';
+            }
+        }
+        else{//caz in care sunt pe prima pagina
+            for ($contor = 0; $contor < $length; $contor += 9) {
+                if($contor==0) {
+                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                }
+                else{
+                    print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                }
+            }
+            if($max_page>1) {
+                print '<a href="' . substr($url, 0, 24) . '/2'. '">&raquo;</a>';
+            }
+
+        }
         print '</div>';
     }
     ?>
-
-
-    <div class="clearfix"></div>
-
-
-
-    <br>
-
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#" class="active">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-    </div>
 </section>
 </body>
 </html>

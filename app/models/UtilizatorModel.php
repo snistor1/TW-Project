@@ -11,7 +11,7 @@ class UtilizatorModel extends Model
     {
         parent::__construct();
         $statement = oci_parse($this->db,  "select  name, email ,class_name from tw.USERS u join tw.USERS_CLASSES u_c
-                                     on u.ID = u_c.ID_USER join tw.CLASSES c on u_c.ID_CLASS = c.ID where u.id=:v_id");
+                                     on u.ID = u_c.ID_USER join tw.CLASSES c on u_c.ID_CLASS = c.ID where u.id=:v_id ");
         $myid = Session::get('id_user');
         oci_bind_by_name($statement, ":V_ID", $myid);
         oci_execute($statement);
@@ -27,8 +27,21 @@ class UtilizatorModel extends Model
                 $this->class_names = $this->class_names . ', ' . $row['CLASS_NAME'];
             }
         }
+        //in cazul in care nu apartine inca unei clase
+        if($flag==0){
+            $statement = oci_parse($this->db,  "select  name, email from tw.USERS  where id=:v_id");
+            $myid = Session::get('id_user');
+            oci_bind_by_name($statement, ":V_ID", $myid);
+            oci_execute($statement);
+            if($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC))
+            {
+                $this->name = $row['NAME'];
+                $this->email = $row['EMAIL'];
+                $this->class_names = " ";
+            }
+        }
 
-        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME FROM tw.ARTEFACTS where ID_USER=:v_id");
+        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME FROM tw.ARTEFACTS where ID_USER=:v_id order by ID");
         $myid = Session::get('id_user');
         oci_bind_by_name($statement, ":V_ID", $myid);
         oci_execute($statement);
