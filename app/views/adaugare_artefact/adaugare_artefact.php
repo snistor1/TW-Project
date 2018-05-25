@@ -210,6 +210,14 @@
                 <input type="checkbox" name="material[]" value="bone"> Bone
                 <hr>';
 
+                echo '<h4>Tags</h4>
+                        <label for="tag-typer">
+                         <div id="tags">
+                           <div id="demo"></div>
+                           <input id="tag-typer" type="text" onkeypress="Function(event)" placeholder="Add tag..."/>
+                         </div> 
+                        </label>
+                     <hr>';
                 if(isset($_GET['description'])){
                     $description = $_GET['description'];
                     echo ' <h4>Description:</h4>
@@ -271,6 +279,24 @@
         }
     }
 
+    var $max_id=0;
+    function Function(event) {
+        $max_id++;
+        var x = event.which || event.keyCode;
+        if(x==32){
+            document.getElementById("demo").innerHTML="<span class='tag' id="+$max_id.toString()+" onclick='removeTag"+"("+$max_id.toString()+")'><span class='close'>&times;</span>"+document.getElementById("tag-typer").value+"</span>"+"<div id='demo'></div>"+"<input name='tag[]' style='display:none;' value="+document.getElementById("tag-typer").value+" id="+'I'+$max_id.toString()+">";
+            document.getElementById("demo").id="altceva";
+            document.getElementById("tag-typer").value="";
+        }
+    };
+
+    function removeTag(id) {
+        var elem = document.getElementById(id);
+        elem.parentNode.removeChild(elem);
+
+        var elem = document.getElementById('I'+id);
+        elem.parentNode.removeChild(elem);
+    }
 </script>
 </body>
 </html>
