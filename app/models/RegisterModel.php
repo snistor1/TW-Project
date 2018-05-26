@@ -13,13 +13,21 @@ class RegisterModel extends Model
             $confirm_password = $_POST['confirm_password'];
             if($this->validate($name,$email,$password,$confirm_password)) {
                 $encrypted_password  =md5($password);
-                $statement = oci_parse($this->db, "insert into tw.USERS(NAME,EMAIL,PASS) values 
-                                    (:v_name,:v_email,:v_pass)");
+                $image = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/public/Images/user.png');
+                $statement = oci_parse($this->db, "insert into tw.USERS(NAME,EMAIL,PASS,PROFILE_IMAGE) values 
+                                    (:v_name,:v_email,:v_pass,empty_blob()) returning PROFILE_IMAGE into :image");
+                $blob = oci_new_descriptor($this->db,OCI_D_LOB);
                 $values = array(':v_name' => $name, ':v_email' => $email, ':v_pass' => $encrypted_password);
                 foreach ($values as $key => $val) {
                     oci_bind_by_name($statement, $key, $values[$key]);
                 }
-                oci_execute($statement);
+                oci_bind_by_name($statement,":image",$blob,-1,OCI_B_BLOB);
+                oci_execute($statement, OCI_NO_AUTO_COMMIT);
+                if($blob->save($image))
+                {
+                    oci_commit($this->db);
+                }
+                $blob->free();
                 header('Location: /public/login');
                 exit();
             }

@@ -27,9 +27,13 @@
 <br><br><br>
 <hr>
 <section class="BigBox">
-    <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
-    <hr>
-    <form action="/public/editarePgUtilizator/save" method="post">
+    <?php
+        include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
+        $u=new UtilizatorModel;
+        echo '<img src="data:image/jpg;base64,'.base64_encode($u->profile_image).'" alt="This is the users profile picture" width="100" height="100">';
+        echo '<hr>';
+    ?>
+    <form action="/public/editarePgUtilizator/save" method="post" enctype="multipart/form-data">
         <?php
             echo '<p><strong>Name:</strong></p>';
             if(isset($_GET['name'])){
@@ -83,12 +87,18 @@
             else if($message == 'empty'){
                 echo '<br><p style="text-align: center; color: red">Please make at least one change!</p>';
             }
+            else if($message =='image'){
+                echo '<br><p style="text-align: center; color: red">Please insert a valid image!</p>';
+            }
 
         }
         ?>
         <br>
+        <p><strong>Update profile image:</strong></p>
+        <input type="file" name="profile_picture" class="button" accept="image/*">
         <hr>
-        <input onclick="location.href='/public/paginaUtilizator'" class="button" type="submit" value="Save Profile">
+
+        <input class="button" type="submit" value="Save Profile">
     </form>
     <form action="/public/editarePgUtilizator/delete" method="post">
         <input onclick="location.href='/public/'" class="button" name="delete" type="submit" value="Delete Profile">

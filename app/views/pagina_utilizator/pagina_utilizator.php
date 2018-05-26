@@ -27,13 +27,13 @@
 <hr>
 <section class="BigBox">
     <form action="/public/PaginaUtilizator" method="post">
-        <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
-        <br>
-        <a href="/public/editarePgUtilizator" class="button">Edit Profile</a>
-        <hr>
         <?php
             include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
             $u=new UtilizatorModel;
+            print '<img src="data:image/jpg;base64,'.base64_encode($u->profile_image).'" alt="This is the users profile picture" width="100" height="100">';
+            print '<br>';
+            print '<a href="/public/editarePgUtilizator" class="button">Edit Profile</a>';
+            print '<hr>';
             print '<p style="display": inline;">Name:</p><h2>'.$u->name."</h2>";
             print "<hr>";
             print "<p>Class:</p><h2>".$u->class_names."</h2>";
@@ -64,7 +64,7 @@
                 print '<div class="responsive">';
                 print '<div class="gallery">';
                 print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
-                print '<img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">';
+                print '<img src="data:image/jpg;base64,'.base64_encode($u->imagini_artefacte[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
                 print '</a>';
                 print '<div class="desc">' . $u->name_artefacte[$contor] . '</div>';
                 print '</div>';

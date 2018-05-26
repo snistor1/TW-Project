@@ -11,6 +11,29 @@ class EditareUtilizatorModel extends Model{
             $email = $_POST['email'];
             $class = $_POST['clasa'];
             if($this->validate($name,$email,$class)) {
+                $file = $_FILES['profile_picture'];
+                $fileName = $_FILES['profile_picture']['name'];
+                $fileError = $_FILES['profile_picture']['error'];
+                $fileType = $_FILES['profile_picture']['type'];
+                if(!empty($fileName)){
+                    if($fileType=='image/gif' || $fileType=='image/jpg' || $fileType=='image/jpeg' || $fileType=='image/png') {
+                        $image = file_get_contents($_FILES['profile_picture']['tmp_name']);
+                        $statement = oci_parse($this->db, "update tw.users set PROFILE_IMAGE=empty_blob() where id=:v_id returning PROFILE_IMAGE into :image");
+                        $blob = oci_new_descriptor($this->db, OCI_D_LOB);
+                        $myid = Session::get('id_user');
+                        oci_bind_by_name($statement, ":v_id", $myid);
+                        oci_bind_by_name($statement, ":image", $blob, -1, OCI_B_BLOB);
+                        oci_execute($statement, OCI_NO_AUTO_COMMIT);
+                        if ($blob->save($image)) {
+                            oci_commit($this->db);
+                        }
+                        $blob->free();
+                    }
+                    else{
+                        header('Location: /public/editarePgUtilizator?edit=image&name='.$name.'&email=',$email);
+                        exit();
+                    }
+                }
                 if($name != NULL) {
                     //update numele din tabela users
                     $statement = oci_parse($this->db, "update tw.USERS SET NAME=:v_name
