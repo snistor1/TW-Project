@@ -27,9 +27,13 @@
 <br><br><br>
 <hr>
 <section class="BigBox">
-    <img src="/public/Images/user.png" alt="This is the users profile picture" width="100" height="100">
-    <hr>
-    <form action="/public/editarePgUtilizator/save" method="post">
+    <?php
+        include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
+        $u=new UtilizatorModel;
+        echo '<img src="data:image/jpg;base64,'.base64_encode($u->profile_image).'" alt="This is the users profile picture" width="100" height="100">';
+        echo '<hr>';
+    ?>
+    <form action="/public/editarePgUtilizator/save" method="post" enctype="multipart/form-data">
         <?php
             echo '<p><strong>Name:</strong></p>';
             if(isset($_GET['name'])){
@@ -43,51 +47,18 @@
             $ed=new EditareUtilizatorModel();
             $length=count($ed->clase);
 
-            echo '<p><strong>Add Class:</strong></p>';
-            echo '<p>';
-            $flag=0;
+            echo '<p><strong>Class:</strong></p>';
             for($contor=0;$contor<$length;$contor++) {
-                if($ed->verificare[$contor]=='0') {
-                    if($flag==0){
-                        echo $ed->clase[$contor];
+                    if($ed->verificare[$contor]==1) {
+                        echo '<input type="checkbox" name="clasa[]" value="' . $ed->clase[$contor] . '" checked="checked"><label>' .
+                            $ed->clase[$contor] . '</label>';
                     }
                     else{
-                        echo ", ".$ed->clase[$contor];
+                        echo '<input type="checkbox" name="clasa[]" value="' . $ed->clase[$contor] . '"><label>' .
+                            $ed->clase[$contor] . '</label>';
                     }
-                     $flag=$flag+1;
-                }
             }
-            if($flag==0){echo "You are already in every class!";}
-            echo '</p>';
-            if(isset($_GET['add_class'])){
-                $add_class = $_GET['add_class'];
-                echo '<input class="stanga" type="text" name="add_class" placeholder="Enter Class" value="'.$add_class.'">';
-            }
-            else
-                echo '<input class="stanga" type="text" name="add_class" placeholder="Enter Class">';
-
-            echo '<p><strong>Delete Class:</strong></p>';
-            echo '<p>';
-            $flag=0;
-            for($contor=0;$contor<$length;$contor++) {
-               if($ed->verificare[$contor]=='1') {
-                   if($flag==0){
-                       echo $ed->clase[$contor];
-                   }
-                   else{
-                       echo ", ".$ed->clase[$contor];
-                   }
-                $flag=$flag+1;
-               }
-            }
-            if($flag==0){ echo "You aren't in any class";}
-            echo '</p>';
-            if(isset($_GET['delete_class'])){
-                $delete_class = $_GET['delete_class'];
-                echo '<input class="stanga" type="text" name="delete_class" placeholder="Enter Class" value="'.$delete_class.'">';
-            }
-            else
-                echo '<input class="stanga" type="text" name="delete_class" placeholder="Enter Class">';
+            echo '<br>';
 
             echo '<p><strong>Email:</strong></p>';
             if(isset($_GET['email'])){
@@ -110,26 +81,24 @@
             else if($message == 'emailDuplicate'){
                 echo '<br><p style="text-align: center; color: red">Email already exists!</p>';
             }
-            else if($message == 'addClass'){
-                echo '<br><p style="text-align: center; color: red">Can\'t add this class! Class doesn\'t exist!</p>';
-            }
-            else if($message == 'addClassDuplicate'){
-                echo '<br><p style="text-align: center; color: red">You are already in this class!</p>';
-            }
-            else if($message == 'deleteClass'){
-                echo '<br><p style="text-align: center; color: red">Can\'t delete this class! Class doesn\'t exist!</p>';
-            }
-            else if($message == 'deleteClassMissing'){
-                echo '<br><p style="text-align: center; color: red">Can\'t delete this class! You are not part of it!</p>';
+            else if($message == 'class'){
+                echo '<br><p style="text-align: center; color: red">You have to be in at least one class!</p>';
             }
             else if($message == 'empty'){
-                echo '<br><p style="text-align: center; color: red">Please fill in at least one field!</p>';
+                echo '<br><p style="text-align: center; color: red">Please make at least one change!</p>';
             }
+            else if($message =='image'){
+                echo '<br><p style="text-align: center; color: red">Please insert a valid image!</p>';
+            }
+
         }
         ?>
         <br>
+        <p><strong>Update profile image:</strong></p>
+        <input type="file" name="profile_picture" class="button" accept="image/*">
         <hr>
-        <input onclick="location.href='/public/paginaUtilizator'" class="button" type="submit" value="Save Profile">
+
+        <input class="button" type="submit" value="Save Profile">
     </form>
     <form action="/public/editarePgUtilizator/delete" method="post">
         <input onclick="location.href='/public/'" class="button" name="delete" type="submit" value="Delete Profile">

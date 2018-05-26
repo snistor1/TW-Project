@@ -59,9 +59,6 @@
             else if($message == 'password'){
                 echo '<br><p style="text-align: center; color: red">Passwords should match!</p>';
             }
-            else if($message == 'success'){
-                echo '<br><p style="text-align: center; color: lime">Registration Successful!</p>';
-            }
         }
     ?>
 

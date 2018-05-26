@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <title>Artifacty</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/colectie_artefacte-style.css">
-</head>
-<body>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>Artifacty</title><link rel="stylesheet" type="text/css" href="/public/css/colectie_artefacte-style.css"></head><body>
 
-<section class="intro">
-
-    <div class="navbar">
+<section class="intro"><div class="navbar">
         <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage"></a>
         <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage"></a>
         <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage"></a>
@@ -24,6 +16,7 @@
             <h1><a href="/public/index">ARTIFACTY</a></h1>
         </div>
     </div>
+
 </section>
 <div class="clearfix"></div>
 <hr>
@@ -33,9 +26,11 @@
         <input type="text" name="search" placeholder="Search..." class="search-input">
 
         <button type="submit" class="search-button"><img src="/public/Images/search-icon.png" alt="S" width="18" height="18"></button>
+
     </form>
 
 </div>
+
 <hr>
 
     <div class="filters-container">
@@ -188,3 +183,4 @@
 </section>
 </body>
 </html>
+

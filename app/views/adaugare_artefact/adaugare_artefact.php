@@ -28,10 +28,11 @@
 <hr>
 <section class="BigBox">
     <div class="box">
-        <form action="/public/AdaugareArtefact/add" method="post">
+        <form action="/public/AdaugareArtefact/add" method="post" enctype="multipart/form-data">
             <?php
                 echo '<h2>Add an artefact</h2>
-                <h6 id="imageUpload-button">Upload image</h6>
+                <h4>Upload image:</h4>
+                <input type="file" name="pic" id="imageUpload-button" accept="image/*">
                 <hr>';
                 if(isset($_GET['name'])){
                     $name = $_GET['name'];
@@ -148,9 +149,9 @@
                 <h4>Dating:</h4>
                 Century:
                 <input type="number" min="0" max="21" id="dating" name="secol" placeholder="number..." required>
-                <input type="radio" onclick="document.getElementById(\'dating\').max=40" name="data" id="BC" value="" checked>
+                <input type="radio" onclick="document.getElementById(\'dating\').max=40" name="data" id="BC" value="BC" checked>
                 <label for="">BC</label>
-                <input type="radio" onclick="document.getElementById(\'dating\').max=21" name="data" id="AD" value="">
+                <input type="radio" onclick="document.getElementById(\'dating\').max=21" name="data" id="AD" value="AD">
                 <label for="">AD</label>
                 <hr>';
 
@@ -246,6 +247,9 @@
                     }
                     else if($message == 'class'){
                         echo '<br><p style="text-align: center; color: red">Class doesn\'t exist!</p>';
+                    }
+                    else if($message == 'image'){
+                        echo '<br><p style="text-align: center; color: red">Invalid file!</p>';
                     }
                 }
             ?>
