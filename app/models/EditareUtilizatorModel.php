@@ -1,6 +1,5 @@
 <?php
 class EditareUtilizatorModel extends Model{
-
     public $clase=array();
     public $verificare=array();
     public function __construct(){
@@ -118,8 +117,7 @@ class EditareUtilizatorModel extends Model{
             }
             $contor=$contor+1;
         }
-
-        }
+    }
     private function validate($name,$email,$class){
         if(preg_match('/[^A-Za-z ]/',$name))
         {
@@ -152,14 +150,10 @@ class EditareUtilizatorModel extends Model{
             header('Location: /public/editarePgUtilizator?edit=class');
             return false;
         }
-
         if($name==NULL and $email==NULL and empty($class)){
             header('Location: /public/editarePgUtilizator?edit=empty');
             return false;
         }
-
         return true;
     }
-
-
 }

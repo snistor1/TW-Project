@@ -28,18 +28,18 @@
 <section class="BigBox">
     <form action="/public/PaginaUtilizator" method="post">
         <?php
-            include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
-            $u=new UtilizatorModel;
-            print '<img src="data:image/jpg;base64,'.base64_encode($u->profile_image).'" alt="This is the users profile picture" width="100" height="100">';
-            print '<br>';
-            print '<a href="/public/editarePgUtilizator" class="button">Edit Profile</a>';
-            print '<hr>';
-            print '<p style="display": inline;">Name:</p><h2>'.$u->name."</h2>";
-            print "<hr>";
-            print "<p>Class:</p><h2>".$u->class_names."</h2>";
-            print "<hr>";
-            print "<p>Email:</p><h2>".$u->email."</h2>";
-            print "<hr>";
+        include $_SERVER['DOCUMENT_ROOT']."/app/models/UtilizatorModel.php";
+        $u=new UtilizatorModel;
+        print '<img src="data:image/jpg;base64,'.base64_encode($u->profile_image).'" alt="This is the users profile picture" width="100" height="100">';
+        print '<br>';
+        print '<a href="/public/editarePgUtilizator" class="button">Edit Profile</a>';
+        print '<hr>';
+        print '<p style="display": inline;">Name:</p><h2>'.$u->name."</h2>";
+        print "<hr>";
+        print "<p>Class:</p><h2>".$u->class_names."</h2>";
+        print "<hr>";
+        print "<p>Email:</p><h2>".$u->email."</h2>";
+        print "<hr>";
         ?>
     </form>
     <button onclick="location.href='/public/adaugareArtefact'" class='button'>Add an artefact</button>
@@ -59,25 +59,22 @@
         if($pg=='r') {
             $pg = 1;
         }
-
         for ($contor = ($pg-1)*9; $contor < ($pg-1)*9+9 and $contor<$length; $contor++) {
-                print '<div class="responsive">';
-                print '<div class="gallery">';
-                print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
-                print '<img src="data:image/jpg;base64,'.base64_encode($u->imagini_artefacte[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
-                print '</a>';
-                print '<div class="desc">' . $u->name_artefacte[$contor] . '</div>';
-                print '</div>';
-                print '</div>';
-
+            print '<div class="responsive">';
+            print '<div class="gallery">';
+            print '<a href="/public/paginaArtefact/' . $u->id_artefacte[$contor] . '">';
+            print '<img src="data:image/jpg;base64,'.base64_encode($u->imagini_artefacte[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
+            print '</a>';
+            print '<div class="desc">' . $u->name_artefacte[$contor] . '</div>';
+            print '</div>';
+            print '</div>';
         }
-
         print '<div class="clearfix"></div>';
         print '<br>';
-
         print '<div class="pagination">';
         if(substr($url, -1)!='r') {
             //caz in care nu sunt pe prima pagina
+            $pg=substr($url, -1);
             $page_s = substr($url, -1) - 1;
             $page_d = substr($url, -1) + 1;
             if ($page_s ==1) {
@@ -95,12 +92,11 @@
                         print '<a href ="' . substr($url, 0, 24) . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
                     }
                 }
-
             }
             if ($page_d > $max_page) {
                 $page_d = $max_page;
             }
-            if($page_d!=$max_page) {
+            if($pg!=$max_page) {
                 print '<a href="' . substr($url, 0, 24) . '/' . $page_d . '">&raquo;</a>';
             }
         }
@@ -116,7 +112,6 @@
             if($max_page>1) {
                 print '<a href="' . substr($url, 0, 24) . '/2'. '">&raquo;</a>';
             }
-
         }
         print '</div>';
     }
