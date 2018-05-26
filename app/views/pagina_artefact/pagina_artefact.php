@@ -35,7 +35,7 @@
         print('<img style="width:100%;" src="data:image/png;base64,'.base64_encode($img).'" />');
 
         echo'<div>
-             <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> User </a></h4>
+             <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> '.$u->user_name.'</a></h4>
             <hr>';
 
         echo'<h4>Author:</h4> <p>'.$u->author_name.'</p>
@@ -101,15 +101,17 @@
     <?php
     if($u->id_related_art[0]=='1')//s-au gasit artefacte asemanatoare
     {
-        for ($contor=1;$contor<5;$contor++){
+        $contor=1;
+        while($u->id_related_art[$contor]!=0) {
             echo '<div class="responsive">';
             echo '<div class="gallery">';
             echo '<a href="/public/paginaArtefact?id='.$u->id_related_art[$contor].'">';
-            echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
+            echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
             echo '</a>';
             echo '<div class="desc">'.$u->name_related_art[$contor].'</div>';
         echo '</div>';
         echo '</div>';
+        $contor++;
         }
     }
     else {if($u->id_related_art[0]=='0')

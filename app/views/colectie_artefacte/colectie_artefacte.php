@@ -118,8 +118,8 @@
         for ($contor = ($pg - 1) * 9; $contor < ($pg - 1) * 9 + 9 and $contor < $length; $contor++) {
             print '<div class="responsive">';
             print '<div class="gallery">';
-            print '<a href="/public/paginaArtefact/' . $c->id_artefacte[$contor] . '">';
-            print '<img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">';
+            print '<a href="/public/paginaArtefact?id=' . $c->id_artefacte[$contor] . '">';
+            print '<img src="data:image/jpg;base64,'.base64_encode($c->imagini_artefacte[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
             print '</a>';
             print '<div class="desc">' . $c->name_artefacte[$contor] . '</div>';
             print '</div>';

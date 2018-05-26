@@ -99,7 +99,7 @@ class ArtefactModel  extends Model
         }
         // comletare array $tags
         $statement= oci_parse($this->db, "select  TAG_NAME,ID_TAG FROM tw.TAGS t 
-                                                  join ARTEFACTS_TAGS a_t on t.ID = a_t.ID_TAG
+                                                  join TW.ARTEFACTS_TAGS a_t on t.ID = a_t.ID_TAG
                                                    where a_t.ID_ARTEFACT=:v_id_artefact");
         oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
         oci_execute($statement);
@@ -187,7 +187,8 @@ class ArtefactModel  extends Model
                 }
 
                 //aflam numele si imaginea celor 4 artefacte
-                for($contor1=1;$contor1<5;$contor1++){
+                $contor1=1;
+                while($this->id_related_art[$contor1]!=0) {
                     $statement1=oci_parse($this->db,"select ARTEFACT_NAME,ARTEFACT_IMAGE from TW.ARTEFACTS where ID=:v_id_artefact");
                     oci_bind_by_name($statement1, ":v_id_artefact", $this->id_related_art[$contor1]);
                     oci_execute($statement1);
@@ -195,6 +196,7 @@ class ArtefactModel  extends Model
                         $this->name_related_art[$contor1]=oci_result($statement1, 1);
                             $this->img_related_art[$contor1]=oci_result($statement1, 2);
                     }
+                    $contor1++;
                 }
             }
         }

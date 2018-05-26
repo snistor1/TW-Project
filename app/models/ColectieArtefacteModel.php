@@ -4,6 +4,7 @@ class ColectieArtefacteModel extends Model
 {
     public $id_artefacte=array();
     public $name_artefacte=array();
+    public $imagini_artefacte = array();
     public $key = "";
     public $cat = "";
     public $mat = "";
@@ -49,13 +50,14 @@ class ColectieArtefacteModel extends Model
 
         //echo "<script>alert(" . $this->key . $this->cat . $this->dat . $this->pur . $this->mat . ");</script>";
 
-        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME FROM tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%' || :key || '%') order by ID desc");
+        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME, ARTEFACT_IMAGE FROM tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%' || :key || '%') order by ID desc");
         oci_bind_by_name($statement, ":key", $this->key);
         oci_execute($statement);
         $i=0;
         while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)){
             $this->id_artefacte[$i]=$row['ID'];
             $this->name_artefacte[$i]=$row['ARTEFACT_NAME'];
+            $this->imagini_artefacte[$i] = $row['ARTEFACT_IMAGE'];
             $i=$i+1;
         }
     }
