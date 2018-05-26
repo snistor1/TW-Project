@@ -98,44 +98,25 @@
 <section class="boxRelatedArtefacts">
     <h3 style="text-align:center; color:grey;"> Related artefacts:</h3>
     <hr>
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
+    <?php
+    if($u->id_related_art[0]=='1')//s-au gasit artefacte asemanatoare
+    {
+        for ($contor=1;$contor<5;$contor++){
+            echo '<div class="responsive">';
+            echo '<div class="gallery">';
+            echo '<a href="/public/paginaArtefact?id='.$u->id_related_art[$contor].'">';
+            echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
+            echo '</a>';
+            echo '<div class="desc">'.$u->name_related_art[$contor].'</div>';
+        echo '</div>';
+        echo '</div>';
+        }
+    }
+    else {if($u->id_related_art[0]=='0')
+        echo "<p>There aren't any related artefacts!</p>";
+    }
+    ?>
 
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
-
-
-    <div class="responsive">
-        <div class="gallery">
-            <a href="/public/paginaArtefact">
-                <img src="/public/Images/img_artefact1.jpg" alt="Imagine Artefact" width="600" height="400">
-            </a>
-            <div class="desc">---Nume_artefact---</div>
-        </div>
-    </div>
 
     <div class="clearfix"></div>
     <hr>

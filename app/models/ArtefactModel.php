@@ -15,9 +15,13 @@ class ArtefactModel  extends Model
     public $materials='';
     public $description='';
     public $tags=array();
+    public $id_tags=array();
     public $latitude='';
     public $longitude='';
     public $artefact_image;
+    public $id_related_art=array(0,0,0,0,0);
+    public $name_related_art=array();
+    public $img_related_art=array();
     public function __construct()
     {
         parent::__construct();
@@ -94,7 +98,7 @@ class ArtefactModel  extends Model
             }
         }
         // comletare array $tags
-        $statement= oci_parse($this->db, "select  TAG_NAME FROM tw.TAGS t 
+        $statement= oci_parse($this->db, "select  TAG_NAME,ID_TAG FROM tw.TAGS t 
                                                   join ARTEFACTS_TAGS a_t on t.ID = a_t.ID_TAG
                                                    where a_t.ID_ARTEFACT=:v_id_artefact");
         oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
@@ -102,7 +106,97 @@ class ArtefactModel  extends Model
         $contor=0;
         while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)){
             $this->tags[$contor]=$row['TAG_NAME'];
+            $this->id_tags[$contor]=$row['ID_TAG'];
             $contor=$contor+1;
+        }
+        //related artefacts
+        $statement=oci_parse($this->db,"select max(id) from tw.ARTEFACTS");
+        oci_execute($statement);
+        if(oci_fetch($statement)) {
+            $max_id = oci_result($statement, 1);
+            $artefacts = array();//vector de frecventa
+            for ($contor = 1; $contor <= $max_id; $contor++) {
+                $artefacts[$contor] = 0;
+            }
+            $max_id = 0;
+            //luam fiecare tag in parte si incrementam vec de frecventa la artefactele care au acelasi tag
+            for ($contor = 0; $contor < count($this->id_tags); $contor++) {
+                $statement = oci_parse($this->db, "select ID_ARTEFACT from TW.ARTEFACTS_TAGS where ID_TAG=:v_id_tag 
+                                  and ID_ARTEFACT!=:v_id_artefact");
+                $values = array(':v_id_tag' => $this->id_tags[$contor], ':v_id_artefact' => $id_artefact);
+                foreach ($values as $key => $val) {
+                    oci_bind_by_name($statement, $key, $values[$key]);
+                }
+                oci_execute($statement);
+                while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                    $artefacts[$row['ID_ARTEFACT']]++;
+                    if ($row['ID_ARTEFACT'] > $max_id) {
+                        $max_id = $row['ID_ARTEFACT'];//in max_id retinem cel mai mare id_artefact care este related cu artefactul nostru
+                    }
+                }
+            }
+            if ($max_id == 0) {
+                $this->id_related_art[0]='0';//nu s-au gasit artefacte asemanatoare
+            }
+            else {
+                $this->id_related_art[0]='1';
+                $max1=0;
+                $max2=0;
+                $max3=0;
+                $max4=0;
+                //artefacts contine lista cu artefactele si cate tag-uri au in comun cu artefactul nostru
+                //vom retine in id_related_art primele 4 cu cele mai multe tag-uri in comun
+                for ($contor = 1; $contor <=$max_id; $contor++) {
+                    if ($artefacts[$contor]>0){
+                        if ($artefacts[$contor]>$max1)
+                        {
+                            $this->id_related_art[4]=$this->id_related_art[3];
+                            $max4=$max3;
+                            $this->id_related_art[3]=$this->id_related_art[2];
+                            $max3=$max2;
+                            $this->id_related_art[2]=$this->id_related_art[1];
+                            $max2=$max1;
+                            $this->id_related_art[1]=$contor;
+                            $max1=$artefacts[$contor];
+                        }
+                        else {
+                            if ($artefacts[$contor] == $max1 or $artefacts[$contor]>$max2) {
+                                $this->id_related_art[4]=$this->id_related_art[3];
+                                $max4=$max3;
+                                $this->id_related_art[3]=$this->id_related_art[2];
+                                $max3=$max2;
+                                $this->id_related_art[2]=$contor;
+                                $max2=$artefacts[$contor];
+                            }
+                            else{
+                                if ($artefacts[$contor]==$max2 or $artefacts[$contor]>$max3){
+                                    $this->id_related_art[4]=$this->id_related_art[3];
+                                    $max4=$max3;
+                                    $this->id_related_art[3]=$contor;
+                                    $max3=$artefacts[$contor];
+                                }
+                                else{
+                                    if ($artefacts[$contor]==$max3 or $artefacts[$contor]>$max4){
+                                        $this->id_related_art[4]=$contor;
+                                        $max4=$artefacts[$contor];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //aflam numele si imaginea celor 4 artefacte
+                for($contor1=1;$contor1<5;$contor1++){
+                    $statement1=oci_parse($this->db,"select ARTEFACT_NAME,ARTEFACT_IMAGE from TW.ARTEFACTS where ID=:v_id_artefact");
+                    oci_bind_by_name($statement1, ":v_id_artefact", $this->id_related_art[$contor1]);
+                    oci_execute($statement1);
+                    if(oci_fetch($statement1)){
+                        $this->name_related_art[$contor1]=oci_result($statement1, 1);
+                            $this->img_related_art[$contor1]=oci_result($statement1, 2);
+                    }
+                }
+            }
         }
     }
 }
