@@ -20,8 +20,7 @@ class AdaugareArtefactModel extends Model{
             $latitudine = $_POST['latitudine'];
             $longitudine = $_POST['longitudine'];
             $descriere = $_POST['descriere'];
-            //$_POST['rol'] si $_POST['material']: vectori
-
+            $dating = $secol.' '.$data;
             $file = $_FILES['pic'];
             $fileName = $_FILES['pic']['name'];
             $fileError = $_FILES['pic']['error'];
@@ -53,8 +52,9 @@ class AdaugareArtefactModel extends Model{
                                     (:v_name,:v_id_user,:v_author,:v_dating,:v_price,:v_description,:v_origin,
                                       :v_latitude,:v_longitude,empty_blob(),:v_license) returning ARTEFACT_IMAGE into :image");
                 $blob = oci_new_descriptor($this->db,OCI_D_LOB);
+
                 $values = array(':v_name' => $nume, ':v_id_user' => Session::get('id_user'), 'v_author' => $autor,
-                    ':v_dating' => $secol, ':v_price' => $pret, ':v_description' => $descriere,
+                    ':v_dating' => $dating, ':v_price' => $pret, ':v_description' => $descriere,
                     ':v_origin' => $origine, ':v_latitude' => $latitudine,
                     ':v_longitude' => $longitudine, ':v_license' => $licenta
                 );
@@ -174,8 +174,7 @@ class AdaugareArtefactModel extends Model{
                         }
                     }
                 }
-
-                header('Location: /public/PaginaArtefact');
+                header('Location: /public/PaginaArtefact'.'?id='.$id_artefact);
                 exit();
             }
             exit();

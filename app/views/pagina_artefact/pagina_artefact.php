@@ -28,43 +28,47 @@
 <section class="BigBox">
     <div class="box">
         <h2>--ArtefactName--</h2>
+        <?php
+        include $_SERVER['DOCUMENT_ROOT']."/app/models/ArtefactModel.php";
+        $u=new ArtefactModel;
+        $img = $u->artefact_image->load();
+        print('<img style="width:100%;" src="data:image/png;base64,'.base64_encode($img).'" />');
 
-        <div>
-            <img src="/public/Images/img_artefact1.jpg" alt="artefact" style="width:100%;">
-        </div>
+        echo'<div>
+             <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> User </a></h4>
+            <hr>';
 
-        <!-- begin Informatii artefact-->
-        <div>
-            <h4>Added by: <a href="/public/paginaAltUtilizator"> User </a></h4>
-            <hr>
+        echo'<h4>Author:</h4> <p>'.$u->author_name.'</p>
+            <hr>';
 
-            <h4>Author:</h4> <p>--AuthorName--</p>
-            <hr>
+        echo'<h4>Class:</h4> <p>'.$u->class_names.'</p>
+            <hr>';
 
-            <h4>Class:</h4> <p>--Origin--</p>
-            <hr>
+        echo '<h4>Dating:</h4> <p>Century: '.$u->dating.'</p>
+            <hr>';
 
-            <h4>Dating:</h4> <p>--Dating_the_artefact--</p>
-            <hr>
+        echo'<h4>Price:</h4> <p>'.$u->price.' USD</p>
+            <hr>';
+        if($u->license==0)
+        echo'<h4>License:</h4> <p>Without license</p>
+            <hr>';
+        else
+            echo'<h4>License:</h4> <p>Without license</p>
+            <hr>';
 
-            <h4>Price:</h4> <p>--ArtefactEstimatedPrice--</p>
-            <hr>
+         echo'<h4>Origin:</h4> <p>'.$u->origin.'</p>
+            <hr>';
 
-            <h4>License:</h4> <p>--UseLicense--</p>
-            <hr>
+         echo'<h4>Roles:</h4> <p>'.$u->roles.'</p>
+            <hr>';
 
-            <h4>Origin:</h4> <p>--Origin--</p>
-            <hr>
+         echo'<h4>Materials:</h4> <p>'.$u->materials.'</p>
+            <hr>';
 
-            <h4>Roles:</h4> <p>--Roles--</p>
-            <hr>
+         echo'<h4>Description:</h4> <p>'.$u->description.'</p>
+            <hr>';
 
-            <h4>Materials:</h4> <p>--Materials--</p>
-            <hr>
-
-            <h4>Description:</h4> <p>--ArtefactDescription--</p>
-            <hr>
-
+        ?>
             <h4>Tags:</h4>
             <a class="tag">tag1</a>
             <a class="tag">tag2</a>

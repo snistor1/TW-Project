@@ -149,9 +149,9 @@
                 <h4>Dating:</h4>
                 Century:
                 <input type="number" min="0" max="21" id="dating" name="secol" placeholder="number..." required>
-                <input type="radio" onclick="document.getElementById(\'dating\').max=40" name="data" id="BC" value="" checked>
+                <input type="radio" onclick="document.getElementById(\'dating\').max=40" name="data" id="BC" value="BC" checked>
                 <label for="">BC</label>
-                <input type="radio" onclick="document.getElementById(\'dating\').max=21" name="data" id="AD" value="">
+                <input type="radio" onclick="document.getElementById(\'dating\').max=21" name="data" id="AD" value="AD">
                 <label for="">AD</label>
                 <hr>';
 
