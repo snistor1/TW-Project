@@ -27,11 +27,11 @@
 <hr>
 <section class="BigBox">
     <div class="box">
-        <h2>--ArtefactName--</h2>
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/app/models/ArtefactModel.php";
         $u=new ArtefactModel;
         $img = $u->artefact_image->load();
+        echo '<h2>'.$u->artefact_name.'</h2>';
         print('<img style="width:100%;" src="data:image/png;base64,'.base64_encode($img).'" />');
 
         echo'<div>
@@ -89,9 +89,32 @@
 
 <h3 style="text-align:center; color:grey;"> Export</h3>
 <div class="exportButtons">
-    <input type="submit" name="JSON" value="JSON" id="button">
+        <?php
+            include $_SERVER['DOCUMENT_ROOT']."/app/models/ExportModel.php";
+            $e = new ExportModel();
+
+            $e->exportJson();
+            echo '<a href="/app/files/jsonFile.json" download="artefact.json">';
+            echo '<button>JSON</button>';
+            echo '</a>';
+
+            //Asta e pentru sters fisierul. Problema e ca il sterge inainte de a se descarca :D :D
+            //unlink("/testfile1.json");
+
+            $e->exportXml();
+            echo '<a href="/app/files/xmlFile.xml" download="artefact.xml">';
+            echo '<button>XML</button>';
+            echo '</a>';
+
+            $e->exportCsv();
+            echo '<a href="/app/files/csvFile.csv" download="artefact.csv">';
+            echo '<button>CSV</button>';
+            echo '</a>';
+        ?>
+
+    <!--<input type="submit" name="JSON" value="JSON" id="button">
     <input type="submit" name="XML" value="XML" id="button">
-    <input type="submit" name="CSV" value="CSV" id="button">
+    <input type="submit" name="CSV" value="CSV" id="button">-->
 </div>
 
 <hr>
