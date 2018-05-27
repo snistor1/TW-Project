@@ -30,10 +30,11 @@
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/app/models/ArtefactModel.php";
         $u=new ArtefactModel;
-        $img = $u->artefact_image->load();
-        echo '<h2>'.$u->artefact_name.'</h2>';
-        print('<img style="width:100%;" src="data:image/png;base64,'.base64_encode($img).'" />');
-
+        if($u->artefact_image!=null) {
+            $img = $u->artefact_image->load();
+            echo '<h2>' . $u->artefact_name . '</h2>';
+            print('<img style="width:100%;" src="data:image/png;base64,' . base64_encode($img) . '" />');
+        }
         echo'<div>
              <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> '.$u->user_name.'</a></h4>
             <hr>';
@@ -42,6 +43,12 @@
             <hr>';
 
         echo'<h4>Class:</h4> <p>'.$u->class_names.'</p>
+            <hr>';
+
+        echo'<h4>Category:</h4> <p>'.$u->category.'</p>
+            <hr>';
+
+        echo'<h4>Subcategory:</h4> <p>'.$u->subcategory.'</p>
             <hr>';
 
         echo '<h4>Dating:</h4> <p>Century: '.$u->dating.'</p>
@@ -67,17 +74,12 @@
 
          echo'<h4>Description:</h4> <p>'.$u->description.'</p>
             <hr>';
-
+         echo'<h4>Tags:</h4>';
+        foreach ($u->tags as $tag)
+        {
+            echo"<a class='tag'>".$tag.'</a>';
+        }
         ?>
-            <h4>Tags:</h4>
-            <a class="tag">tag1</a>
-            <a class="tag">tag2</a>
-            <a class="tag">tag3</a>
-            <a class="tag">tag4</a>
-            <a class="tag">tag5</a>
-            <a class="tag">tag6</a>
-            <a class="tag">tag7</a>
-            <a class="tag">tag8</a>
             <hr>
             <!--Api Google Maps-->
             <h4>Localization:</h4>
@@ -125,11 +127,13 @@
     if($u->id_related_art[0]=='1')//s-au gasit artefacte asemanatoare
     {
         $contor=1;
-        while($u->id_related_art[$contor]!=0) {
+        while($contor<=4 and $u->id_related_art[$contor]!=0) {
             echo '<div class="responsive">';
             echo '<div class="gallery">';
             echo '<a href="/public/paginaArtefact?id='.$u->id_related_art[$contor].'">';
+            if($u->img_related_art[$contor]!=null){
             echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
+            }
             echo '</a>';
             echo '<div class="desc">'.$u->name_related_art[$contor].'</div>';
         echo '</div>';

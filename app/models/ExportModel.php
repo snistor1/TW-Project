@@ -15,18 +15,32 @@ class ExportModel extends Model
         $this->rows = array();
         $this->xml_array = array();
         while($r = oci_fetch_assoc($sql)) {
-            $x = array(
-                $r['ID'],$r['ARTEFACT_NAME'],$r['ID_USER'],$r['AUTHOR_NAME'],$r['DATING'],$r['PRICE'],$r['DESCRIPTION'],
-                $r['ORIGIN'],$r['LATITUDE'],$r['LONGITUDE'],base64_encode($r['ARTEFACT_IMAGE']->load()),$r['UTILIZATION_LICENSE']
-            );
+            if($r['ARTEFACT_IMAGE']!=null) {
+                $x = array(
+                    $r['ID'], $r['ARTEFACT_NAME'], $r['ID_USER'], $r['AUTHOR_NAME'], $r['DATING'], $r['PRICE'], $r['DESCRIPTION'],
+                    $r['ORIGIN'], $r['LATITUDE'], $r['LONGITUDE'], base64_encode($r['ARTEFACT_IMAGE']->load()), $r['UTILIZATION_LICENSE']
+                );
 
-            $y = array(
-                'ID'=>$r['ID'],'ARTEFACT_NAME'=>$r['ARTEFACT_NAME'],'ID_USER'=>$r['ID_USER'],
-                'AUTHOR_NAME'=>$r['AUTHOR_NAME'],'DATING'=>$r['DATING'],'PRICE'=>$r['PRICE'],'DESCRIPTION'=>$r['DESCRIPTION'],
-                'ORIGIN'=>$r['ORIGIN'],'LATITUDE'=>$r['LATITUDE'],'LONGITUDE'=>$r['LONGITUDE'],
-                'ARTEFACT_IMAGE'=>base64_encode($r['ARTEFACT_IMAGE']->load()),'UTILIZATION_LICENSE'=>$r['UTILIZATION_LICENSE']
-            );
+                $y = array(
+                    'ID' => $r['ID'], 'ARTEFACT_NAME' => $r['ARTEFACT_NAME'], 'ID_USER' => $r['ID_USER'],
+                    'AUTHOR_NAME' => $r['AUTHOR_NAME'], 'DATING' => $r['DATING'], 'PRICE' => $r['PRICE'], 'DESCRIPTION' => $r['DESCRIPTION'],
+                    'ORIGIN' => $r['ORIGIN'], 'LATITUDE' => $r['LATITUDE'], 'LONGITUDE' => $r['LONGITUDE'],
+                    'ARTEFACT_IMAGE' => base64_encode($r['ARTEFACT_IMAGE']->load()), 'UTILIZATION_LICENSE' => $r['UTILIZATION_LICENSE']
+                );
+            }
+            else{
+                $x = array(
+                    $r['ID'], $r['ARTEFACT_NAME'], $r['ID_USER'], $r['AUTHOR_NAME'], $r['DATING'], $r['PRICE'], $r['DESCRIPTION'],
+                    $r['ORIGIN'], $r['LATITUDE'], $r['LONGITUDE'], $r['UTILIZATION_LICENSE']
+                );
 
+                $y = array(
+                    'ID' => $r['ID'], 'ARTEFACT_NAME' => $r['ARTEFACT_NAME'], 'ID_USER' => $r['ID_USER'],
+                    'AUTHOR_NAME' => $r['AUTHOR_NAME'], 'DATING' => $r['DATING'], 'PRICE' => $r['PRICE'], 'DESCRIPTION' => $r['DESCRIPTION'],
+                    'ORIGIN' => $r['ORIGIN'], 'LATITUDE' => $r['LATITUDE'], 'LONGITUDE' => $r['LONGITUDE'],
+                     'UTILIZATION_LICENSE' => $r['UTILIZATION_LICENSE']
+                );
+            }
             $this->xml_array[] = $y;
             $this->rows[] = $x;
         }
