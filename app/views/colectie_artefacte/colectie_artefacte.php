@@ -34,6 +34,7 @@
 
     <div class="filters-container">
 
+
         <div class="select">
             <select name="cat" id="slct">
                 <option style="display:none;">Category</option>
@@ -122,7 +123,9 @@
             print '<div class="responsive">';
             print '<div class="gallery">';
             print '<a href="/public/paginaArtefact?id=' . $c->id_artefacte[$contor] . '">';
-            print '<img src="data:image/jpg;base64,'.base64_encode($c->imagini_artefacte[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
+            if($c->imagini_artefacte[$contor]!=null){
+                echo '<img src="data:image/jpg;base64,'.base64_encode($c->imagini_artefacte[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
+            }
             print '</a>';
             print '<div class="desc">' . $c->name_artefacte[$contor] . '</div>';
             print '</div>';
@@ -134,45 +137,95 @@
         print '<br>';
 
         print '<div class="pagination">';
-        if(substr($url, -1) != substr($c->dat, -1) and substr($url, -1) != 'e' and substr($url, -1) != '=' and substr($url, -1) != '/') {
-            //caz in care nu sunt pe prima pagina
+
+        if(strcmp($url,'/public/colectieArtefacte')!=0 and strstr($url,'?')==FALSE)
+        {
+            //caz in care nu sunt pe prima pagina fara filtre
             $page_s = substr($url, -1) - 1;
             $page_d = substr($url, -1) + 1;
             if ($page_s ==1) {
-                print '<a href="' . substr($url, 0, strlen($url)-2). '">&laquo;</a>';
+                    print '<a href="' . substr($url, 0, 25). '">&laquo;</a>';
             }
-            else {print '<a href="' . substr($url, 0, strlen($url)-2) . '/' . $page_s . '">&laquo;</a>';}
+            else {
+                print '<a href="' . substr($url, 0, 25). '/'.$page_s.'">&laquo;</a>';
+            }
             for ($contor = 0; $contor < $length; $contor += 9) {
-                if (strcmp($url, substr($url, 0, strlen($url)-1) .($contor / 9 + 1))==0) {
-                    print '<a class="active">' . ($contor / 9 + 1) . '</a >';
-                } else {
-                    if($contor==0){
-                        print '<a href ="' . substr($url, 0, strlen($url)-2). '">' . ($contor / 9 + 1) . '</a >';
+                    if (strcmp($url, '/public/colectieArtefacte' .'/'.($contor / 9 + 1))==0) {
+                        print '<a href ="' . substr($url, 0, 25). '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                    } else {
+                        if($contor==0){
+                            print '<a href ="' . substr($url, 0, 25). '">' . ($contor / 9 + 1) . '</a >';
+                        }
+                        else {
+                            print '<a href ="' . substr($url, 0, 25) . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                        }
                     }
-                    else {
-                        print '<a href ="' . substr($url, 0, strlen($url)-1) . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
-                    }
-                }
 
             }
             if ($page_d > $max_page) {
                 $page_d = $max_page;
             }
-            if($page_d!=$max_page) {
-                print '<a href="' . substr($url, 0, strlen($url)-1) . '/' . $page_d . '">&raquo;</a>';
+
+            if(substr($url,-1)!=$max_page) {
+                    print '<a href="' . substr($url, 0, 25) . '/' . $page_d . '">&raquo;</a>';
             }
         }
-        else{//caz in care sunt pe prima pagina
-            for ($contor = 0; $contor < $length; $contor += 9) {
-                if($contor==0) {
-                    print '<a class="active">' . ($contor / 9 + 1) . '</a >';
-                }
-                else{
-                    print '<a href ="' . substr($url, 0, strlen($url)) . '/' .  ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
-                }
+        else {if(strstr($url,'?')!=FALSE and strstr(strstr($url,'?'),'/')!=FALSE){
+
+            //caz in care nu sunt pe prima pagina si sunt filtre
+            $page_s = substr($url, -1) - 1;
+            $page_d = substr($url, -1) + 1;
+            if ($page_s ==1) {
+                print '<a href="' . strstr($url,'?',true).strstr(strstr($url,'?'),'/',true). '">&laquo;</a>';
             }
-            if($max_page>1) {
-                print '<a href="' . substr($url, 0, strlen($url)) . '/2'. '">&raquo;</a>';
+            else {
+                print '<a href="' . strstr($url,'?',true).strstr(strstr($url,'?'),'/',true) . '/' . $page_s . '">&laquo;</a>';
+            }
+            for ($contor = 0; $contor < $length; $contor += 9){
+                    if (strcmp($url, strstr($url,'?',true).strstr(strstr($url,'?'),'/',true).'/' .($contor / 9 + 1))==0) {
+                        print '<a href ="' .strstr($url,'?',true).strstr(strstr($url,'?'),'/',true). '/' . ($contor / 9 + 1) . '"class="active">' . ($contor / 9 + 1) . '</a >';
+                    } else {
+                        if($contor==0){
+                            print '<a href ="' .strstr($url,'?',true).strstr(strstr($url,'?'),'/',true). '">' . ($contor / 9 + 1) . '</a >';
+                        }
+                        else {
+                            print '<a href ="' .strstr($url,'?',true).strstr(strstr($url,'?'),'/',true). '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                        }
+                    }
+
+                }
+
+            if ($page_d > $max_page) {
+                $page_d = $max_page;
+            }
+
+            if(substr($url,-1)!=$max_page)  {
+                    print '<a href="' .strstr($url,'?',true).strstr(strstr($url,'?'),'/',true). '/' . $page_d . '">&raquo;</a>';
+                }
+        }
+            else {//caz in care sunt pe prima pagina
+                for ($contor = 0; $contor < $length; $contor += 9) {
+                    if (strstr($url, '?') == FALSE) {
+                        if ($contor == 0) {
+                            print '<a class="active">' . ($contor / 9 + 1) . '</a >';
+                        } else {
+                            print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                        }
+                    } else {
+                        if ($contor == 0) {
+                            print '<a class="active">' . ($contor / 9 + 1) . '</a >';
+                        } else {
+                            print '<a href ="' . $url . '/' . ($contor / 9 + 1) . '">' . ($contor / 9 + 1) . '</a >';
+                        }
+                    }
+                }
+                if ($max_page > 1) {
+                    if (strstr($url, '?') == FALSE) {
+                        print '<a href="' . substr($url, 0, 25) . '/2' . '">&raquo;</a>';
+                    } else {
+                        print '<a href="' . strstr($url, '?', true) . strstr(strstr($url, '?'), '/', true) . '/2' . '">&raquo;</a>';
+                    }
+                }
             }
 
         }

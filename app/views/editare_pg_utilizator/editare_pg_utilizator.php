@@ -57,6 +57,7 @@
                         echo '<input type="checkbox" name="clasa[]" value="' . $ed->clase[$contor] . '"><label>' .
                             $ed->clase[$contor] . '</label>';
                     }
+                    if($contor%3==0){echo '<br>';}
             }
             echo '<br>';
 
