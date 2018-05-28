@@ -2,64 +2,106 @@
 
 class ColectieArtefacteModel extends Model
 {
-    public $id_artefacte=array();
-    public $name_artefacte=array();
-    public $imagini_artefacte = array();
-    public $key = "";
-    public $cat = "";
-    public $mat = "";
-    public $pur = "";
-    public $dat = "";
     public function __construct()
     {
         parent::__construct();
-        if(isset($_GET['search']))
+        if(isset($_POST['key']))
         {
-            $this->key = $_GET['search'];
+            $key = $_POST['key'];
         }
         else
-            $this->key = "";
+            $key = "";
+        $file = file_get_contents('http://localhost/public/colectieArtefacte');
+        $doc = new DOMDocument();
+        @$doc->loadHTML($file);
+        $root = $doc->getElementById('Collection');
+        $root->nodeValue = "";
+        $heading = new DOMElement('h6', 'heading');
+        $root->appendChild($heading);
 
-        if(isset($_GET['cat']))
+        $statement = oci_parse($this->db,"select ID, ARTEFACT_NAME from tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%'|| :key ||'%')");
+        oci_bind_by_name($statement,"key",$key);
+        oci_execute($statement,OCI_DEFAULT);
+
+        $number = 0;
+
+        while ($row = oci_fetch_array($statement, OCI_ASSOC+OCI_RETURN_NULLS))
         {
-            $this->cat = $_GET['cat'];
-        }
-        else
-            $this->cat = "";
+            $number ++;
 
-        if(isset($_GET['mat']))
+            $name = $row['ARTEFACT_NAME'];
+            $id = $row['ID'];
+
+            $first_div = new DOMElement('div');
+            $root->appendChild($first_div);
+            $first_div->setAttribute('class','responsive');
+
+            $second_div = new DOMElement('div');
+            $first_div->appendChild($second_div);
+            $second_div->setAttribute('class','gallery');
+
+            $alink = new DOMElement('a');
+            $second_div->appendChild($alink);
+            $alink->setAttribute('href','/public/paginaArtefact/id=' . $id);
+
+            $img = new DOMElement('img');
+            $alink->appendChild($img);
+            $img->setAttribute('src','/public/Images/img_artefact1.jpg');
+            $img->setAttribute('alt','Imagine Artefact');
+            $img->setAttribute('width','600');
+            $img->setAttribute('height','400');
+
+            $third_div = new DOMElement('div',$name);
+            $second_div->appendChild($third_div);
+            $third_div->setAttribute('class','desc');
+        }
+
+        if($number == 0)
         {
-            $this->mat = $_GET['mat'];
+            $noresults = new DOMElement('h3', 'No results found for \'' . $key . '\'.');
+            $root->appendChild($noresults);
         }
-        else
-            $this->mat = "";
 
-        if(isset($_GET['pur']))
+        $clear = new DOMElement('div');
+        $root->appendChild($clear);
+        $clear->setAttribute('class', 'clearfix');
+
+        if($number > 0)
         {
-            $this->pur = $_GET['pur'];
-        }
-        else
-            $this->pur = "";
+            $number--;
+            $number = $number/3;
+            $number++;
 
-        if(isset($_GET['dat']))
+            $pagination = new DOMElement('div');
+            $root->appendChild($pagination);
+            $pagination->setAttribute('class', 'pagination');
+
+            $pag = new DOMElement('a', '&laquo;');
+            $pagination->appendChild($pag);
+
+            for($i = 1; $i <= $number; $i++)
+            {
+                $pag = new DOMElement('a', $i);
+                $pagination->appendChild($pag);
+            }
+
+            $pag = new DOMElement('a', '&raquo;');
+            $pagination->appendChild($pag);
+        }
+
+        //echo $doc->saveHTML();
+        $doc->saveHTMLFile('../app/views/colectie_artefacte/colectie_artefacte.php');
+        header( 'Location: http://localhost/public/colectieArtefacte/search=' . $key);
+
+
+        /*
+        $statement = oci_parse($this->db,"select count(*) from tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%'|| :key ||'%')");
+        oci_bind_by_name($statement,"key",$key);
+        oci_execute($statement,OCI_DEFAULT);
+        if(oci_fetch($statement))
         {
-            $this->dat = $_GET['dat'];
-        }
-        else
-            $this->dat = "";
-
-        //echo "<script>alert(" . $this->key . $this->cat . $this->dat . $this->pur . $this->mat . ");</script>";
-
-        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME, ARTEFACT_IMAGE FROM tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%' || :key || '%') order by ID desc");
-        oci_bind_by_name($statement, ":key", $this->key);
-        oci_execute($statement);
-        $i=0;
-        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)){
-            $this->id_artefacte[$i]=$row['ID'];
-            $this->name_artefacte[$i]=$row['ARTEFACT_NAME'];
-            $this->imagini_artefacte[$i] = $row['ARTEFACT_IMAGE'];
-            $i=$i+1;
-        }
+            $number = oci_result($statement,1);
+        }*/
     }
 
 

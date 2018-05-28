@@ -76,39 +76,16 @@ class AdaugareArtefactModel extends Model{
                 }
                 //adaugare informatii in tabela ARTEFACTS_SUB_CATEGORIES
                 if(isset($_POST['subcategorie'])) {
-                    $statement = oci_parse($this->db, "select s.id from tw.SUB_CATEGORIES s join tw.CATEGORIES c 
-                                                                   on s.PARENT_ID=c.ID where SUB_CATEGORY_NAME=:subcategory_name
-                                                                   and CATEGORY_NAME=:category_name");
+                    $statement = oci_parse($this->db, "select id from tw.SUB_CATEGORIES where SUB_CATEGORY_NAME=:subcategory_name");
                     oci_bind_by_name($statement, ":subcategory_name", $_POST['subcategorie']);
-                    oci_bind_by_name($statement, ":category_name",$_POST['categorie']);
                     oci_execute($statement, OCI_DEFAULT);
                     if (oci_fetch($statement)) {
-                            $id_subcategory = oci_result($statement, 1);
                             $statement = oci_parse($this->db, "INSERT INTO TW.ARTEFACTS_SUB_CATEGORIES
                                                    VALUES(:v_id_artefact,:v_id_subcategory)");
                             oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
                             oci_bind_by_name($statement, ":v_id_subcategory", $id_subcategory);
                             oci_execute($statement);
 
-                    }
-                }
-                else{
-                    if(isset($_POST['categorie'])) {
-                        $statement = oci_parse($this->db, "select s.id from tw.SUB_CATEGORIES s join tw.CATEGORIES c 
-                                                                   on s.PARENT_ID=c.ID where SUB_CATEGORY_NAME=:subcategory_name 
-                                                                   and CATEGORY_NAME=:category_name");
-                        $subcategorie='another';
-                        oci_bind_by_name($statement, ":subcategory_name",$subcategorie);
-                        oci_bind_by_name($statement, ":category_name",$_POST['categorie']);
-                        oci_execute($statement, OCI_DEFAULT);
-                        if (oci_fetch($statement)) {
-                            $id_subcategory = oci_result($statement, 1);
-                            $statement = oci_parse($this->db, "INSERT INTO TW.ARTEFACTS_SUB_CATEGORIES
-                                                   VALUES(:v_id_artefact,:v_id_subcategory)");
-                            oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
-                            oci_bind_by_name($statement, ":v_id_subcategory", $id_subcategory);
-                            oci_execute($statement);
-                        }
                     }
                 }
                 //adaugare informatii in tabela ARTEFACTS_CLASS

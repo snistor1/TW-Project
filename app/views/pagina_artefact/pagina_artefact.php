@@ -13,7 +13,7 @@
         <a href="/public/paginaUtilizator"><img src="/public/Images/png_profile.png" alt="ProfilePage" ></a>
         <a href="/public/login"><img src="/public/Images/png_login.png" alt="LoginPage" ></a>
         <a href="/public/index"><img src="/public/Images/png_home.png" alt="HomePage" ></a>
-        <a href="/public/colectieArtefacte"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
+        <a href="/public/colectieArtefacte/submit"><img src="/public/Images/png_collection.png" alt="CollectionPage" ></a>
         <a href="/public/statistics"><img src="/public/Images/png_statistics.png" alt="StatisticsPage" ></a>
     </div>
     <div class="inner">
@@ -27,28 +27,21 @@
 <hr>
 <section class="BigBox">
     <div class="box">
+        <h2>--ArtefactName--</h2>
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/app/models/ArtefactModel.php";
         $u=new ArtefactModel;
-        if($u->artefact_image!=null) {
-            $img = $u->artefact_image->load();
-            echo '<h2>' . $u->artefact_name . '</h2>';
-            print('<img style="width:100%;" src="data:image/png;base64,' . base64_encode($img) . '" />');
-        }
+        $img = $u->artefact_image->load();
+        print('<img style="width:100%;" src="data:image/png;base64,'.base64_encode($img).'" />');
+
         echo'<div>
-             <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> '.$u->user_name.'</a></h4>
+             <h4>Added by: <a href="/public/paginaAltUtilizator?id='.$u->user_id.'"> User </a></h4>
             <hr>';
 
         echo'<h4>Author:</h4> <p>'.$u->author_name.'</p>
             <hr>';
 
         echo'<h4>Class:</h4> <p>'.$u->class_names.'</p>
-            <hr>';
-
-        echo'<h4>Category:</h4> <p>'.$u->category.'</p>
-            <hr>';
-
-        echo'<h4>Subcategory:</h4> <p>'.$u->subcategory.'</p>
             <hr>';
 
         echo '<h4>Dating:</h4> <p>Century: '.$u->dating.'</p>
@@ -74,12 +67,17 @@
 
          echo'<h4>Description:</h4> <p>'.$u->description.'</p>
             <hr>';
-         echo'<h4>Tags:</h4>';
-        foreach ($u->tags as $tag)
-        {
-            echo"<a class='tag'>".$tag.'</a>';
-        }
+
         ?>
+            <h4>Tags:</h4>
+            <a class="tag">tag1</a>
+            <a class="tag">tag2</a>
+            <a class="tag">tag3</a>
+            <a class="tag">tag4</a>
+            <a class="tag">tag5</a>
+            <a class="tag">tag6</a>
+            <a class="tag">tag7</a>
+            <a class="tag">tag8</a>
             <hr>
             <!--Api Google Maps-->
             <h4>Localization:</h4>
@@ -91,32 +89,9 @@
 
 <h3 style="text-align:center; color:grey;"> Export</h3>
 <div class="exportButtons">
-        <?php
-            include $_SERVER['DOCUMENT_ROOT']."/app/models/ExportModel.php";
-            $e = new ExportModel();
-
-            $e->exportJson();
-            echo '<a href="/app/files/jsonFile.json" download="artefact.json">';
-            echo '<button>JSON</button>';
-            echo '</a>';
-
-            //Asta e pentru sters fisierul. Problema e ca il sterge inainte de a se descarca :D :D
-            //unlink("/testfile1.json");
-
-            $e->exportXml();
-            echo '<a href="/app/files/xmlFile.xml" download="artefact.xml">';
-            echo '<button>XML</button>';
-            echo '</a>';
-
-            $e->exportCsv();
-            echo '<a href="/app/files/csvFile.csv" download="artefact.csv">';
-            echo '<button>CSV</button>';
-            echo '</a>';
-        ?>
-
-    <!--<input type="submit" name="JSON" value="JSON" id="button">
+    <input type="submit" name="JSON" value="JSON" id="button">
     <input type="submit" name="XML" value="XML" id="button">
-    <input type="submit" name="CSV" value="CSV" id="button">-->
+    <input type="submit" name="CSV" value="CSV" id="button">
 </div>
 
 <hr>
@@ -126,19 +101,15 @@
     <?php
     if($u->id_related_art[0]=='1')//s-au gasit artefacte asemanatoare
     {
-        $contor=1;
-        while($contor<=4 and $u->id_related_art[$contor]!=0) {
+        for ($contor=1;$contor<5;$contor++){
             echo '<div class="responsive">';
             echo '<div class="gallery">';
             echo '<a href="/public/paginaArtefact?id='.$u->id_related_art[$contor].'">';
-            if($u->img_related_art[$contor]!=null){
-            echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
-            }
+            echo '<img src="data:image/jpg;base64,'.base64_encode($u->img_related_art[$contor]).'" alt="Imagine Artefact" width="600" height="400">';
             echo '</a>';
             echo '<div class="desc">'.$u->name_related_art[$contor].'</div>';
         echo '</div>';
         echo '</div>';
-        $contor++;
         }
     }
     else {if($u->id_related_art[0]=='0')

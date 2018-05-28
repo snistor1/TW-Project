@@ -22,8 +22,6 @@ class ArtefactModel  extends Model
     public $id_related_art=array(0,0,0,0,0);
     public $name_related_art=array();
     public $img_related_art=array();
-    public $category='';
-    public $subcategory='';
     public function __construct()
     {
         parent::__construct();
@@ -37,7 +35,7 @@ class ArtefactModel  extends Model
         oci_execute($statement);
         while ($row = oci_fetch_array($statement,OCI_RETURN_NULLS+OCI_ASSOC)) {
                 $this->artefact_name = $row['ARTEFACT_NAME'];
-                $this->user_id= $row['ID_USER'];
+                $id_user = $row['ID_USER'];
                 $this->author_name=$row['AUTHOR_NAME'];
                 $this->dating=$row['DATING'];
                 $this->price=$row['PRICE'];
@@ -48,7 +46,7 @@ class ArtefactModel  extends Model
                 $this->license=$row['UTILIZATION_LICENSE'];
                 $this->artefact_image=$row['ARTEFACT_IMAGE'];
             }
-        $id_user=$this->user_id  ;
+        $this->user_id = $id_user;
         $statement = oci_parse($this->db, "select NAME from tw.USERS where ID=:user_id");
         oci_bind_by_name($statement, ":user_id", $id_user);
         oci_execute($statement, OCI_DEFAULT);
@@ -101,7 +99,7 @@ class ArtefactModel  extends Model
         }
         // comletare array $tags
         $statement= oci_parse($this->db, "select  TAG_NAME,ID_TAG FROM tw.TAGS t 
-                                                  join TW.ARTEFACTS_TAGS a_t on t.ID = a_t.ID_TAG
+                                                  join ARTEFACTS_TAGS a_t on t.ID = a_t.ID_TAG
                                                    where a_t.ID_ARTEFACT=:v_id_artefact");
         oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
         oci_execute($statement);
@@ -111,28 +109,6 @@ class ArtefactModel  extends Model
             $this->id_tags[$contor]=$row['ID_TAG'];
             $contor=$contor+1;
         }
-
-        // comletare array $subcategories
-        $statement= oci_parse($this->db, "select  SUB_CATEGORY_NAME,PARENT_ID FROM tw.SUB_CATEGORIES s 
-                                                  join TW.ARTEFACTS_SUB_CATEGORIES a_s on s.ID = a_s.ID_SUB_CATEGORY
-                                                   where a_s.ID_ARTEFACT=:v_id_artefact");
-        oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
-        oci_execute($statement);
-
-        if (oci_fetch($statement)) {
-            $this->subcategory = oci_result($statement, 1);
-            //completare categorie
-            $id_category = oci_result($statement, 2);
-            $statement= oci_parse($this->db, "select  CATEGORY_NAME FROM tw.CATEGORIES  
-                                                      where ID=:v_id_categorie");
-            oci_bind_by_name($statement, ":v_id_categorie", $id_category);
-            oci_execute($statement);
-            if (oci_fetch($statement)) {
-                $this->category = oci_result($statement, 1);
-            }
-        }
-
-
         //related artefacts
         $statement=oci_parse($this->db,"select max(id) from tw.ARTEFACTS");
         oci_execute($statement);
@@ -211,8 +187,7 @@ class ArtefactModel  extends Model
                 }
 
                 //aflam numele si imaginea celor 4 artefacte
-                $contor1=1;
-                while($contor1<=4 and $this->id_related_art[$contor1]!=0  ) {
+                for($contor1=1;$contor1<5;$contor1++){
                     $statement1=oci_parse($this->db,"select ARTEFACT_NAME,ARTEFACT_IMAGE from TW.ARTEFACTS where ID=:v_id_artefact");
                     oci_bind_by_name($statement1, ":v_id_artefact", $this->id_related_art[$contor1]);
                     oci_execute($statement1);
@@ -220,7 +195,6 @@ class ArtefactModel  extends Model
                         $this->name_related_art[$contor1]=oci_result($statement1, 1);
                             $this->img_related_art[$contor1]=oci_result($statement1, 2);
                     }
-                    $contor1++;
                 }
             }
         }
