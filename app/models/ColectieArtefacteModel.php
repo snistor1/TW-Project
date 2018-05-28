@@ -48,10 +48,18 @@ class ColectieArtefacteModel extends Model
         else
             $this->dat = "";
 
-        //echo "<script>alert(" . $this->key . $this->cat . $this->dat . $this->pur . $this->mat . ");</script>";
+        if($this->cat == 'Category' or $this->cat == 'All')
+            $this->cat = "";
 
-        $statement= oci_parse($this->db, "select  ID, ARTEFACT_NAME, ARTEFACT_IMAGE FROM tw.ARTEFACTS where upper(ARTEFACT_NAME) like upper('%' || :key || '%') order by ID desc");
+        $statement= oci_parse($this->db, "select  t.ID, t.ARTEFACT_NAME, t.ARTEFACT_IMAGE 
+                                                  FROM tw.ARTEFACTS t left outer join tw.ARTEFACTS_SUB_CATEGORIES a_s on t.id = a_s.id_artefact 
+                                                    left outer join tw.SUB_CATEGORIES s on s.id = a_s.id_sub_category 
+                                                    left outer join tw.CATEGORIES c on s.parent_id = c.id
+                                                  where upper(t.ARTEFACT_NAME) like upper('%'||:key||'%') and c.category_name like '%' || :category
+                                                  order by t.ID desc");
+
         oci_bind_by_name($statement, ":key", $this->key);
+        oci_bind_by_name($statement, ":category", $this->cat);
         oci_execute($statement);
         $i=0;
         while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)){
