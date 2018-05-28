@@ -45,8 +45,8 @@
         <!--become a member section-->
         <div class="clear-fix"></div>
 
-        <h2 id="join-button"><span>Become a member!</span></h2>
-        <h4 style="text-align: center; color: grey;"><span>If you are already a mamber:<a href="/public/login"> Sign in </a>!</span></h4>
+        <h2 id="join-button"><span><a href="/public/register">Become a member!</a></span></h2>
+        <h4 style="text-align: center; color: grey;"><span>If you are already a member:<a href="/public/login"> Sign in </a>!</span></h4>
         <a id="collection"></a>
         <p style="text-align: center;">
             Click the image below to visit our collection!
@@ -72,62 +72,20 @@
 <hr>
 <section class="categories_container">
 
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Weapons" width="300" height="200">
-        </a>
-        <div class="desc">Weapons</div>
-    </div>
 
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Textiles" width="300" height="200">
-        </a>
-        <div class="desc">Textiles</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Cult Objects" width="300" height="200">
-        </a>
-        <div class="desc">Cult Objects</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Jewels" width="300" height="200">
-        </a>
-        <div class="desc">Jewels</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Furniture" width="300" height="200">
-        </a>
-        <div class="desc">Furniture</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Fine art" width="300" height="200">
-        </a>
-        <div class="desc">Fine art</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Coins" width="300" height="200">
-        </a>
-        <div class="desc">Coins</div>
-    </div>
-
-    <div class="gallery">
-        <a target="_blank" href="">
-            <img src="/public/Images/img_artefact2.jpg" alt="Pottery" width="300" height="200">
-        </a>
-        <div class="desc">Pottery</div>
-    </div>
-
+    <?php
+    include $_SERVER['DOCUMENT_ROOT']."/app/models/HomeModel.php";
+    $h=new HomeModel();
+    for ($contor=0;$contor<count($h->name_colectii);$contor++)
+    {
+       echo '<div class="gallery">';
+       echo  '<a target="_blank" href="/public/colectieArtefacte?search=&cat='.$h->name_colectii[$contor].'&mat=Materials&pur=Purpose&dat=Dating">';
+            echo '<img src="/public/Images/img_artefact2.jpg" alt="Weapons" width="300" height="200">';
+        echo '</a>';
+        echo '<div class="desc">'.$h->name_colectii[$contor].'</div>';
+    echo '</div>';
+    }
+    ?>
 </section>
 <div class="clear-fix"></div>
 <hr>
