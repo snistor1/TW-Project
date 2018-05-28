@@ -1,12 +1,19 @@
 <?php
 
 class AdaugareArtefactModel extends Model{
-    /**
-     * AdaugareArtefactModel constructor.
-     */
+    public $categorii=array();
+    public $subcategorii=array();
+    public $clase=array();
+    public $roluri=array();
+    public $materiale=array();
     public function __construct()
     {
         parent::__construct();
+        $this->getCategories();
+        $this->getSubcategories();
+        $this->getClasses();
+        $this->getRoles();
+        $this->getMaterials();
         if(isset($_POST['submit'])){
             $nume = $_POST['nume'];
             //$categorie = $_POST['categorie'];
@@ -30,7 +37,7 @@ class AdaugareArtefactModel extends Model{
                 $licenta = 1;
             else
                 $licenta = 0;
-            if($this->validate($nume,$clasa,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere)) {
+            if($this->validate($nume,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere)) {
                 //adaugare informatii in tabela ARTEFACTS
                 //daca totul e ok, iau si imaginea
                 if(!empty($fileName)){
@@ -113,16 +120,18 @@ class AdaugareArtefactModel extends Model{
                 }
                 //adaugare informatii in tabela ARTEFACTS_CLASS
                 if(isset($_POST['clasa'])) {
-                    $statement = oci_parse($this->db, "select id from tw.CLASSES where CLASS_NAME=:class_name");
-                    oci_bind_by_name($statement, ":class_name", $_POST['clasa']);
-                    oci_execute($statement, OCI_DEFAULT);
-                    if (oci_fetch($statement)) {
-                        $id_clasa = oci_result($statement, 1);
+                    foreach($_POST['clasa'] as $clasa) {
+                        $statement = oci_parse($this->db, "select id from tw.CLASSES where CLASS_NAME=:class_name");
+                        oci_bind_by_name($statement, ":class_name", $clasa);
+                        oci_execute($statement, OCI_DEFAULT);
+                        if (oci_fetch($statement)) {
+                            $id_clasa = oci_result($statement, 1);
                             $statement = oci_parse($this->db, "INSERT INTO TW.ARTEFACTS_CLASSES
                                                    VALUES(:v_id_artefact,:v_id_class)");
                             oci_bind_by_name($statement, ":v_id_artefact", $id_artefact);
                             oci_bind_by_name($statement, ":v_id_class", $id_clasa);
                             oci_execute($statement);
+                        }
                     }
                 }
 
@@ -204,11 +213,11 @@ class AdaugareArtefactModel extends Model{
         }
     }
 
-    private function validate($nume,$clasa,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere){
+    private function validate($nume,$autor,$pret,$origine,$secol,$latitudine,$longitudine,$descriere){
         if(preg_match('/[^A-Za-z ]/',$nume))
         {
             //Name should contain only letters!
-            header('Location: /public/AdaugareArtefact?add=name&class='.$clasa.'&author='.$autor.
+            header('Location: /public/AdaugareArtefact?add=name&author='.$autor.
                 '&price='.$pret.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
@@ -216,7 +225,7 @@ class AdaugareArtefactModel extends Model{
         if(preg_match('/[^A-Za-z ]/',$autor))
         {
             //Author's name should contain only letters!
-            header('Location: /public/AdaugareArtefact?add=author&name='.$nume.'&class='.$clasa.
+            header('Location: /public/AdaugareArtefact?add=author&name='.$nume.
                 '&price='.$pret.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
@@ -224,7 +233,7 @@ class AdaugareArtefactModel extends Model{
         if(!preg_match('/^[1-9][0-9]*$/',$pret) or $pret>99999)
         {
             //The price is not valid!
-            header('Location: /public/AdaugareArtefact?add=price&name='.$nume.'&class='.$clasa.
+            header('Location: /public/AdaugareArtefact?add=price&name='.$nume.
                 '&author='.$autor.'&origin='.$origine.'&ev='.$secol.'&latitude='.$latitudine.
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
@@ -233,27 +242,81 @@ class AdaugareArtefactModel extends Model{
         if(preg_match('/[^A-Za-z ]/',$origine))
         {
             //The origin should contain only letters!
-            header('Location: /public/AdaugareArtefact?add=origin&name='.$nume.'&class='.$clasa.
+            header('Location: /public/AdaugareArtefact?add=origin&name='.$nume.
                 '&author='.$autor.'&price='.$pret.'&ev='.$secol.'&latitude='.$latitudine.
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
 
-        $statement = oci_parse($this->db,"select count(*) from tw.CLASSES where CLASS_NAME=:class_name");
-        oci_bind_by_name($statement,":class_name",$clasa);
-        oci_execute($statement,OCI_DEFAULT);
-        if(oci_fetch($statement))
-        {
-            $number = oci_result($statement,1);
-            if($number==0)
-            {
-                //Class doesn't exist!
-                header('Location: /public/AdaugareArtefact?add=class&name='.$nume.'&class='.$clasa.
-                    '&author='.$autor.'&price='.$pret.'&origin='.$origine.'&ev='.$secol.
-                    '&latitude='.$latitudine.'&longitude='.$longitudine.'&description='.$descriere);
-                return false;
-            }
-        }
         return true;
+    }
+
+    private function getCategories()
+    {
+        $statement = oci_parse($this->db,  "select  CATEGORY_NAME from tw.CATEGORIES 
+                                                    order by ID");
+        oci_execute($statement);
+        $contor=0;
+        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)) {
+            $this->categorii[$contor] = $row['CATEGORY_NAME'];
+            $contor=$contor+1;
+        }
+    }
+
+    private function getSubcategories()
+    {
+        $length = count($this->categorii);
+        for ($contor = 0; $contor < $length; $contor++) {
+            $categorie = $this->categorii[$contor];
+
+            $statement = oci_parse($this->db, "select  SUB_CATEGORY_NAME FROM tw.SUB_CATEGORIES s 
+                                                  join TW.CATEGORIES c on s.PARENT_ID = c.ID
+                                                   where c.CATEGORY_NAME=:v_categorie order by s.ID");
+            oci_bind_by_name($statement, ":v_categorie", $categorie);
+            oci_execute($statement);
+            $contor2=0;
+            $subcategorie=array();
+            while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)) {
+                $subcategorie[$contor2] = $row['SUB_CATEGORY_NAME'];
+                $contor2=$contor2+1;
+            }
+            $this->subcategorii[$contor]=$subcategorie;
+        }
+    }
+
+    private function getClasses()
+    {
+        $statement = oci_parse($this->db,  "select  CLASS_NAME from tw.CLASSES 
+                                                    order by ID");
+        oci_execute($statement);
+        $contor=0;
+        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)) {
+            $this->clase[$contor] = $row['CLASS_NAME'];
+            $contor=$contor+1;
+        }
+    }
+
+    private function getRoles()
+    {
+        $statement = oci_parse($this->db,  "select  ROLE_NAME from tw.ROLES 
+                                                    order by ID");
+        oci_execute($statement);
+        $contor=0;
+        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)) {
+            $this->roluri[$contor] = $row['ROLE_NAME'];
+            $contor=$contor+1;
+        }
+    }
+
+    private function getMaterials()
+    {
+        $statement = oci_parse($this->db,  "select  MATERIAL_NAME from tw.MATERIALS 
+                                                    order by ID");
+        oci_execute($statement);
+        $contor=0;
+        while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS+OCI_ASSOC)) {
+            $this->materiale[$contor] = $row['MATERIAL_NAME'];
+            $contor=$contor+1;
+        }
     }
 }

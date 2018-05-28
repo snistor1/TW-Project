@@ -41,101 +41,35 @@
                 else
                     echo '<h4>Name:</h4> <input type="text" name="nume" placeholder="Enter name..." required>';
 
-                echo '<hr>
-                <h4>Category:</h4>
-                <section class="category">
-                    <input onclick="myFunction(0)" type="radio" name="categorie" value="weapons" id="C1"/><label for="C1">Weapons</label>
-                    <div style="display:none" class="subcategorii">
-    
-                        <input type="radio" name="subcategorie" value="sword"><label>Sword</label>
-                        <input type="radio" name="subcategorie" value="knife"/><label>Knife</label>
-                        <input type="radio" name="subcategorie" value="artillery"/><label>Artillery</label>
-                        <input type="radio" name="subcategorie" value="spear"/><label>Spear</label>
-                        <input type="radio" name="subcategorie" value="armour"/><label>Armour</label>
-                        <input type="radio" name="subcategorie" value="axe"/><label>Axe</label>
-                        <input type="radio" name="subcategorie" value="another"/><label>Another</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(1)" type="radio" name="categorie" value="textiles" id="C2"/><label for="C2">Textiles</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(2)" type="radio" name="categorie" value="cult objects" id="C3"/><label for="C3">Cult Objects</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(3)" type="radio" name="categorie" value="jewels" id="C4"/><label for="C4">Jewels</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(4)" type="radio" name="categorie" value="furniture" id="C5"/><label for="C5">Furniture</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(5)" type="radio" name="categorie" value="fine art" id="C6" checked/><label for="C6">Fine art</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(6)" type="radio" name="categorie" value="coins" id="C7"/><label for="C7">Coins</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>
-    
-                <section class="category">
-                    <input onclick="myFunction(7)" type="radio" name="categorie" value="pottery" id="C8"/><label for="C8">Pottery</label>
-                    <div style="display:none" class="subcategorii">
-                        <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                        <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
-                    </div>
-    
-                </section>';
+            echo '<hr>';
+            include $_SERVER['DOCUMENT_ROOT']."/app/models/AdaugareArtefactModel.php";
+            $a=new AdaugareArtefactModel;
+            $c=$a->categorii;
+            $length=count($c);
+
+            echo '<p><strong>Category:</strong></p>';
+            for($contor=0;$contor<$length;$contor++) {
+                $category=$a->categorii[$contor];
+                echo '<section class="category">
+                    <input onclick="myFunction('.$contor.')" type="radio" name="categorie" value="'.$category.'" id="C1"/>
+                    <label for="C1">'.ucfirst($category).'</label>
+                    <div style="display:none" class="subcategorii">';
+                $subcategory_array=$a->subcategorii[$contor];
+                $length2=count($subcategory_array);
+                for($contor2=0;$contor2<$length2;$contor2++)
+                {
+                    $subcategory=$subcategory_array[$contor2];
+                    echo'<input type="radio" name="subcategorie" value="'.$subcategory.'"><label>'.ucfirst($subcategory).'</label>';
+                }
+                echo '</div> </section>';
+            }
 
                 echo '<hr>';
-                if(isset($_GET['class'])) {
-                    $class = $_GET['class'];
-                    echo '<h4>Class:</h4> <input type="text" name="clasa" placeholder="Enter a class..." value="'.$class.'">';
+               $length=count($a->clase);
+               echo '<h4>Clase:</h4>';
+                for($contor=0;$contor<$length;$contor++) {
+                    echo '<input type="checkbox" name="clasa[]" value="'.$a->clase[$contor].'">'.ucfirst($a->clase[$contor]).'<br>';
                 }
-                else
-                    echo '<h4>Class:</h4> <input type="text" name="clasa" placeholder="Enter a class...">';
-
                 echo '<hr>';
 
                 if(isset($_GET['author'])){
@@ -191,25 +125,22 @@
                 else
                     echo '<h4>Aproximate longitude:</h4> <input type="text" name="longitudine" placeholder="Enter the longitude...">';
 
-                echo '<hr>
-                <h4>Roles:</h4>
-                <input type="checkbox" name="rol[]" value="household"> Household
-                <input type="checkbox" name="rol[]" value="beauty"> Beauty
-                <input type="checkbox" name="rol[]" value="battle"> Battle
-                <input type="checkbox" name="rol[]" value="agriculture"> Agriculture
-                <input type="checkbox" name="rol[]" value="art"> Art <br>
-                <input type="checkbox" name="rol[]" value="communication"> Communication
-                <hr>
-                <h4>Materials</h4>
-                <input type="checkbox" name="material[]" value="metal"> Metal
-                <input type="checkbox" name="material[]" value="wood"> Wood
-                <input type="checkbox" name="material[]" value="stone"> Stone
-                <input type="checkbox" name="material[]" value="porcelain"> Porcelain
-                <input type="checkbox" name="material[]" value="glass"> Glass
-                <input type="checkbox" name="material[]" value="textile"> Textile
-                <input type="checkbox" name="material[]" value="paper"> Paper
-                <input type="checkbox" name="material[]" value="bone"> Bone
-                <hr>';
+                echo '<hr>';
+
+                echo '<h4>Roles</h4>';
+             $length=count($a->roluri);
+              for($contor=0;$contor<$length;$contor++) {
+                echo '<input type="checkbox" name="rol[]" value="'.$a->roluri[$contor].'">'.ucfirst($a->roluri[$contor]);
+               }
+            echo '<hr>';
+
+            echo '<h4>Materials</h4>';
+            $length=count($a->materiale);
+            for($contor=0;$contor<$length;$contor++) {
+                echo '<input type="checkbox" name="material[]" value="'.$a->materiale[$contor].'">'.ucfirst($a->materiale[$contor]);
+            }
+            echo '<hr>';
+
 
                 echo '<h4>Tags</h4>
                         <label for="tag-typer">
