@@ -44,7 +44,7 @@
                 echo '<hr>
                 <h4>Category:</h4>
                 <section class="category">
-                    <input onclick="myFunction(0)" type="radio" name="categorie" value="ceva" id="C1"/><label for="C1">Weapons</label>
+                    <input onclick="myFunction(0)" type="radio" name="categorie" value="weapons" id="C1"/><label for="C1">Weapons</label>
                     <div style="display:none" class="subcategorii">
     
                         <input type="radio" name="subcategorie" value="sword"><label>Sword</label>
@@ -59,7 +59,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(1)" type="radio" name="categorie" value="ceva" id="C2"/><label for="C2">Textiles</label>
+                    <input onclick="myFunction(1)" type="radio" name="categorie" value="textiles" id="C2"/><label for="C2">Textiles</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -69,7 +69,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(2)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Cult Objects</label>
+                    <input onclick="myFunction(2)" type="radio" name="categorie" value="cult objects" id="C3"/><label for="C3">Cult Objects</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -79,7 +79,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(3)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Jewels</label>
+                    <input onclick="myFunction(3)" type="radio" name="categorie" value="jewels" id="C4"/><label for="C4">Jewels</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -89,7 +89,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(4)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Furniture</label>
+                    <input onclick="myFunction(4)" type="radio" name="categorie" value="furniture" id="C5"/><label for="C5">Furniture</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -99,7 +99,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(5)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Fine art</label>
+                    <input onclick="myFunction(5)" type="radio" name="categorie" value="fine art" id="C6" checked/><label for="C6">Fine art</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -109,7 +109,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(6)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Coins</label>
+                    <input onclick="myFunction(6)" type="radio" name="categorie" value="coins" id="C7"/><label for="C7">Coins</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
@@ -119,7 +119,7 @@
                 </section>
     
                 <section class="category">
-                    <input onclick="myFunction(7)" type="radio" name="categorie" value="ceva" id="C3"/><label for="C3">Pottery</label>
+                    <input onclick="myFunction(7)" type="radio" name="categorie" value="pottery" id="C8"/><label for="C8">Pottery</label>
                     <div style="display:none" class="subcategorii">
                         <input type="radio" name="subcategorie" value="All"><label>SubCategorie</label>
                         <input type="radio" name="subcategorie" value="All"/><label>SubCategorie</label>
