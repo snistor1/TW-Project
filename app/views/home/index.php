@@ -79,7 +79,7 @@
     for ($contor=0;$contor<count($h->name_colectii);$contor++)
     {
        echo '<div class="gallery">';
-       echo  '<a target="_blank" href="/public/colectieArtefacte?search=&cat='.$h->name_colectii[$contor].'&mat=Materials&pur=Purpose&dat=Dating">';
+       echo  '<a target="_blank" href="/public/colectieArtefacte?search=&cat%5B%5D='.$h->name_colectii[$contor].'">';
             echo '<img src="/public/Images/img_artefact2.jpg" alt="Weapons" width="300" height="200">';
         echo '</a>';
         echo '<div class="desc">'.$h->name_colectii[$contor].'</div>';

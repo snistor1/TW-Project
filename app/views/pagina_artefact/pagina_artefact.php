@@ -100,9 +100,6 @@
             echo '<button>JSON</button>';
             echo '</a>';
 
-            //Asta e pentru sters fisierul. Problema e ca il sterge inainte de a se descarca :D :D
-            //unlink("/testfile1.json");
-
             $e->exportXml();
             echo '<a href="/app/files/xmlFile.xml" download="artefact.xml">';
             echo '<button>XML</button>';
