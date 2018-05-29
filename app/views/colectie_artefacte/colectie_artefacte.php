@@ -34,62 +34,58 @@
 
     <div class="filters-container">
 
+        <?php
+        include $_SERVER['DOCUMENT_ROOT']."/app/models/AdaugareArtefactModel.php";
+        $a=new AdaugareArtefactModel;
+        echo '<div class="select">';
+            echo '<select name="cat" id="slct">';
+                echo '<option style="display:none;">Category</option>';
+                echo '<option value="All">All</option>';
+        for($contor=0;$contor<count($a->categorii);$contor++){
+            echo '<option value="'.$a->categorii[$contor].'">'.$a->categorii[$contor].'</option>';
+            $subcategory_array=$a->subcategorii[$contor];
+            $length2=count($subcategory_array);
+            for($contor2=0;$contor2<$length2;$contor2++)
+            {
+                $subcategory=$subcategory_array[$contor2];
+                echo '<option value="-'.$subcategory.'">-'.$subcategory.'</option>';
+            }
+        }
+        echo '</select>';
+        echo '</div>';
 
-        <div class="select">
-            <select name="cat" id="slct">
-                <option style="display:none;">Category</option>
-                <option value="All">All</option>
-                <option value="Weapons">Weapons</option>
-                <option value="Textiles">Textiles</option>
-                <option value="Cult Objects">Cult Objects</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Fine art">Fine art</option>
-                <option value="Jewels">Jewels</option>
-                <option value="Coins">Coins</option>
-                <option value="Pottery">Pottery</option>
-            </select>
-        </div>
+        echo '<div class="select">';
+        echo '<select name="mat" id="slct">';
+        echo '<option style="display:none;">Materials</option>';
+        echo '<option value="All">All</option>';
+        for($contor=0;$contor<count($a->materiale);$contor++){
+            echo '<option value="'.$a->materiale[$contor].'">'.$a->materiale[$contor].'</option>';
+        }
+        echo '</select>';
+        echo '</div>';
 
-        <div class="select">
-            <select name="mat" id="slct">
-                <option style="display:none;">Materials</option>
-                <option value="All">All</option>
-                <option value="Metal">Metal</option>
-                <option value="Wood">Wood</option>
-                <option value="Stone">Stone</option>
-                <option value="Ceramic">Ceramic</option>
-                <option value="Glass">Glass</option>
-                <option value="Textile">Textile</option>
-                <option value="Paper">Paper</option>
-                <option value="Bone">Bone</option>
-            </select>
-        </div>
+        echo '<div class="select">';
+        echo '<select name="pur" id="slct">';
+        echo '<option style="display:none;">Purpose</option>';
+        echo '<option value="All">All</option>';
+        for($contor=0;$contor<count($a->roluri);$contor++){
+            echo '<option value="'.$a->roluri[$contor].'">'.$a->roluri[$contor].'</option>';
+        }
+        echo '</select>';
+        echo '</div>';
 
-        <div class="select">
-            <select name="pur" id="slct">
-                <option style="display:none;">Purpose</option>
-                <option value="All">All</option>
-                <option value="Household">Household</option>
-                <option value="Beauty">Beauty</option>
-                <option value="Battle">Battle</option>
-                <option value="Agriculture">Agriculture</option>
-                <option value="Art">Art</option>
-                <option value="Communication">Communication</option>
-            </select>
-        </div>
-
-        <div class="select">
-            <select name="dat" id="slct">
-                <option style="display:none;">Dating</option>
-                <option value="All">All</option>
-                <option value="Prehistory">Prehistory</option>
-                <option value="Protohistory">Protohistory</option>
-                <option value="Ancient Period">Ancient Period</option>
-                <option value="Middle Ages">Middle Ages</option>
-                <option value="Early Modern Period">Early Modern Period</option>
-                <option value="Modern Era">Modern era</option>
-            </select>
-        </div>
+         echo '<div class="select">';
+            echo '<select name="dat" id="slct">';
+        echo '<option style="display:none;">Dating</option>';
+                echo '<option value="All">All</option>';
+                echo '<option value="Prehistory">Prehistory</option>';
+                echo '<option value="Ancient Period">Ancient Period</option>';
+                echo '<option value="Middle Ages">Middle Ages</option>';
+                echo '<option value="Early Modern Period">Early Modern Period</option>';
+                echo '<option value="Modern Era">Modern era</option>';
+            echo '</select>';
+        echo '</div>';
+        ?>
     </div>
 </form>
 <div class="clearfix"></div>
@@ -107,18 +103,16 @@
     $url= $_SERVER['REQUEST_URI'];
 
     if(!empty($c->id_artefacte)) {
-        $length = count($c->id_artefacte);
+        $length = $c->length;
         $max_page = intval($length / 9);
 
         if ($length % 9 > 0) {
             $max_page = $max_page + 1;
         }
-        $pg = substr($url, -1);
-        if ($pg == substr($c->dat, -1) or $pg == 'e' or $pg == '=' or $pg == '/') {
+        if ( strcmp($url,'/public/colectieArtefacte')==0  or (strstr($url,'?')!=FALSE and strstr(strstr($url,'?'),'/')==FALSE)) {
             $pg = 1;
         }
-
-
+        else $pg=substr($url,-1);
         for ($contor = ($pg - 1) * 9; $contor < ($pg - 1) * 9 + 9 and $contor < $length; $contor++) {
             print '<div class="responsive">';
             print '<div class="gallery">';
