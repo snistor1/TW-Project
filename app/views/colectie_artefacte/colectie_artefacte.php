@@ -31,12 +31,36 @@
     </div>
 
     <br>
-
     <div class="filters-container">
 
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/app/models/AdaugareArtefactModel.php";
         $a=new AdaugareArtefactModel;
+
+    echo     '<div class="multiselect">
+       <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>Category</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">';
+      echo '<label for="-1">
+        <input type="checkbox" id="-1" name="cat[]" value="All"/>All</label>';
+       for($contor=0;$contor<count($a->categorii);$contor++){
+            echo '<label for="'.$contor.'">
+        <input type="checkbox" id="'.$contor.'" name="cat[]" value="'.$a->categorii[$contor].'"/>'.$a->categorii[$contor].'</label>';
+            $subcategory_array=$a->subcategorii[$contor];
+            $length2=count($subcategory_array);
+            for($contor2=0;$contor2<$length2;$contor2++)
+            {
+                $subcategory=$subcategory_array[$contor2];
+                echo '<label for="'.$contor.$contor2.'">
+                <input type="checkbox" id="'.$contor.$contor2.'" name="cat[]" value="-'.$subcategory.'" />-'.$subcategory.'</label>';
+            }
+        }
+    echo '</div>  </div>';
+       /*
         echo '<div class="select">';
             echo '<select name="cat" id="slct">';
                 echo '<option style="display:none;">Category</option>';
@@ -52,9 +76,23 @@
             }
         }
         echo '</select>';
-        echo '</div>';
-
-        echo '<div class="select">';
+        echo '</div>';*/
+        echo '<div class="multiselect">
+       <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>Materials</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">';
+        echo '<label for="-1">
+        <input type="checkbox" id="-1" name="mat[]" value="All"/>All</label>';
+        for($contor=0;$contor<count($a->materiale);$contor++){
+            echo '<label for="'.$contor.'">
+        <input type="checkbox" id="'.$contor.'" name="mat[]" value="'.$a->materiale[$contor].'"/>'.$a->materiale[$contor].'</label>';
+        }
+        echo '</div>  </div>';
+        /*echo '<div class="select">';
         echo '<select name="mat" id="slct">';
         echo '<option style="display:none;">Materials</option>';
         echo '<option value="All">All</option>';
@@ -62,9 +100,24 @@
             echo '<option value="'.$a->materiale[$contor].'">'.$a->materiale[$contor].'</option>';
         }
         echo '</select>';
-        echo '</div>';
+        echo '</div>';*/
+        echo     '<div class="multiselect">
+   <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>Purpose</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">';
+        echo '<label for="-1">
+        <input type="checkbox" id="-1" name="pur[]" value="All"/>All</label>';
+        for($contor=0;$contor<count($a->roluri);$contor++){
+            echo '<label for="'.$contor.'">
+        <input type="checkbox" id="'.$contor.'" name="pur[]" value="'.$a->roluri[$contor].'"/>'.$a->roluri[$contor].'</label>';
+        }
+        echo '</div>  </div>';
 
-        echo '<div class="select">';
+        /*echo '<div class="select">';
         echo '<select name="pur" id="slct">';
         echo '<option style="display:none;">Purpose</option>';
         echo '<option value="All">All</option>';
@@ -73,8 +126,24 @@
         }
         echo '</select>';
         echo '</div>';
-
-         echo '<div class="select">';
+        */
+        echo     '<div class="multiselect">
+   <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>Dating</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">';
+        echo '<label for="-1">';
+        echo '<input type="checkbox" id="-1" name="dat[]" value="All"/>All</label>';
+        echo '<label for="1"><input type="checkbox" id="1" name="dat[]" value="Prehistory"/>Prehistory</label>';
+        echo '<label for="2"><input type="checkbox" id="2" name="dat[]" value="Ancient Period"/>Ancient Period</label>';
+        echo '<label for="3"><input type="checkbox" id="3" name="dat[]" value="Middle Ages"/>Middle Ages</label>';
+        echo '<label for="4"><input type="checkbox" id="4" name="dat[]" value="Early Modern Period"/>Early Modern Period</label>';
+        echo '<label for="5"><input type="checkbox" id="5" name="dat[]" value="Modern Era"/>Modern Era</label>';
+        echo '</div>  </div>';
+        /* echo '<div class="select">';
             echo '<select name="dat" id="slct">';
         echo '<option style="display:none;">Dating</option>';
                 echo '<option value="All">All</option>';
@@ -84,7 +153,7 @@
                 echo '<option value="Early Modern Period">Early Modern Period</option>';
                 echo '<option value="Modern Era">Modern era</option>';
             echo '</select>';
-        echo '</div>';
+        echo '</div>';*/
         ?>
     </div>
 </form>
@@ -99,24 +168,25 @@
     <?php
     include $_SERVER['DOCUMENT_ROOT']."/app/models/ColectieArtefacteModel.php";
     $c = new ColectieArtefacteModel;
-
+    $ok =1;
     $url= $_SERVER['REQUEST_URI'];
 
     if(!empty($c->id_artefacte)) {
-        $length = $c->length;
+        $length = count($c->id1_artefacte);
+
         $max_page = intval($length / 9);
 
         if ($length % 9 > 0) {
             $max_page = $max_page + 1;
         }
+        $pg=substr($url,-1);
         if ( strcmp($url,'/public/colectieArtefacte')==0  or (strstr($url,'?')!=FALSE and strstr(strstr($url,'?'),'/')==FALSE)) {
             $pg = 1;
         }
-        else $pg=substr($url,-1);
         for ($contor = ($pg - 1) * 9; $contor < ($pg - 1) * 9 + 9 and $contor < $length; $contor++) {
             print '<div class="responsive">';
             print '<div class="gallery">';
-            print '<a href="/public/paginaArtefact?id=' . $c->id_artefacte[$contor] . '">';
+            print '<a href="/public/paginaArtefact?id=' . $c->id1_artefacte[$contor] . '">';
             if($c->imagini_artefacte[$contor]!=null){
                 echo '<img src="data:image/jpg;base64,'.base64_encode($c->imagini_artefacte[$contor]->load()).'" alt="Imagine Artefact" width="600" height="400">';
             }
@@ -226,10 +296,24 @@
         print '</div>';
     }
     else {
-        print '<h3>No results found for "' . $c->key . '".</h3>';
+        print '<h3>No results!</h3>';
     }
     ?>
 
 </section>
+<script>
+    var expanded = false;
+
+    function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+    }
+</script>
 </body>
 </html>
