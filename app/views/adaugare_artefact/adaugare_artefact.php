@@ -101,7 +101,7 @@
                 <input type="radio" name="licenta" value="YES" id=""> <label for="">With license</label>
                 <input type="radio" name="licenta" value="NO" id="" checked> <label for="">Without license</label>
                 <hr>';
-
+                /*
                 if(isset($_GET['origin'])){
                     $origin = $_GET['origin'];
                     echo '<h4>Origin:</h4> <input type="text" name="origine" placeholder="Enter origin..." value="'.$origin.'">';
@@ -126,8 +126,15 @@
                     echo '<h4>Aproximate longitude:</h4> <input type="text" name="longitudine" placeholder="Enter the longitude...">';
 
                 echo '<hr>';
+                */
+            echo'<input id="origin" style="display: none;" type="text" name="origine"  value="">';
 
-                echo '<h4>Roles</h4>';
+            echo'<input id="latitude" style="display: none;" type="text" name="latitudine"  value="">';
+
+            echo'<input id="longitude" style="display: none;" type="text" name="longitudine"  value="">';
+
+
+            echo '<h4>Roles</h4>';
              $length=count($a->roluri);
               for($contor=0;$contor<$length;$contor++) {
                 echo '<input type="checkbox" name="rol[]" value="'.$a->roluri[$contor].'">'.ucfirst($a->roluri[$contor]);
@@ -158,6 +165,19 @@
                 else
                     echo ' <h4>Description:</h4>
                     <textarea id="description" name="descriere" placeholder="Add a description to this artefact..."></textarea>';
+            echo '<hr>';
+            echo ' <h4>Localization:</h4>';
+            echo ' <div>Move the red marker to point the location of the artefact.</div><br>';
+            echo '<div id="mapCanvas"></div>
+        <div id="infoPanel">
+        <b>Marker status:</b>
+        <div id="markerStatus"><i>Click and drag the marker.</i></div>
+        <b>Current position:</b>
+        <div id="info"></div>
+        <b>Closest matching address:</b>
+        <div id="address"></div>
+       </div>';
+            echo '<br class="clear-fix">';
             ?>
 
             <br>
@@ -233,5 +253,120 @@
         elem.parentNode.removeChild(elem);
     }
 </script>
+<script>
+
+    function myFunction(nr) {
+        var subcategorii = document.getElementsByClassName("subcategorii");
+        for(var i = 0; i < subcategorii.length; i++) {
+            if(i!=nr){
+                subcategorii[i].style.display = "none";
+            }
+            else{
+                subcategorii[i].style.display = "block";
+            }
+        }
+
+        var inputs = document.getElementsByTagName('input');
+
+        for(var i = 0; i < inputs.length; i++) {
+            if(inputs[i].name.toLowerCase() == 'subcategorie') {
+                inputs[i].checked=false;
+            }
+        }
+    }
+
+    var $max_id=0;
+    function Function(event) {
+        $max_id++;
+        var x = event.which || event.keyCode;
+        if(x==32){
+            document.getElementById("demo").innerHTML="<span class='tag' id="+$max_id.toString()+" onclick='removeTag"+"("+$max_id.toString()+")'><span class='close'>&times;</span>"+document.getElementById("tag-typer").value+"</span>"+"<div id='demo'></div>"+"<input name='tag[]' style='display:none;' value="+document.getElementById("tag-typer").value+" id="+'I'+$max_id.toString()+">";
+            document.getElementById("demo").id="altceva";
+            document.getElementById("tag-typer").value="";
+        }
+    };
+
+    function removeTag(id) {
+        var elem = document.getElementById(id);
+        elem.parentNode.removeChild(elem);
+
+        var elem = document.getElementById('I'+id);
+        elem.parentNode.removeChild(elem);
+    }
+</script>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx6GgomrtePy3-K91tI_1eValNVkkT4mQ"></script>
+<script type="text/javascript">
+    var geocoder = new google.maps.Geocoder();
+
+    function geocodePosition(pos) {
+        geocoder.geocode({
+            latLng: pos
+        }, function(responses) {
+            if (responses && responses.length > 0) {
+                updateMarkerAddress(responses[0].formatted_address);
+            } else {
+                updateMarkerAddress('Cannot determine address at this location.');
+            }
+        });
+    }
+
+    function updateMarkerStatus(str) {
+        document.getElementById('markerStatus').innerHTML = str;
+    }
+
+    function updateMarkerPosition(latLng) {
+        document.getElementById('info').innerHTML = [
+            latLng.lat(),
+            latLng.lng()
+        ].join(', ');
+
+        document.getElementById('latitude').value=latLng.lat();
+        document.getElementById('longitude').value=latLng.lng();
+    }
+
+    function updateMarkerAddress(str) {
+        document.getElementById('address').innerHTML = str;
+        document.getElementById('origin').value = str;
+    }
+
+    function initialize() {
+        var latLng = new google.maps.LatLng(46.92609589009538, 26.931308856844907);
+        var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+            zoom: 8,
+            center: latLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var marker = new google.maps.Marker({
+            position: latLng,
+            title: 'Point A',
+            map: map,
+            draggable: true
+        });
+
+        // Update current position info.
+        updateMarkerPosition(latLng);
+        geocodePosition(latLng);
+
+        // Add dragging event listeners.
+        google.maps.event.addListener(marker, 'dragstart', function() {
+            updateMarkerAddress('Dragging...');
+        });
+
+        google.maps.event.addListener(marker, 'drag', function() {
+            updateMarkerStatus('Dragging...');
+            updateMarkerPosition(marker.getPosition());
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function() {
+            updateMarkerStatus('Drag ended');
+            geocodePosition(marker.getPosition());
+        });
+    }
+
+    // Onload handler to fire off the app.
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 </body>
 </html>

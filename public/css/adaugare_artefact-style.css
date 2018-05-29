@@ -269,3 +269,20 @@ input:focus, textarea:focus{
     visibility: visible;
 
 }
+
+#mapCanvas {
+    width: 500px;
+    height: 400px;
+    float: left;
+}
+#infoPanel {
+    float: left;
+    margin-left: 10px;
+}
+#infoPanel div {
+    margin-bottom: 5px;
+}
+
+.clear-fix{
+    clear: both;
+}

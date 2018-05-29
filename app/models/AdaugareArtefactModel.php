@@ -238,7 +238,7 @@ class AdaugareArtefactModel extends Model{
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
         }
-
+/*
         if(preg_match('/[^A-Za-z ]/',$origine))
         {
             //The origin should contain only letters!
@@ -246,7 +246,7 @@ class AdaugareArtefactModel extends Model{
                 '&author='.$autor.'&price='.$pret.'&ev='.$secol.'&latitude='.$latitudine.
                 '&longitude='.$longitudine.'&description='.$descriere);
             return false;
-        }
+        }*/
 
         return true;
     }
