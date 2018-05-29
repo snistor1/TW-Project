@@ -152,9 +152,11 @@
 </section>
 
 <script>
+    var latitudine="<?php print($u->latitude) ?>";
+    var longitudine="<?php print($u->longitude) ?>";
     function myMap() {
         var mapOptions = {
-            center: new google.maps.LatLng(51.5, -0.12),
+            center: new google.maps.LatLng(latitudine, longitudine),
             zoom: 10,
             mapTypeId: google.maps.MapTypeId.HYBRID
         }
