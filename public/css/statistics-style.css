@@ -69,7 +69,7 @@
 .box h2{
     color: #303630;
     text-align: center;
-} 
+}
 
 #piechart{
     width: 700px;
@@ -135,4 +135,76 @@ html, body{
 
 section h6{
     display: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.filters-container{
+    margin-left:15%;
+    margin-right: 10%;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #eabf15;
+    background-image: none;
+    float:left;
+}
+/* Custom Select */
+.select {
+    position: relative;
+    display: block;
+    width: 15em;
+    height: 3em;
+    line-height: 3;
+    background-color:grey;
+    overflow: hidden;
+    border-radius: .25em;
+    float:left;
+    margin-bottom: 5%;
+}
+select {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 .5em;
+    color: #303630;
+    background-color:#e6e6e6;
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
+    font-weight:bold;
+    font-size:150%;
+    cursor: pointer;
+
+}
+select::-ms-expand {
+    display: none;
+}
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 1em;
+    background: white;
+    pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+    color: #eabf15;
+}
+.select::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
 }

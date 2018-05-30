@@ -7,7 +7,7 @@
 </head>
 
 
-<body>
+<body onload="loadPage()">
 <section class="intro">
 
     <div class="navbar">
@@ -30,60 +30,89 @@
 <hr>
 
 <section class="BoxForStatictics">
-    <div class="box">
-        <h2 >Statistics</h2>
-        <div>
-            <div class="general">
-                General statistics
-                <ul>
-                    <li>Total number of items: 50</li>
-                    <li>Number of users: 10</li>
-                    <li>Number of sold items: 5</li>
-                    <li>Most expensive item: Ancient Katana</li>
-                </ul>
-            </div>
-            <div class="categories">
-                Categories details
-                <ul>
-                    <li>Number of categories: 6</li>
-                    <li>Category with most items: Clocks</li>
-                    <li>Most searched category: Jewels</li>
-                </ul>
-            </div>
-        </div>
-        <div style="clear: both; height: 3%;"></div>
+    <div class="box" id = "statContent">
 
-        <section style="padding-left:17%; padding-top: 10%;">
-            <h6>heading</h6>
-            <div id="piechart">
-            </div>
-        </section>
     </div>
 </section>
 
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
+    function addElements(){
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
-        var data = google.visualization.arrayToDataTable([
-            ['Category', 'Number of items'],
-            ['Weapons',     11],
-            ['Carpets',      2],
-            ['Cult Objects',  2],
-            ['Clocks', 12],
-            ['Jewels',    7]
-        ]);
+        xmlhttp.open("GET","/public/statistics/date?q=1",true);
+        xmlhttp.send();
 
-        var options = {
-            title: 'Percent of items by category'
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("statContent").innerHTML = this.responseText;
+            }
         };
+    }
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    function pieChart(){
 
-        chart.draw(data, options);
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.open("GET","/public/statistics/date?q=2",true);
+        xmlhttp.send();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                eval(this.responseText);
+            }
+        };
+    }
+
+    function loadPage() {
+        addElements();
+        pieChart();
+    }
+
+    function showInfo(str){
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var mat = document.getElementById("mat").value;
+        var cat = document.getElementById("cat").value;
+        var rol = document.getElementById("rol").value;
+        var dat = document.getElementById("dat").value;
+
+        if(mat == "All" || mat == "Material")
+            mat = "";
+        if(cat == "All" || cat == "Category")
+            cat = "";
+        if(rol == "All" || rol == "Role")
+            rol = "";
+        if(dat == "All" || dat == "Time period")
+            dat = "";
+
+        xmlhttp.open("GET","/public/statistics/date?q=3&cat="+cat+"&mat="+mat+"&rol="+rol+"&dat="+dat,true);
+        xmlhttp.send();
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("results").innerHTML = this.responseText;
+            }
+        };
     }
 </script>
 

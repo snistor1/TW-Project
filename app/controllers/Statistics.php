@@ -6,4 +6,10 @@ class Statistics extends Controller
     {
         $this->view('statistics/statistics');
     }
+
+    public function date()
+    {
+        $this->model('StatisticsModel');
+    }
+
 }
