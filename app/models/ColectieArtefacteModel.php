@@ -26,27 +26,19 @@ class ColectieArtefacteModel extends Model
         if(isset($_GET['cat'])) {
             $this->cat = $_GET['cat'];
         }
-        else{
-            $this->cat="Category";
-        }
+
         if(isset($_GET['mat'])) {
             $this->mat = $_GET['mat'];
         }
-        else{
-            $this->mat="Materials";
-        }
+
         if (isset($_GET['pur'])) {
             $this->pur = $_GET['pur'];
         }
-        else{
-            $this->pur='Purpose';
-        }
+
         if(isset($_GET['dat'])) {
             $this->dat = $_GET['dat'];
         }
-        else {
-            $this->dat="Dating";
-        }
+
 
 
         if($this->key!=""){
@@ -80,8 +72,9 @@ class ColectieArtefacteModel extends Model
          $this->id1_artefacte=$this->id_artefacte;
          if(isset($_GET['cat'])) {
              $this->i = 0;
+             if ($this->cat[0] != 'All') {
              for ($contor = 0; $contor < count($this->cat); $contor++) {
-                 if ($this->cat[$contor] != 'Category' and $this->cat[$contor] != 'All') {
+
                      //este aplicat un filtru pe categorie
 
                      if (substr($this->cat[$contor], 0, 1) != '-') {
@@ -124,16 +117,17 @@ class ColectieArtefacteModel extends Model
                           }*/
                      }
                  }
+                 $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
              }
-             if(count($this->aux)>0)
-              $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
+
          }
 
          if(isset($_GET['mat'])) {
              $this->id_artefacte=$this->id1_artefacte;
              $this->aux = array();
+             if ($this->mat[0] != 'All') {
              for ($contor=0;$contor<count($this->mat);$contor++) {
-                 if ($this->mat[$contor] != 'Materials' and $this->mat[$contor] != 'All') {
+
                      //este aplicat un filtru pe materiale
                      $statement = oci_parse($this->db, "select  t.ID
                                                    FROM tw.ARTEFACTS t  join tw.ARTEFACTS_MATERIALS a_m on t.id = a_m.ID_ARTEFACT
@@ -150,16 +144,17 @@ class ColectieArtefacteModel extends Model
                          $i = $i + 1;
                      }
                  }
-             }
-             if(count($this->aux)>0)
                  $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
+             }
+
          }
 
         if(isset($_GET['pur'])) {
              $this->id_artefacte=$this->id1_artefacte;
             $this->aux = array();
+            if ($this->pur[0] != 'All') {
             for ($contor = 0; $contor < count($this->pur); $contor++) {
-                if ($this->pur[$contor] != 'Purpose' and $this->pur[$contor] != 'All') {
+
                     //este aplicat un filtru pe roluri
                     $statement = oci_parse($this->db, "select  t.ID
                                                    FROM tw.ARTEFACTS t  join tw.ARTEFACTS_ROLES a_r on t.ID = a_r.ID_ARTEFACT
@@ -177,15 +172,16 @@ class ColectieArtefacteModel extends Model
                     }
 
                 }
+                $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
             }
-            if(count($this->aux)>0)
-            $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
+
         }
         if(isset($_GET['dat'])) {
             $this->id_artefacte=$this->id1_artefacte;
             $this->aux = array();
+            if ($this->dat[0] != 'All') {
             for($contor=0;$contor<count($this->dat);$contor++) {
-                if ($this->dat[$contor] != 'Dating' and $this->dat[$contor] != 'All') {
+
                     $d=strstr($this->dat[$contor],'/',true);
                         if($d==FALSE) $d=$this->dat[$contor];
                     if ($d == 'Prehistory') {
@@ -211,9 +207,9 @@ class ColectieArtefacteModel extends Model
                         $i = $i + 1;
                     }
                 }
-            }
-         if(count($this->aux)>0)
                 $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
+            }
+
         }
 
          for($contor=0;$contor<count($this->id1_artefacte);$contor++){
