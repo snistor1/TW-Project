@@ -85,7 +85,8 @@ class ColectieArtefacteModel extends Model
                                                       join tw.CATEGORIES c on s.parent_id = c.id
                                                    where  c.category_name =:category
                                                    order by t.ID ");
-                         $c = $this->cat[$contor];
+                         $c = strstr($this->cat[$contor],'/',true);
+                         if($c==FALSE)$c=$this->cat[$contor];
                          oci_bind_by_name($statement, ":category", $c);
                          oci_execute($statement);
                          while ($row = oci_fetch_array($statement, OCI_RETURN_NULLS + OCI_ASSOC)) {
@@ -102,7 +103,8 @@ class ColectieArtefacteModel extends Model
                                                    join tw.SUB_CATEGORIES s on a_s.ID_SUB_CATEGORY = s.ID
                                                    where  SUB_CATEGORY_NAME=:subcategory
                                                    order by t.ID ");
-                         $s_c = substr($this->cat[$contor], 1);
+                         $s_c = strstr(substr($this->cat[$contor],1),'/',true);
+                         if($s_c==FALSE) $s_c=substr($this->cat[$contor],1);;
                          oci_bind_by_name($statement, ":subcategory", $s_c);
                          oci_execute($statement);
                          while (oci_fetch($statement)) {
@@ -134,7 +136,8 @@ class ColectieArtefacteModel extends Model
                                                    join tw.MATERIALS m on m.id = a_m.ID_MATERIAL
                                                    where  MATERIAL_NAME=:material
                                                    order by t.ID ");
-                     $m=$this->mat[$contor];
+                     $m=strstr($this->mat[$contor],'/',true);
+                     if($m==FALSE) $m=$this->mat[$contor];
                      oci_bind_by_name($statement, ":material", $m);
                      oci_execute($statement);
                      $i = 0;
@@ -161,7 +164,8 @@ class ColectieArtefacteModel extends Model
                                                    join tw.ROLES on a_r.ID_ROLE = ROLES.ID
                                                    where  ROLE_NAME=:role
                                                    order by t.ID ");
-                    $p=$this->pur[$contor];
+                    $p=strstr($this->pur[$contor],'/',true);
+                    if($p==FALSE) $p=$this->pur[$contor];
                     oci_bind_by_name($statement, ":role", $p);
                     oci_execute($statement);
                     $i = 0;
