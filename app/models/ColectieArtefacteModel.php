@@ -72,7 +72,7 @@ class ColectieArtefacteModel extends Model
          $this->id1_artefacte=$this->id_artefacte;
          if(isset($_GET['cat'])) {
              $this->i = 0;
-             if ($this->cat[0] != 'All') {
+             if (strstr($this->cat[0],'/',true) != 'All'  and $this->cat[0]!='All') {
              for ($contor = 0; $contor < count($this->cat); $contor++) {
 
                      //este aplicat un filtru pe categorie
@@ -127,7 +127,7 @@ class ColectieArtefacteModel extends Model
          if(isset($_GET['mat'])) {
              $this->id_artefacte=$this->id1_artefacte;
              $this->aux = array();
-             if ($this->mat[0] != 'All') {
+             if (strstr($this->mat[0],'/',true) != 'All' and $this->mat[0]!='All') {
              for ($contor=0;$contor<count($this->mat);$contor++) {
 
                      //este aplicat un filtru pe materiale
@@ -155,7 +155,7 @@ class ColectieArtefacteModel extends Model
         if(isset($_GET['pur'])) {
              $this->id_artefacte=$this->id1_artefacte;
             $this->aux = array();
-            if ($this->pur[0] != 'All') {
+            if (strstr($this->pur[0],'/',true)!='All' and $this->pur[0] != 'All') {
             for ($contor = 0; $contor < count($this->pur); $contor++) {
 
                     //este aplicat un filtru pe roluri
@@ -183,7 +183,7 @@ class ColectieArtefacteModel extends Model
         if(isset($_GET['dat'])) {
             $this->id_artefacte=$this->id1_artefacte;
             $this->aux = array();
-            if ($this->dat[0] != 'All') {
+            if (strstr($this->dat[0],'/',true)!='All' and $this->dat[0] != 'All') {
             for($contor=0;$contor<count($this->dat);$contor++) {
 
                     $d=strstr($this->dat[$contor],'/',true);
