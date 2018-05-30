@@ -202,23 +202,22 @@ div.desc {
     display: table;
     clear: both;
 }
-/*buton export*/
+/*buton delete*/
 .button {
     background-color: #eabf15;
     border:grey;
     color:#303630;
-    padding: 10px 30px;
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 120%;
-    margin: 4px 2px;
+    font-size: 100%;
     cursor: pointer;
-    margin-left: 45%;
+    margin-left: 37%;
+    margin-top:10%;
     font-family:"Palatino Linotype", "Book Antiqua", Palatino, sans-serif;
     font-weight:bold;
     display: inline;
-    float:right;
 }
 
 .exportButtons{

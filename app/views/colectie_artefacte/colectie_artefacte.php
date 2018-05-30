@@ -37,123 +37,75 @@
         include $_SERVER['DOCUMENT_ROOT']."/app/models/AdaugareArtefactModel.php";
         $a=new AdaugareArtefactModel;
 
-    echo     '<div class="multiselect">
-       <div class="selectBox" onclick="showCheckboxes()">
-      <select>
-        <option>Category</option>
-      </select>
-      <div class="overSelect"></div>
-    </div>
-    <div id="checkboxes">';
-      echo '<label for="-1">
-        <input type="checkbox" id="-1" name="cat[]" value="All"/>All</label>';
-       for($contor=0;$contor<count($a->categorii);$contor++){
-            echo '<label for="'.$contor.'">
-        <input type="checkbox" id="'.$contor.'" name="cat[]" value="'.$a->categorii[$contor].'"/>'.$a->categorii[$contor].'</label>';
-            $subcategory_array=$a->subcategorii[$contor];
-            $length2=count($subcategory_array);
-            for($contor2=0;$contor2<$length2;$contor2++)
-            {
-                $subcategory=$subcategory_array[$contor2];
-                echo '<label for="'.$contor.$contor2.'">
-                <input type="checkbox" id="'.$contor.$contor2.'" name="cat[]" value="-'.$subcategory.'" />-'.$subcategory.'</label>';
-            }
-        }
-    echo '</div>  </div>';
-       /*
-        echo '<div class="select">';
-            echo '<select name="cat" id="slct">';
-                echo '<option style="display:none;">Category</option>';
-                echo '<option value="All">All</option>';
+        echo'
+<div class="dropdown">
+<button type=button onclick="myFunction(\'filter1\')" class="dropbtn">Category</button>
+  <div id="filter1" class="dropdown-content">';
+        echo ' <input type="checkbox" name="cat[]" value="All">'.'All'.'<br>';
         for($contor=0;$contor<count($a->categorii);$contor++){
-            echo '<option value="'.$a->categorii[$contor].'">'.$a->categorii[$contor].'</option>';
+            echo '<option style="font-weight:bold;" value="'.$a->categorii[$contor].'">'.$a->categorii[$contor].'</option>';
             $subcategory_array=$a->subcategorii[$contor];
             $length2=count($subcategory_array);
             for($contor2=0;$contor2<$length2;$contor2++)
             {
                 $subcategory=$subcategory_array[$contor2];
-                echo '<option value="-'.$subcategory.'">-'.$subcategory.'</option>';
+                if($subcategory!='another')
+                    echo ' <input type="checkbox" name="cat[]" value="-'.$subcategory.'">'.$subcategory.'<br>';
+                else
+                    echo ' <input type="checkbox" name="cat[]" value="'.$a->categorii[$contor].'">All<br>';
             }
         }
-        echo '</select>';
-        echo '</div>';*/
-        echo '<div class="multiselect">
-       <div class="selectBox" onclick="showCheckboxes()">
-      <select>
-        <option>Materials</option>
-      </select>
-      <div class="overSelect"></div>
-    </div>
-    <div id="checkboxes">';
-        echo '<label for="-1">
-        <input type="checkbox" id="-1" name="mat[]" value="All"/>All</label>';
-        for($contor=0;$contor<count($a->materiale);$contor++){
-            echo '<label for="'.$contor.'">
-        <input type="checkbox" id="'.$contor.'" name="mat[]" value="'.$a->materiale[$contor].'"/>'.$a->materiale[$contor].'</label>';
-        }
-        echo '</div>  </div>';
-        /*echo '<div class="select">';
-        echo '<select name="mat" id="slct">';
-        echo '<option style="display:none;">Materials</option>';
-        echo '<option value="All">All</option>';
-        for($contor=0;$contor<count($a->materiale);$contor++){
-            echo '<option value="'.$a->materiale[$contor].'">'.$a->materiale[$contor].'</option>';
-        }
-        echo '</select>';
-        echo '</div>';*/
-        echo     '<div class="multiselect">
-   <div class="selectBox" onclick="showCheckboxes()">
-      <select>
-        <option>Purpose</option>
-      </select>
-      <div class="overSelect"></div>
-    </div>
-    <div id="checkboxes">';
-        echo '<label for="-1">
-        <input type="checkbox" id="-1" name="pur[]" value="All"/>All</label>';
-        for($contor=0;$contor<count($a->roluri);$contor++){
-            echo '<label for="'.$contor.'">
-        <input type="checkbox" id="'.$contor.'" name="pur[]" value="'.$a->roluri[$contor].'"/>'.$a->roluri[$contor].'</label>';
-        }
-        echo '</div>  </div>';
+ echo '</div>
+       </div>';
 
-        /*echo '<div class="select">';
-        echo '<select name="pur" id="slct">';
-        echo '<option style="display:none;">Purpose</option>';
-        echo '<option value="All">All</option>';
-        for($contor=0;$contor<count($a->roluri);$contor++){
-            echo '<option value="'.$a->roluri[$contor].'">'.$a->roluri[$contor].'</option>';
+
+        echo'
+<div class="dropdown">
+<button type=button onclick="myFunction(\'filter2\')" class="dropbtn">Materials</button>
+  <div id="filter2" class="dropdown-content">';
+        echo ' <input type="checkbox" name="mat[]" value="All">'.'All'.'<br>';
+        for($contor=0;$contor<count($a->materiale);$contor++){
+            $material=$a->materiale[$contor];
+                if($material!='another')
+                    echo ' <input type="checkbox" name="mat[]" value="'.$material.'">'.$material.'<br>';
+                else
+                    echo ' <input type="checkbox" name="mat[]" value="All">All<br>';
         }
-        echo '</select>';
-        echo '</div>';
-        */
-        echo     '<div class="multiselect">
-   <div class="selectBox" onclick="showCheckboxes()">
-      <select>
-        <option>Dating</option>
-      </select>
-      <div class="overSelect"></div>
-    </div>
-    <div id="checkboxes">';
-        echo '<label for="-1">';
-        echo '<input type="checkbox" id="-1" name="dat[]" value="All"/>All</label>';
-        echo '<label for="1"><input type="checkbox" id="1" name="dat[]" value="Prehistory"/>Prehistory</label>';
-        echo '<label for="2"><input type="checkbox" id="2" name="dat[]" value="Ancient Period"/>Ancient Period</label>';
-        echo '<label for="3"><input type="checkbox" id="3" name="dat[]" value="Middle Ages"/>Middle Ages</label>';
-        echo '<label for="4"><input type="checkbox" id="4" name="dat[]" value="Early Modern Period"/>Early Modern Period</label>';
-        echo '<label for="5"><input type="checkbox" id="5" name="dat[]" value="Modern Era"/>Modern Era</label>';
-        echo '</div>  </div>';
-        /* echo '<div class="select">';
-            echo '<select name="dat" id="slct">';
-        echo '<option style="display:none;">Dating</option>';
-                echo '<option value="All">All</option>';
-                echo '<option value="Prehistory">Prehistory</option>';
-                echo '<option value="Ancient Period">Ancient Period</option>';
-                echo '<option value="Middle Ages">Middle Ages</option>';
-                echo '<option value="Early Modern Period">Early Modern Period</option>';
-                echo '<option value="Modern Era">Modern era</option>';
-            echo '</select>';
-        echo '</div>';*/
+        echo '</div>
+       </div>';
+
+
+        echo'
+<div class="dropdown">
+<button type=button onclick="myFunction(\'filter3\')" class="dropbtn">Roles</button>
+  <div id="filter3" class="dropdown-content">';
+        echo ' <input type="checkbox" name="pur[]" value="All">'.'All'.'<br>';
+        for($contor=0;$contor<count($a->roluri);$contor++){
+            $rol=$a->roluri[$contor];
+            if($rol!='another')
+                echo ' <input type="checkbox" name="pur[]" value="'.$rol.'">'.$rol.'<br>';
+            else
+                echo ' <input type="checkbox" name="pur[]" value="All">All<br>';
+        }
+        echo '</div>
+       </div>';
+
+
+        echo'
+<div class="dropdown">
+<button type=button onclick="myFunction(\'filter4\')" class="dropbtn">Dating</button>
+  <div id="filter4" class="dropdown-content">';
+        echo '<input type="checkbox" name="dat[]" value="All"/>All<br>';
+        echo '<input type="checkbox"  name="dat[]" value="Prehistory"/>Prehistory<br>';
+        echo '<input type="checkbox"  name="dat[]" value="Ancient Period"/>Ancient Period<br>';
+        echo '<input type="checkbox"  name="dat[]" value="Middle Ages"/>Middle Ages<br>';
+        echo '<input type="checkbox"  name="dat[]" value="Early Modern Period"/>Early Modern Period<br>';
+        echo '<input type="checkbox"  name="dat[]" value="Modern Era"/>Modern Era<br>';
+        echo '</div>
+       </div>';
+
+      echo'<input style="display:block;margin-top:10%;" type="submit" class="button" value="Filter">' ;
+
         ?>
     </div>
 </form>
@@ -302,17 +254,9 @@
 
 </section>
 <script>
-    var expanded = false;
 
-    function showCheckboxes() {
-        var checkboxes = document.getElementById("checkboxes");
-        if (!expanded) {
-            checkboxes.style.display = "block";
-            expanded = true;
-        } else {
-            checkboxes.style.display = "none";
-            expanded = false;
-        }
+    function myFunction(id) {
+        document.getElementById(id).classList.toggle("show");
     }
 </script>
 </body>

@@ -205,6 +205,7 @@ class StatisticsModel extends Model
             }else
             if ($date == 'Modern Era') {
                 $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=18";
+
             }
 
             $statement = oci_parse($this->db, $sql_query);

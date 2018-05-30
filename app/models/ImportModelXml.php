@@ -29,7 +29,7 @@ class ImportModelXml extends Model
             $artefact_id = oci_result($statement,1);
         }
 
-        //echo "<script type='text/javascript'>alert(\"Artefact successfully added!\"); window.location.href='/public/paginaArtefact?id=".$artefact_id."'</script>";
+        echo "<script type='text/javascript'>alert(\"Artefact successfully added!\"); window.location.href='/public/paginaArtefact?id=".$artefact_id."'</script>";
     }
 
     function xml_to_array($xml,$out=array())

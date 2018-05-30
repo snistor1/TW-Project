@@ -36,12 +36,6 @@
             print('<img style="width:100%;" src="data:image/png;base64,' . base64_encode($img) . '" />');
         }
 
-        if($u->user_id==Session::get('id_user'))
-        {
-            echo '<form  action="/public/paginaArtefact/delete?id='.$_GET['id'].'" method="post">';
-            echo '<input onclick="location.href='."'/public/paginaUtilizator'".'" class="button" name="delete" type="submit" value="Delete Artefact">';
-            echo '</form>';
-        }
         if($u->user_id==Session::get('id_user')){
             echo '<div>
              <h4>Added by: <a href="/public/paginaUtilizator"> ' . $u->user_name . '</a></h4>
@@ -90,7 +84,7 @@
          echo'<h4>Tags:</h4>';
         foreach ($u->tags as $tag)
         {
-            echo"<a class='tag'>".$tag.'</a>';
+            echo"<a class='tag' href='/public/colectieArtefacte?tag=".$tag."'>".$tag.'</a>';
         }
         ?>
             <hr>
@@ -99,6 +93,13 @@
             <div id="map" style="width:400px;height:400px;background:grey"></div>
 
         </div>
+    <?php if($u->user_id==Session::get('id_user'))
+    {
+    echo '<form  action="/public/paginaArtefact/delete?id='.$_GET['id'].'" method="post">';
+        echo '<input onclick="location.href='."'/public/paginaUtilizator'".'" class="button" name="delete" type="submit" value="Delete Artefact">';
+        echo '</form>';
+    }
+    ?>
     </div>
 </section>
 
