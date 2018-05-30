@@ -147,15 +147,16 @@ class StatisticsModel extends Model
                 function drawChart() {
             
                     var data = google.visualization.arrayToDataTable([
-                        [\'Category\', \'Number of items\'],
-                        [\'Weapons\', ' . $this->cat['Weapons'] . '],
-                        [\'Textiles\',      ' . $this->cat['Textiles'] . '],
-                        [\'Cult Objects\',  ' . $this->cat['Cult Objects'] . '],
-                        [\'Coins\', ' . $this->cat['Coins'] . '],
-                        [\'Jewels\',    ' . $this->cat['Jewels'] . '],
-                        [\'Fine Art\',    ' . $this->cat['Fine Art'] . '],
-                        [\'Pottery\',    ' . $this->cat['Pottery'] . ']
-                    ]);
+                        [\'Category\', \'Number of items\'],';
+
+            foreach ($this->cat as $key=>$r)
+            {
+                echo '[\''.$key.'\', ' . $r . '], ';
+            }
+
+
+
+            echo ']);
             
                     var options = {
                         title: \'Percent of items by category\'
@@ -180,7 +181,7 @@ class StatisticsModel extends Model
                                                                             left outer join tw.categories c on c.id = s.parent_id
                                                         where c.CATEGORY_NAME like '%'|| :category
                                                         intersect
-                                                        select unique t.ID
+                                                        select t.ID
                                                         from tw.artefacts t left outer join tw.artefacts_materials a_m on t.id = a_m.ID_ARTEFACT
                                                                             left outer join tw.materials m on m.id = a_m.ID_MATERIAL
                                                         where m.material_name like '%'|| :material
@@ -191,19 +192,19 @@ class StatisticsModel extends Model
                                                         where r.role_name like '%'|| :role ";
 
             if ($date == 'Prehistory') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))>32";
+                $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))>32";
             }else
             if ($date == 'Ancient Period') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))<5)";
+                $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))<5)";
             }else
             if ($date == 'Middle Ages') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15";
+                $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15";
             }else
             if ($date == 'Early Modern Period') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18";
+                $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18";
             }else
             if ($date == 'Modern Era') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=18";
+                $sql_query = $sql_query . " intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=18";
             }
 
             $statement = oci_parse($this->db, $sql_query);
