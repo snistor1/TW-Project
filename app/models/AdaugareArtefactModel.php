@@ -60,6 +60,7 @@ class AdaugareArtefactModel extends Model{
                                       :v_latitude,:v_longitude,empty_blob(),:v_license) returning ARTEFACT_IMAGE into :image");
                 $blob = oci_new_descriptor($this->db,OCI_D_LOB);
 
+                $origine = str_replace(",","|",$origine);
                 $values = array(':v_name' => $nume, ':v_id_user' => Session::get('id_user'), 'v_author' => $autor,
                     ':v_dating' => $dating, ':v_price' => $pret, ':v_description' => $descriere,
                     ':v_origin' => $origine, ':v_latitude' => $latitudine,
