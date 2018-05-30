@@ -25,4 +25,19 @@ class PaginaUtilizator extends Controller
     {
         $this->model('UtilizatorModel');
     }
+
+    public function importJson()
+    {
+        $this->model('ImportModelJson');
+    }
+
+    public function importCsv()
+    {
+        $this->model('ImportModelCsv');
+    }
+
+    public function importXml()
+    {
+        $this->model('ImportModelXml');
+    }
 }

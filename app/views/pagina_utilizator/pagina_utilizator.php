@@ -42,6 +42,20 @@
         print "<hr>";
         ?>
     </form>
+    <p>Import an artefact via:</p>
+    <form action="/public/paginaUtilizator/importCsv" method="post" enctype="multipart/form-data">
+        <input type="file" name="csv_file" class="button" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+        <input class="button" type="submit" value="Upload CSV">
+    </form>
+    <form action="/public/paginaUtilizator/importJson" method="post" enctype="multipart/form-data">
+        <input type="file" name="json_file" class="button" accept="application/json, .json">
+        <input class="button" type="submit" value="Upload JSON">
+    </form>
+    <form action="/public/paginaUtilizator/importXml" method="post" enctype="multipart/form-data">
+        <input type="file" name="xml_file" class="button" accept="text/xml">
+        <input class="button" type="submit" value="Upload XML">
+    </form>
+    <hr>
     <button onclick="location.href='/public/adaugareArtefact'" class='button'>Add an artefact</button>
     <button onclick="location.href='/public/paginaUtilizator/logout'" class="button">Logout</button>
 
