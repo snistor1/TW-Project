@@ -192,16 +192,16 @@ class ColectieArtefacteModel extends Model
                         $statement = oci_parse($this->db, "select t.ID from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))>32");
                     }
                     if ($d == 'Ancient Period') {
-                        $statement = oci_parse($this->db, "select t.ID from TW.ARTEFACTS t where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))<5)");
+                        $statement = oci_parse($this->db, "select t.ID from TW.ARTEFACTS t where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))<5)");
                     }
                     if ($d == 'Middle Ages') {
-                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15");
+                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15");
                     }
                     if ($d == 'Early Modern Period') {
-                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18");
+                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18");
                     }
                     if ($d == 'Modern Era') {
-                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=18");
+                        $statement = oci_parse($this->db, "select t.ID  from TW.ARTEFACTS t where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=18");
                     }
                     oci_execute($statement);
                     $i = 0;

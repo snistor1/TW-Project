@@ -194,16 +194,16 @@ class StatisticsModel extends Model
                 $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))>32";
             }else
             if ($date == 'Ancient Period') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))<5)";
+                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where (substr(DATING,length(DATING)-1)='BC' and to_number(substr(DATING,1,length(DATING)-3))<=32) or (substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))<5)";
             }else
             if ($date == 'Middle Ages') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15";
+                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=5 and to_number(substr(DATING,1,length(DATING)-3))<15";
             }else
             if ($date == 'Early Modern Period') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18";
+                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=15 and to_number(substr(DATING,1,length(DATING)-3))<18";
             }else
             if ($date == 'Modern Era') {
-                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AC' and to_number(substr(DATING,1,length(DATING)-3))>=18";
+                $sql_query = $sql_query . "intersect select unique ID from tw.ARTEFACTS where substr(DATING,length(DATING)-1)='AD' and to_number(substr(DATING,1,length(DATING)-3))>=18";
             }
 
             $statement = oci_parse($this->db, $sql_query);
