@@ -215,6 +215,24 @@ class ColectieArtefacteModel extends Model
             }
 
         }
+        if(isset($_GET['tag'])){
+             $t=strstr($_GET['tag'],'/',true);
+             if($t==FALSE){$t=$_GET['tag'];}
+            $this->id_artefacte=$this->id1_artefacte;
+            $this->aux = array();
+             $statement=oci_parse($this->db,"select a.ID from tw.ARTEFACTS a join tw.ARTEFACTS_TAGS a_t on a.ID = a_t.ID_ARTEFACT
+                           join tw.TAGS on a_t.ID_TAG = TAGS.ID where TAG_NAME=:v_name order by a.ID");
+             oci_bind_by_name($statement,":v_name",$t);
+             oci_execute($statement);
+             $i = 0;
+                    while (oci_fetch($statement)) {
+                        $temp = oci_result($statement, 1);
+                        array_push($this->aux, $temp);
+                        $i = $i + 1;
+                    }
+
+            $this->id1_artefacte = $this->compara($this->id_artefacte, $this->aux);
+        }
 
          for($contor=0;$contor<count($this->id1_artefacte);$contor++){
              $statement= oci_parse($this->db, "select  t.ARTEFACT_NAME,t.ARTEFACT_IMAGE FROM tw.ARTEFACTS t where t.ID=:v_id");

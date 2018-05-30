@@ -84,7 +84,7 @@
          echo'<h4>Tags:</h4>';
         foreach ($u->tags as $tag)
         {
-            echo"<a class='tag'>".$tag.'</a>';
+            echo"<a class='tag' href='/public/colectieArtefacte?tag=".$tag."'>".$tag.'</a>';
         }
         ?>
             <hr>
