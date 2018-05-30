@@ -6,4 +6,7 @@ class PaginaArtefact extends Controller
     {
         $this->view('pagina_artefact/pagina_artefact');
     }
+    public function delete (){
+        $this->model('ArtefactModel');
+    }
 }

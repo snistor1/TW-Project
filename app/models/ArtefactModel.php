@@ -224,5 +224,13 @@ class ArtefactModel  extends Model
                 }
             }
         }
+        //sterge artefactul
+        if(isset($_POST['delete'])){
+            $statement=oci_parse($this->db,"delete from tw.ARTEFACTS where ID=:v_id");
+            oci_bind_by_name($statement, ":v_id",$id_artefact);
+            oci_execute($statement);
+            echo "<script type='text/javascript'>alert(\"Artefact Deleted Successfully!\");window.location.href='/public/paginaUtilizator';</script>";
+            exit();
+        }
     }
 }
