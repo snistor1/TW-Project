@@ -60,7 +60,7 @@ class StatisticsModel extends Model
             echo '<br>';
             echo '<div class="filters-container">';
             //categories dropdown
-            echo '<form>
+            echo '<form> <div class="select">
                     <select name="cat" id="cat" onchange="showInfo(this.value)">
                         <option style="display:none;">Category</option>
                         <option value="All">All</option>';
@@ -73,10 +73,11 @@ class StatisticsModel extends Model
             }
 
             echo '</select>
+            </div>
                 </form>';
 
             //materials dropdown
-            echo '<form>
+            echo '<form> <div class="select">
                     <select name="mat" id="mat" onchange="showInfo(this.value)">
                         <option style="display:none;">Material</option>
                         <option value="All">All</option>';
@@ -89,10 +90,11 @@ class StatisticsModel extends Model
             }
 
             echo '</select>
+            </div>
                 </form>';
 
             //roles dropdown
-            echo '<form>
+            echo '<form> <div class="select">
                     <select name="rol" id="rol" onchange="showInfo(this.value)">
                         <option style="display:none;">Role</option>
                         <option value="All">All</option>';
@@ -105,6 +107,7 @@ class StatisticsModel extends Model
             }
 
             echo '</select>
+            </div>
                 </form>';
 
             //time periods dropdown

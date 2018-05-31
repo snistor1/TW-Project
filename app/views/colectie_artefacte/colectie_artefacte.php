@@ -49,7 +49,7 @@
             for($contor2=0;$contor2<$length2;$contor2++)
             {
                 $subcategory=$subcategory_array[$contor2];
-                if($subcategory!='another')
+                if($subcategory!='Another')
                     echo ' <input type="checkbox" name="cat[]" value="-'.$subcategory.'">'.$subcategory.'<br>';
                 else
                     echo ' <input type="checkbox" name="cat[]" value="'.$a->categorii[$contor].'">All<br>';
