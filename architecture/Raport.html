@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html  lang="ro-RO" vocab="http://schema.org/" typeof="schema:ScholarlyArticle" property="https://github.com/banutu98/TW-Project">
+<head>
+    <meta charset="utf-8">
+    <title>Progresul Proiectului</title>
+    <style>ol{ list-style-type: none; } body{margin-right:7%; margin-left: 7%; font-size:120%;}</style>
+</head>
+<body>
+    <header>
+        <h1 property="http://purl.org/dc/terms/title">Artifacty: Progresul Proiectului</h1>
+    </header>
+    <div role="contentinfo">
+        <hr>
+        <link property="itemListOrder" href="http://schema.org/ItemListOrderAscending"/>
+        <ol role="directory">
+            <li property="itemListElement" typeof="ListItem"><a href="#abstract">
+                <span>1.</span> Abstract</a>
+            </li>
+            <li property="itemListElement" typeof="ListItem"><a href="#introducere">
+                <span>2.</span> Introducere</a>
+            </li>
+            <li property="itemListElement" typeof="ListItem"><a href="#obiective">
+                <span>3.</span> Obiective</a>
+            </li>
+            <li property="itemListElement" typeof="ListItem"><a href="#etape">
+                <span>4.</span> Etape intermediare</a>
+            </li>
+            <li property="itemListElement" typeof="ListItem"><a href="#git">
+                <span>5.</span> Mod de lucru cu Github</a>
+            </li>
+             <li property="itemListElement" typeof="ListItem"><a href="#concluzie">
+                <span>6.</span> Concluzie</a>
+            </li>
+        </ol>
+      <dl>
+        <dt>Autori</dt>
+        <dd property="http://purl.org/dc/terms/creator">
+          <a property="url" href="https://github.com/NicoletaIoana">Băcăoanu Nicoleta-Ioana</a> (bacaoanuioana@yahoo.com),
+          <a property="url" href="https://github.com/deliadominte">Dominte Delia</a> (delia.dominte@info.uaic.ro),
+          <a property="url" href="https://github.com/banutu98">Nistor Șerban</a> (serbanstol@yahoo.com),
+          <a property="url" href="https://github.com/cosmins97">Sacaci Alin-Cosmin</a> (alin.sacaci@info.uaic.ro).
+        </dd>
+        <dt>Site proiect</dt>
+        <dd>
+            <a property="url" href="https://github.com/banutu98/TW-Project">GitHub</a>
+        </dd>
+         <dt>Tags</dt>
+        <dd>
+         <span>info, infoiasi, web </span>
+        </dd>
+      </dl>
+
+    </div>
+    <hr>
+    <section id="abstract" role="doc-introduction" property="about">
+        <h3><span>1.</span> Abstarct:</h3>
+        <p>
+            Raportul de fata surprinde detaliile care au vizat progresul proiectului 'Artefacty'
+            propus in cadrul laboratorului de Tehnologii Web. <br>Sunt surprinse in prezentul raport detalii legate
+             de obiectivele proiectului si etapele realizarii acestor obictive, cat si date legate de folosirea Github.
+        </p>
+    </section>
+        <section id="introducere" role="doc-introduction" property="about">
+        <h3><span>2.</span> Introducere:</h3>
+        <p>
+            Managmentul unor bunuri sau obiecte ajunge adesea sa fie cerinta principala a unor aplicatii web.
+            Asa se intampla si in cazul de fata, in care se cere managmentul artefactelor utilizatorilor.
+            'Artefacty' se adreseaza detinatorilor de artefacte care doresc sa-si organizeze colectia, dar si pasionatilor
+            care doresc sa afle mai multe informatii despre acestea.
+        </p>
+    </section>
+    <section id="obiective">
+        <h3><span>3.</span> Obiective:</h3>
+        <link property="itemListOrder" href="http://schema.org/ItemListUnordered"/>
+        <ul>
+            <li property="itemListElement" typeof="ListItem">
+                Sa se dezvolte o aplicatie Web ce realizeaza managementul informatiilor privitoare la colectii de artefacte arheologice, structurate pe tipuri, roluri, conform localizarii geografice etc.
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                Pentru fiecare artefact, pot fi atasate diverse meta-date -- e.g., autor (daca exista), licenta de utilizare, valoare, termeni-cheie (tag-uri) etc.
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+				De asemenea, pot exista diverse relatii intre anumite artefacte (de exemplu, o colectie a obiectelor de cult din India are drept cumparatori membri ai clasei "samurai" apartinand totodata si clasei "magnati industriali").
+			</li>
+            <li property="itemListElement" typeof="ListItem">
+				Se vor oferi situatii statistice referitoare la resursele stocate -- de pilda, toate artefactele de tip masca mortuara descoperite in secolul XXI in Africa ori cele care nu au fost inca datate/cercetate.    
+			</li>
+            <li property="itemListElement" typeof="ListItem">
+                Datele procesate vor putea fi importate/exportate si via documente in formatele CSV, JSON si XML.
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                Bonus: recurgerea la servicii cartografice pentru ilustrarea localizarii geografice a fiecarui artefact.
+            </li>
+        </ul>
+    </section>
+    <section id="etape">
+        <h3><span>4.</span> Etape intermediare:</h3>
+        <link property="itemListOrder" href="http://schema.org/ItemListOrderAscending"/>
+        <ul property="steps">
+            <li property="itemListElement" typeof="ListItem">
+				Finalizarea modificarilor ce tin de interfata
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Finalizare baza de date
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Obtinere Google maps: free API key
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Implementare sistem de Login/Register
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Implementarea functionalitatii de adaugare artefact
+			</li>
+            <li property="itemListElement" typeof="ListItem">
+                Implementare/imbunatatire filtre
+            </li>
+            <li property="itemListElement" typeof="ListItem">
+                Realizarea unei relatii intre artefacte via clase/taguri
+            </li>
+			<li property="itemListElement" typeof="ListItem">
+				Export/Import XML, CSV, JSON
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Oferirea de informatii statistice
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Finalizarea oricaror activitati restante
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Integrare sistem cartografic
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Testare si Corectare
+			</li>
+			<li property="itemListElement" typeof="ListItem">
+				Finalizare lucru proiect
+            </li>
+			<li property="itemListElement" typeof="ListItem">
+				Raport în formatul Scholarly HTML
+			</li>
+        </ul>
+    </section>
+    </section>
+        <section id="git" role="doc-chapter" property="about">
+        <h3><span>5.</span>Modul de lucru cu Github</h3>
+        <p>
+            Sistemul de management al codului-sursă ales este Github iar pentru a facilita 
+            lucrul cu acesta, am folosit Github Desktop.
+            A fost necesara descarcarea aplicatiei, autentificarea cu contul de git
+            ,crearea unui repository pentru proiect si clonarea proiectului.
+            Modificarile facute in directorul proiectului sunt vizibile si pot si pot
+            fi adaugate proiectului prin succesiunea de comenzi 'commit' si 'push origin'
+             care pot fi realizate prin simpla apasare a unor butoane din aplicatia Github Desktop.
+             Pentru a prelua local schimbarile facute de ceilalti contribuitori se aplica, la fel de simplu, comenzile
+             'fetch origin' si 'pull origin'. Commit-urile au fost adaugate ('merge') branch-ului master.
+
+        </p>
+    </section>
+
+        </section>
+        <section id="concluzie" role="doc-chapter" property="about">
+        <h3><span>6.</span>Concluzie</h3>
+        <p>
+         Prin urmarirea atingerii obiectivelor si parcurgand etapele mentionate, proiectul a fost finalizat cu succes.
+        </p>
+    </section>
+    
+</body>
+</html>
